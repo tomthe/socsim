@@ -1,0 +1,636 @@
+Mon Jan 13 10:15:17 PST 2014
+
+New birth interval adjustment routine is in place.  It uses the
+is accomplished in the new adjust_birth_for_bint function that lives in load.c and is called BEFORE fill_rate_gaps.  There are still imperfections in the way it handles parity specific rates but its not terrible. 
+
+install_in_order has been changed -- it now puts all additions to queues at the begininng instead of in pid order.  It was not clear why the ordering was nec. and it was clearly expensive.	
+	
+## Consider these enhancements:
+1) birth interval fert rate adjustment based on nh poisson process
+2) allow spec of allowable age range random dad 
+3) some variations on incest taboos spec cousins OK? how about proportion of otherwise optimal first cousin spouses that are accepted
+4) specify minimum age at marriage for male in one-queue system
+5) put folks on the event queue in the order that the events would occur; use the left over ln(u) to determine next event.
+
+Wed Apr 17 17:10:42 PDT 2013
+
+In previous versions, being on the marriage queue precluded having
+another marriage event come up from date_and_event. that is now
+changed so that those in the queue can have events. IFF
+marriage_queues is 1. That is women can have additional searches even
+if they are already on the queue. Ideally, this would also be the case
+for the 2 queue marriage market, but that could break past projects as
+a rate of 1 would imply constant futile marriage searches.
+
+Wed Sep 26 09:26:28 PDT 2012
+
+In running a very stylized simulation where in all women had exactly 2
+children and died in exactly the same month, we found som anomlies
+that we traced to a not so great implementation of the random number
+generator.  It is a congruential generator and the constants were on
+the small side.  I put newer better constants into place and the
+problem went away. But having dug into the issue a bit it seemed
+prudent to use teh in built random() function with initstate set to a
+high number. This is supposed to implement an even better random
+number generator than the congruential one.  
+
+Also removed the code for recyling random numbers this was just for
+debugging but it was never useful.
+
+Sat Jun  2 07:06:57 PDT 2012
+At this point we have two new marriage market features which can be
+implemented independently--but they are so far driven by #defines
+there are no .sup file keywords that activate them. 
+
+We have FEMSEARCH (see below for more details) in which we ignore male
+marriage rates and just put all males on the marriage queue whenever
+they are not married.  Females then select the best of the bunch
+whenever they (the female) gets a marriage event. In this scheme there
+shall be no female marriage squeezes. Female rate will always be
+realized unless we simply run out of men--which of course could happen
+with odd mort rates or sexratio at birth.  BUT FEMSEARCH does not rule
+out marriages between very old women and very young men--so as long as
+some male is alive and unmarried...
+
+The second new feature is tentatively called MSCOREPROB (details
+below) changes the way the agedifference is reckoned.  The old system
+simply scores potential mates (score3) by sum fixed function of their
+age difference.  The new MSCOREPROB looks at distribution of age
+differences of marriages completed and compares that to a desired
+distribution of age differences at marriage and scores potential
+couples accordingly. So if there have been too many(few) marriages of
+a certain age difference so far in the segment, such potential
+marriages will get a lower(higher) score.  After some testing this
+looks pretty good. It mis-marries about 2% of couples. But the female
+marriage probs are going to matter here so more testing is still
+called for.
+
+Testing reveals that widows/divorcess can screw things up. Since
+MSCOREPROB does not distinguish what sort of marriages are being
+conducted... it turns out that widowed/divorced women windup marrying
+men of lesser age-difference-optimality. Not sure what exactly drives
+this, but high remarriage rates lead to fat tails and other not so
+goodness.  Best to test withough remarriage then accept violations due
+to remarriage --or we could make things yet more complicated and
+specify distinct age difference distributions by mstat..? 
+
+Wed May 30 12:55:21 PDT 2012
+
+alternate age scoring system wherin the score is based on the degree
+to which it moves the observed distribution of marraige age
+differences toward or away from the user specified target
+distribution. 
+
+The user provides mean, sd and a PERHAPS a "female_older"
+parameter--(this has not worked so well). from the first two we
+generate a gaussian probability distribution over the entire posible
+agedifference range -100..100.  Then we make some modifications such
+as setting all prob density values which are less than 1/10000 to -1
+(we get rather fat tails if we don't do this) Finally the renormalize
+so that the sum of the non-negative "prob densities" over -100..100 is
+1.
+
+IF we decide to use te female_older parameter we will multiply the
+density values corresponding to negative age differences (those in
+which the female is older) by the female_older parameter before we
+normalize. But so far this has not worked well
+
+
+At this point we have a matrix called
+marriage_agetarget[MAXGROUPS][2*MAXUYEARS] each cell in
+marriage_agetarget[g] coresponds to the proportion of marriages of
+women of group g wherein she is some number of years older or younger
+than her spouse.
+
+As we execute marriages we track the age differences by female's group
+membership in a simillar structure. we also track the total number of
+marriages executed for each group in the current sim segment.
+
+The score for a prospective couple is the difference between the
+ideal proportion of marriages that are of her group and their agediff -
+the observed proportion of marraiges that are of her group and their agediff
+
+the ideal proportion is in marraige_agetarget[][] the observed
+proportion is calculated by dividing the count of marriages of her
+group and their agediff by the total marriages of her group.
+
+Larger differences ==> higher scores.
+
+NOTE that only the ordinal value of this agediff score matters IFF no
+other criteria are being considered.  For enhanced versions where
+marriage decisions are more complicated, some sense of scale will be
+important. I believe that this algorithm guarantees scores between -1
+and 1.  and will generally produce values near 0.  This will allow for
+lexically ordered algorithms eg  if X feature is present then the
+marriage will get a higher score regardless of age.
+
+
+
+Fri May 25 10:31:25 PDT 2012
+
+FEMSEARCH is a #define (for now) that will cause socsim to put all
+males on the marriage queue and only pay attention to female marriage
+rates. Men drop off the marriage queue when married and immediately go
+back on after divorce or widowhood.  There is no marriage event for
+males.
+
+This is useful when the marriage market needs to be sophisticated,
+such as with the Hardy-Weinberg/Fisher-Wright project where in
+marriage choice will be driven by cousinhood & etc.
+
+Separate from FEMSEARCH is the addition of some functions in the
+enhancement framework, which will need to be added to NULLenhancement.
+
+double enhance_couple_score(p,suitor) is run INSTEAD of score3()
+Thus in the stub version it needs to call score3()
+
+int enhance_check_incest is run INSTEAD of
+xevents:check_incest. Again the stub must include a call to
+check_incest in case the user is not interested in that stuff.
+
+
+=======
+
+Tue Apr 10 10:27:50 PDT 2012
+
+(1) squashed long standing bug.  if init pop has no females of
+childbearing age then AND birthtarget for such a group caused
+adjust_birth to go to inf. resulting in lots of births.  Now when that
+condition obtains we bail with an informative message.
+
+(2) added enhance_check_spouse() function to allow enhancements to
+disallow potential spouses for whatever reason.
+
+
+Wed Jun 23 16:11:39 PDT 2010
+
+added duration specific option for transit rates
+added option to specify integer for child_inherits_group
+now checks for existance of otx and omar files and does not seg fault 
+if missing.  So empty .omars are no longer needed.
+
+Tue Jun  1 17:06:48 PDT 2010
+
+Created tags directory in svn with first subdir: rostock-06-2010
+tag/aka release is a snapshot in time.  It is not to be messed with
+further or it becomes a "branch".
+
+Fri May 14 10:42:32 PDT 2010
+
+cleaned up the marriage routines.  It now consists of 
+
+marriage_allowable() which calls the functions that give yes/no
+answers. Presently check_incest, check_endogamy, check_agedif. Each
+returns a 1 if the potential mates are acceptable 0 otherwise.
+
+score3 -- which is also known as p->score()  This returns a double
+which is higher for more preferred unions. 
+
+when the working queue is created, ONLY those potential spouses who
+pass the marriage_allowable() test AND have the *HIGHEST* observed
+score3 will be on the queue.  
+
+random_spouse2 also known as p->pref simply chooses randomly from the
+working queue.
+
+score3 only considers age difference between spouses AND to does not
+do anything fancy just straight lines downward from a peak
+
+users specify marriage_peak_age
+              marriage_slope_ratio 
+	      marriage_agedif_max
+	      marriage_agedif_min
+
+
+Wed Apr 29 14:51:15 PDT 2010
+
+modified endogamy parameter so that it now defines probability that
+suitor of other group will be accepted. It used to only have -1,0,1.
+
+ endogamy == 1 --> all marriages are to be within group
+     endogamy == -1 --> all marriages are to be across groups
+     endogamy == 0 --> marriages are random as far as groups go
+     
+     1> endogamy >0 --> prob/prop of ingroup suitors permitted
+     0 > endogamy > -1  prob/prop of outgroup suitors permitted
+
+
+Mon Apr 19 09:48:55 PDT 2010
+when co-cohab died cohab's marital status was left unchanged this lead
+to seg fault when cohab's next event triggered a new event lottery for
+spouse (who would be the dead previous co-cohab).  in divorce this was
+done via a function get_previous_mstat.  Updated that function to
+handle polygamy (sort of) and called it from dath() to solve segfault problem.
+
+
+Wed Apr 14 10:58:42 PDT 2010
+reduced complexity of Marcia's hash() function.  It was causing
+trouble when reading pids about 43K due to integer overflow
+
+Mon Apr 12 17:12:23 PDT 2010
+added spaces between %tokens in wirte_person and write_marriage to
+avoid runtogehteropop lines when population is large an idsget too big.
+
+Fri Apr  9 11:43:22 PDT 2010
+changing all instances of cfree to free() Rainer Walke at Max Planck
+compiled socsim under cygwin and found that the only changes necessary
+were to change cfree to free.  It looks like the calls to cfree are
+just vestiges from the SunOS era, so all are now "free()".
+
+
+##Wed Mar  3 11:21:49 PST 2010
+added lots more groups or rather the capacity to simulate with upto 60
+groups. This was requested by Bruno Masqualier.  It is not done in a
+particularly elegant way -- but the changes are easy.   groups
+continue to inherit rates from lower groups within sex and mstat.
+
+Also corrected problem that was making 32bit version crash.  It was
+caused by the fix on Aug 11 2009 to the hash function (see below).
+compilers are squirly about int.  the small change recast the long
+long int back to int before returning it.  Now things work on 32bit
+machines too.
+
+## Tue Dec  1 11:12:02 PST 2009
+Emilioz's projedt with Jamie Jones on malaria required
+polygyny. Polygyny has certainly worked in the past but this time
+segfaults resulted.  I tracked it down to an attempt to delete from
+the event queue someone who had previously died.  in xevents:death(),
+ONLY the last_marriage was inspected for a spouse requiring a dequeue
+and new event lottery.  So if ego A married X and then Y and then A
+died.  Y would be marked widow, dequeued and reevented but NOTHING
+would happen to X.  When X died A would the spouse in her
+last_marriage and thus would require a dequing and reevention. But
+alas, A was already dead and thus a segfault.
+
+xevents:death() has been changed so that all spice are dequeued and
+reevented on the death of any ego.  NOTE that this reveals an
+ambiguity if cohab and marriage coexist:  the setting of reason_end is
+determined by mstatus which refers only to (I presume) the most recent
+union?  Oh well.
+
+
+##Tue Dec 1 12:57:20 PST 2009 Modified Makefile so that we can now
+produce socsim and socsim-enhanced without fiddling symlinks.  -D
+ENHANCED is set for socsim-enhanced and not for plain old socsim.
+enhancedNULL{c,h} are not needed for compilation -- only as starting
+points for new enhanced versions.
+
+##Fri Oct  9 11:36:59 PDT 2009
+
+EmilioZ's enhancement.c and .h are ready for testing.
+The only modifications to the main code are
+
+(1) the addition of parameter0-5 which are globally declared doubles
+read in load(). No problem if they are not in .sup they just won't be
+read. They should only be used in enhancement.c
+
+(2) addition of hoods enhance_transit_before and
+enhance_transit_after.  which are hooks xevents.c.  _before is called
+after the houshehold list is assembled (if hhtrans is in effect) but
+BEFRE it is processed.  _after is called after all of the transit
+events implied by ego's move are processed.  Ego shall have had her
+group changed by that point but her new event will not have been
+generated.
+
+In enhancement.c or course lots of good things happen. generally:
+(1) on marriage spouses get tmult bumped if their spouse is HIV+ and
+they are not
+(2) on transit to group2, all current spouses get their tmults bumbed.
+
+the mechanism in .sup is :
+
+(1) hettrans must be > 0
+(2) parameter0 = the amount by which the hazard of the event shall be
+multiplied.
+
+
+
+Mon Aug 17 12:26:47 PDT 2009
+BIG stupid 386 bug as yet unsolved.  passing struct person *p  objects
+to functions fails in a bizarre way AND ONLY IN i386. Works great as
+it always has in x86_64.  ptest.c and ptest.h are small programs that
+illustrate the problem. use gdp and watch the address of p as it is
+passed to initialize_person.  Not that it is *not* &p in i386 (off by
+30 generally)  but is &p in x86_64.  This is huge bummer and source of
+much hairloss.  
+
+Mon Aug 17 12:09:37 PDT 2009
+
+(1) changed io.c:266 to  croak when an incomplete rate set is
+found. formerly it just warned.  Emilio had a rate that ended in 
+0 100 0  instead of 100 0 0 and that caused odd results b/c the error
+was in one of several files.  The order in which the files were read
+mad a big diff to the outcome b/c when the 0 100 0 was hit, no futher
+rate sets were processed, but the simulation ran anyway.
+
+(2) updated the docs in www.demog.berkeley.edu/~socsim to indicate
+that the "upper age bound" of a rate spec is **NOT** included in that
+rate spec.  this was wrong in the docs and result was that a
+reasonable person would create rate specs like
+0 0 .34   hoping to affect only the first mont of life. Sorry that
+rate set as width / duration = 0.  The docs now indicate that that
+rate should be 0 1 .34.   I also added a big block of code to
+load:warn_about_rates  which spews warning when zero width blocks are
+encountered. 
+
+
+Tue Aug 11 11:20:35 PDT 2009
+Very surprising bug was found by emilioz in the hash function in
+io.c. A hash table is used in reading the initial pop just to speed
+things up by eliminating the need for a second pass in order to hook
+up the pointers.   the hash function was implemented as
+
+/* assuming some kind of uniform distribution I'll just use a mod               
+ * function, slightly thinned out */
+
+int
+hash(val)
+    int val;
+{
+    return (val * val % 10000);
+}
+
+
+Amazingly no incredibly for the first time emilio's input opop file
+had more than 46341 record.  But  46341**2 = 2147395600
+which is greater than the max for a signed integer.
+
+I changed the code above such that val is defined as unsigned long
+long in  and the problem is resolved. 
+
+BUT THE MYSTERY remains.  I know that we have had initial populations
+well above 46341 many many times.  Yet only now is the darned thing
+breaking.  I have never fiddled with the hash business. MarciaF built
+that in back in the late 20th century and it has never caused
+problems.  integer overflows do not themsleves cause seg faults. They
+just perform undefined behavior.  In the present case hash(46341)
+returned a negative number which in turn caused a seg fault in lookup.
+
+ 
+
+Fri Feb  8 09:16:29 PST 2008
+
+Rather than maintain a gazillion separate branches, we now use
+"enhancement.{c,h}. Socsim has a growing number of hooks in it that
+refer to chunks of code in enhancement.c.  If you link enhancement.c 
+to enhancementNULL.c  then all the hooks are no opts.  So nothing
+happens.  You can create modified versions of enhancement.{c,h} in
+order to make socsim do all sorts of crazy things.  Crazy things here
+means that person records can have additional variables which are
+generated or modified at the time of any event and those variables can
+be used to construct event probability multipliers.  Those multipliers
+can then be integerated easily with the event competion code.
+
+The hope is that whatever oddball simultion you might want to do, you
+can do it entirely by modifying the enhancement.{c,h} files and NOT
+the whole socism code base.
+
+
+Tue Feb  6 13:17:24 PST 2007
+I'm about to start cooking up a socsim version for Demog212 -- which
+used to be called Demog214.  enhancemntD214 has been renamed
+enhancementD212.  Minor fixes have been made in order to get simple
+one sex simulations to work for Schoumaker -- who appears now to have
+abandoned the effort.  A new svn rev is in order.
+
+
+Thu Mar 16 14:39:16 PST 2006
+Socsim has been checked in to Subversion /admin/2  and customizations for
+Demography 214 have been added all of which turn on whem #DEMOG214 is
+def'ed.  The program works basically -- but does not produce the .opox
+file that Ken's Thai project required.
+
+Instead, .opox is governed by the size_of_extra variable. -- it
+defaults to zero but if set to n -- then the .opox file will contain
+n+1 columns (col 1 has to hold the pid).  
+
+extra_data is a structure (person ->extra) is an instance of
+it. objects of type struct extra_data a simple one way linked lists
+where value is a fload and next is a pointer to an extra_data struct.
+To add variables to socsim you set size_of_extra appropriately and
+that will take care of reading in and writing out .opox -- but of
+course you have to do all kinds of work to get those variables used.
+
+The next step is separate socsim into a core program which implements
+a set of features that are useful always and modifications file(s)
+which will hook into the core in useful ways but will cause eccentric
+versions of socsim to be compiled for specific projects. 
+
+the alternative -- which has been thus far practiced results in socsim
+acquiring a vast array of very seldom used features which then
+languish and ultimately break or break something else.
+
+
+
+Wed Nov 12 09:05:18 PST 2003
+
+Implementing a random number recyling option under which a table of
+random numbers will be used rather than calculating one everytime. The
+seed on the command line will be used to select the starting point in
+the table. the table will be reused as needed.
+
+.sup file syntax is :
+random_recycling  1/0
+
+If random_recyling is selected and there is not file in the current
+directory called socsim.random then one will be generated using a
+built in seed: 5678. the idea is that the same seed on the command
+line should produce identical output if random_recycling is in
+effect.  Obviously different results will obtain with the same comand
+line seed with and without random_recyling enabled.
+
+When the option is not enabled -- or not present, pseudo random
+numbers will be generated as always.
+
+
+
+Wed Dec 11 15:42:48 PST 2002
+
+Group inheritance options implemented affect current segment only
+.sup file syntax is :
+
+child_inherits_group  OPTION
+
+where OPTION can be one of:
+"from_mother"
+"from_father",
+"from_same_sex_parent",
+"from_opposite_sex_parent"
+
+Tue Oct 22 11:58:12 PDT 2002
+
+Added exogamy option implemetned by setting endogamy flag to < 0
+
+
+
+
+Tue Sep 17 16:23:39 PDT 2002
+more segmentation faults initialize_segment_vars() routine, the same
+problem that we had with rate_set and birth_rate set namely that the
+linux version was less forgiving about freeing memory more than
+once. Feitel had unwound the structures holding rates according to the
+inheritance rules. I could not find the precise mistake that caused
+the seg fault, but I fixed it by using a two pointer nested loop
+scheme. Marching from structr[0] to the end and at each point looking
+for higher indexed elements pointing to the same memory
+structure. When found these higher indexed elemetns are set to NULL
+then the lower element is carefuly cfreed.
+
+Lots of obsolete code was also removed.
+
+Mon Jul 29 15:48:04 PDT 2002
+
+prompted by segmentation faults and 
+attempt to modify transit rate no tmult found: Illegal seek
+
+messages I made the following changes:
+
+1) fixed BUG in event::initialize_segment_vars() -- though it was not
+   obvious at first, this was the same problem in birth_rate_set as
+   occurred in rate_set namely that cells in this matrix which point
+   to age_blocks were cfreed() in the wrong order and thus cfreed()
+   twice ---> segmentation fault.  Marcia's code tried to unwind the
+   rate sets according to the inheritance rules. The new simpler code
+   just looks for cells in (brith)_rate_set[][][] that point to the
+   same block and cfree() all and ->NULL all at once.
+
+2) fixed problem with group index in population pyramid. there is no
+   group zero -- in some places, atempts to use arrays indexed by
+   group starting with zero led to problems. I am still unsure about
+   the why "numberofgroups" exists as it defaults to MAXGROUPS -1 and
+   is not reset anywhere
+
+   put the call to population_pyramid back at the top of each segment
+   and re-enabled the routine.
+
+3) changed the order of things in utils::usetransmult() this now
+   returns immediately if !hettrans  it used to check for
+   p->egos_extra->tmult first -- that does not seem to make sense.
+
+
+Fri Jul 19 13:58:28 PDT 2002
+
+Before I start making changes for the US Kinship project, the current
+version of socsim will be written to CD. This is the version that Ken
+used in his Thailand paper(s) sccs should allow us to reproduce this 
+version any time -- still let's make a CD for the benenfit of science.
+
+Tue Jul 10 17:44:33 PDT 2001
+Ken and Josh's adir.imp runs were failing on both solaris and linux
+THOUGH **NOT** on Ken's lapton@searanch. The bus error(solaris) or
+segfault(linux) occurred in the population_pyr() function when
+tabulating pyramids for the initial population. The linux binaries
+often ran but the solaris NEVER worked. gdb revealed that as the
+routine loops through p->down it somehow goes off inot unallocated
+memory.
+
+For now, I kludged over it by moving the call to population_pyr() to
+after the segment is run -- so we don't get a pyramid for the initial
+population but we get one after each segment.
+
+NOTE -- the crashing runs alos produce this mysterious problem:
+
+marriage file: invalid input: Success
+marriage file: invalid input: Success
+marriage file: invalid input: Success
+marriage file: invalid input: Success
+
+xtra file NOT read: read_extra_file=0
+
+
+
+
+Fri Jun  1 12:49:25 PDT 2001
+Ken's SWET (Thailand) project is virtually complte. the article is
+being reviewed, no further analysis is planned. In the process of 
+running the SWET project, a few bugs were discovered -- as a result of
+porting the program to linux. The bugs are outlined below. Ken ran
+SWET on brass using the **solaris** version of socsim. Technically
+speaking, the solaris version did not have the 3 bugs below
+patched. We beleive that this does not matter -- or else we would be
+very bummed right now.  Anyway -- ** technically ** the version Ken
+ran with is not the version stored in SCCS today rather it is the
+logically identical program (minus the bug fixes). We believe the SWET
+runs could be reproduced in a statistical sense using this code.
+
+Our plan now is to discard the solaris code and use only one socsim
+code tree. That code will be compiled for both platforms. This will be
+accomplished by storing the source in Socsim and storing Makefiles
+and binaries in Socsim/solairs and Socsim/i386linux
+
+
+Fri Oct 13 12:55:55 PDT 2000
+
+Bug #3 found and kludged.  The bug is analogous to bug #1 but for
+Lee-Carter rates. The rate sets are not properly re-initialized
+resulting in a cfree() of a thing more than once. 
+
+FOR NOW -- the memory is abandoned and the lc_rate_set matrix is just
+set to NULL for all elements.  It's ugly but it works for now.
+
+
+
+Thu Oct 12 15:33:56 PDT 2000
+
+This is the first version that seems to run properly under linux.
+Ken took this version to chaucer@SeaRanch today on floppy
+
+
+2 bugs were crushed since the thing was ported from Marcia's last
+version under Solaris.
+
+Bug #1
+Date: Wed, 26 Jul 2000 21:59:35
+To: wachter@demog.berkeley.edu
+Subject: socsim progress
+
+
+I found the bug.  Squashing it is not as simple as adding a semicolon, but
+I am quite certain that I uderstand what's going on.  Briefly, it has to
+do with the inheritance of rates -- if group N's divorce rates are not
+specified, group N get's group N-1's for example. The way this is
+implemented, socsim maintains a set of pointers so that the very same
+chunks of memory are used whenever two group/marital-status/sex categories
+of people share a common set of rates for an event.
+
+In order to re-initialize at the start of a new segment, this complicated
+structure needs to be unwound.  This involves figuring out which
+categories of people share rates for which events. This is not done
+correctly in the current code and as a result, a column of death rates for
+males is de-allocated more than once.  
+
+de-allocating memory more than once produces "undefined behavior" solaris
+seems to be a bit more foregiving than is linux. But I am sure that under
+some conditions solaris machines would choke on this too.
+
+I don't think that the current alogrithm for unwinding these data
+structures can be salvaged so the subroutine will need to be re-thought.
+
+
+Bug #2
+...the problem
+turned out to be  in datev of all places. Marcia
+
+had this pretty innocent and rather venerable code:
+
+ temp = crnt_block->modified_lambda;
+ temp = logu/temp;
+ itemp = (int) temp;
+
+temp originally gets essentially the log of the rate
+then it becomes the ratio of the log of the random uniform and the log of
+the rate. And then....
+
+it's supposed to get truncated by being "cast" as int.  The problem is
+that it's a double precision variable with a max of 1.7E+308 and int is a
+mere 32 bit number with a max of 2147483647.  So casting is
+dangerous. Under solaris, apparently something more sensible
+happens. Under linux the result is negative. That eventually results in a
+negative waiting time until the next event and... a train wreck.
+
+The fix is to declare itemp as "long long int".
+
+
+
+
+

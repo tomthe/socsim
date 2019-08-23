@@ -1,0 +1,1632 @@
+
+ compiled from SVN revision 50:57M on Thu Jul 21 18:51:59 PDT 2016 
+
+
+
+
+ Socsim Version: STANDARD-UNENHANCED-VERSION
+
+openning sample.sup 
+starting  with line 0 at 0
+number of segments: 1
+duration: 4500
+no heterogeneous fertility
+find random fathers 1
+marriage_eval : 2
+
+agedif_mariage_mean (group 1)  : 2.000000
+
+agedif_mariage_sd (group 1) : 3.000000
+
+marriage_queues : 1
+
+loading ratefile.min ... openning ratefile.min 
+starting  with line 0 at 0
+reading rates for: transit from 1 to 2
+reading rates for: transit from 2 to 3
+reading rates for: transit from 3 to 4
+reading rates for: transit from 4 to 1
+reading rates for: transit from 4 to 3
+done loading ratefile.min
+offset 3412 line115
+
+
+ Adjusting fertility rates for 9 month birth interval 
+reading fertility rates for: group=1 mstat=1 parity=0
++
+topAge: 181  width: 1 lambda: 0.001667 
+topAge: 182  width: 1 lambda: 0.001670 
+topAge: 183  width: 1 lambda: 0.001673 
+topAge: 184  width: 1 lambda: 0.001675 
+topAge: 185  width: 1 lambda: 0.001678 
+topAge: 186  width: 1 lambda: 0.001681 
+topAge: 187  width: 1 lambda: 0.001684 
+topAge: 188  width: 1 lambda: 0.001687 
+topAge: 189  width: 1 lambda: 0.001690 
+topAge: 190  width: 1 lambda: 0.001692 
+topAge: 191  width: 1 lambda: 0.001692 
+topAge: 192  width: 1 lambda: 0.001692 
+topAge: 193  width: 1 lambda: 0.001692 
+topAge: 194  width: 1 lambda: 0.001692 
+topAge: 195  width: 1 lambda: 0.001692 
+topAge: 196  width: 1 lambda: 0.001692 
+topAge: 197  width: 1 lambda: 0.001692 
+topAge: 198  width: 1 lambda: 0.001692 
+topAge: 199  width: 1 lambda: 0.001692 
+topAge: 200  width: 1 lambda: 0.001692 
+topAge: 201  width: 1 lambda: 0.001692 
+topAge: 202  width: 1 lambda: 0.001692 
+topAge: 203  width: 1 lambda: 0.001692 
+topAge: 204  width: 1 lambda: 0.001692 
+topAge: 205  width: 1 lambda: 0.003384 
+topAge: 206  width: 1 lambda: 0.003389 
+topAge: 207  width: 1 lambda: 0.003395 
+topAge: 208  width: 1 lambda: 0.003401 
+topAge: 209  width: 1 lambda: 0.003407 
+topAge: 210  width: 1 lambda: 0.003413 
+topAge: 211  width: 1 lambda: 0.003418 
+topAge: 212  width: 1 lambda: 0.003424 
+topAge: 213  width: 1 lambda: 0.003430 
+topAge: 214  width: 1 lambda: 0.003436 
+topAge: 215  width: 1 lambda: 0.003436 
+topAge: 216  width: 1 lambda: 0.003436 
+topAge: 217  width: 1 lambda: 0.006873 
+topAge: 218  width: 1 lambda: 0.006896 
+topAge: 219  width: 1 lambda: 0.006920 
+topAge: 220  width: 1 lambda: 0.006944 
+topAge: 221  width: 1 lambda: 0.006968 
+topAge: 222  width: 1 lambda: 0.006992 
+topAge: 223  width: 1 lambda: 0.007017 
+topAge: 224  width: 1 lambda: 0.007041 
+topAge: 225  width: 1 lambda: 0.007066 
+topAge: 226  width: 1 lambda: 0.007091 
+topAge: 227  width: 1 lambda: 0.007091 
+topAge: 228  width: 1 lambda: 0.007091 
+topAge: 229  width: 1 lambda: 0.014181 
+topAge: 230  width: 1 lambda: 0.014281 
+topAge: 231  width: 1 lambda: 0.014383 
+topAge: 232  width: 1 lambda: 0.014486 
+topAge: 233  width: 1 lambda: 0.014591 
+topAge: 234  width: 1 lambda: 0.014697 
+topAge: 235  width: 1 lambda: 0.014805 
+topAge: 236  width: 1 lambda: 0.014914 
+topAge: 237  width: 1 lambda: 0.015025 
+topAge: 238  width: 1 lambda: 0.015137 
+topAge: 239  width: 1 lambda: 0.015137 
+topAge: 240  width: 1 lambda: 0.015137 
+topAge: 241  width: 1 lambda: 0.021382 
+topAge: 242  width: 1 lambda: 0.021514 
+topAge: 243  width: 1 lambda: 0.021648 
+topAge: 244  width: 1 lambda: 0.021783 
+topAge: 245  width: 1 lambda: 0.021920 
+topAge: 246  width: 1 lambda: 0.022059 
+topAge: 247  width: 1 lambda: 0.022200 
+topAge: 248  width: 1 lambda: 0.022343 
+topAge: 249  width: 1 lambda: 0.022487 
+topAge: 250  width: 1 lambda: 0.022633 
+topAge: 251  width: 1 lambda: 0.022633 
+topAge: 252  width: 1 lambda: 0.022633 
+topAge: 253  width: 1 lambda: 0.022633 
+topAge: 254  width: 1 lambda: 0.022633 
+topAge: 255  width: 1 lambda: 0.022633 
+topAge: 256  width: 1 lambda: 0.022633 
+topAge: 257  width: 1 lambda: 0.022633 
+topAge: 258  width: 1 lambda: 0.022633 
+topAge: 259  width: 1 lambda: 0.022633 
+topAge: 260  width: 1 lambda: 0.022633 
+topAge: 261  width: 1 lambda: 0.022633 
+topAge: 262  width: 1 lambda: 0.022633 
+topAge: 263  width: 1 lambda: 0.022633 
+topAge: 264  width: 1 lambda: 0.022633 
+topAge: 265  width: 1 lambda: 0.022633 
+topAge: 266  width: 1 lambda: 0.022633 
+topAge: 267  width: 1 lambda: 0.022633 
+topAge: 268  width: 1 lambda: 0.022633 
+topAge: 269  width: 1 lambda: 0.022633 
+topAge: 270  width: 1 lambda: 0.022633 
+topAge: 271  width: 1 lambda: 0.022633 
+topAge: 272  width: 1 lambda: 0.022633 
+topAge: 273  width: 1 lambda: 0.022633 
+topAge: 274  width: 1 lambda: 0.022633 
+topAge: 275  width: 1 lambda: 0.022633 
+topAge: 276  width: 1 lambda: 0.022633 
+topAge: 277  width: 1 lambda: 0.022633 
+topAge: 278  width: 1 lambda: 0.022633 
+topAge: 279  width: 1 lambda: 0.022633 
+topAge: 280  width: 1 lambda: 0.022633 
+topAge: 281  width: 1 lambda: 0.022633 
+topAge: 282  width: 1 lambda: 0.022633 
+topAge: 283  width: 1 lambda: 0.022633 
+topAge: 284  width: 1 lambda: 0.022633 
+topAge: 285  width: 1 lambda: 0.022633 
+topAge: 286  width: 1 lambda: 0.022633 
+topAge: 287  width: 1 lambda: 0.022633 
+topAge: 288  width: 1 lambda: 0.022633 
+topAge: 289  width: 1 lambda: 0.022633 
+topAge: 290  width: 1 lambda: 0.022633 
+topAge: 291  width: 1 lambda: 0.022633 
+topAge: 292  width: 1 lambda: 0.022633 
+topAge: 293  width: 1 lambda: 0.022633 
+topAge: 294  width: 1 lambda: 0.022633 
+topAge: 295  width: 1 lambda: 0.022633 
+topAge: 296  width: 1 lambda: 0.022633 
+topAge: 297  width: 1 lambda: 0.022633 
+topAge: 298  width: 1 lambda: 0.022633 
+topAge: 299  width: 1 lambda: 0.022633 
+topAge: 300  width: 1 lambda: 0.022633 
+topAge: 301  width: 1 lambda: 0.022032 
+topAge: 302  width: 1 lambda: 0.022020 
+topAge: 303  width: 1 lambda: 0.022007 
+topAge: 304  width: 1 lambda: 0.021994 
+topAge: 305  width: 1 lambda: 0.021981 
+topAge: 306  width: 1 lambda: 0.021968 
+topAge: 307  width: 1 lambda: 0.021955 
+topAge: 308  width: 1 lambda: 0.021942 
+topAge: 309  width: 1 lambda: 0.021929 
+topAge: 310  width: 1 lambda: 0.021916 
+topAge: 311  width: 1 lambda: 0.021916 
+topAge: 312  width: 1 lambda: 0.021916 
+topAge: 313  width: 1 lambda: 0.020920 
+topAge: 314  width: 1 lambda: 0.020900 
+topAge: 315  width: 1 lambda: 0.020880 
+topAge: 316  width: 1 lambda: 0.020859 
+topAge: 317  width: 1 lambda: 0.020839 
+topAge: 318  width: 1 lambda: 0.020819 
+topAge: 319  width: 1 lambda: 0.020798 
+topAge: 320  width: 1 lambda: 0.020778 
+topAge: 321  width: 1 lambda: 0.020758 
+topAge: 322  width: 1 lambda: 0.020738 
+topAge: 323  width: 1 lambda: 0.020738 
+topAge: 324  width: 1 lambda: 0.020738 
+topAge: 325  width: 1 lambda: 0.018762 
+topAge: 326  width: 1 lambda: 0.018726 
+topAge: 327  width: 1 lambda: 0.018690 
+topAge: 328  width: 1 lambda: 0.018654 
+topAge: 329  width: 1 lambda: 0.018618 
+topAge: 330  width: 1 lambda: 0.018582 
+topAge: 331  width: 1 lambda: 0.018546 
+topAge: 332  width: 1 lambda: 0.018511 
+topAge: 333  width: 1 lambda: 0.018475 
+topAge: 334  width: 1 lambda: 0.018440 
+topAge: 335  width: 1 lambda: 0.018440 
+topAge: 336  width: 1 lambda: 0.018440 
+topAge: 337  width: 1 lambda: 0.015528 
+topAge: 338  width: 1 lambda: 0.015484 
+topAge: 339  width: 1 lambda: 0.015440 
+topAge: 340  width: 1 lambda: 0.015396 
+topAge: 341  width: 1 lambda: 0.015352 
+topAge: 342  width: 1 lambda: 0.015309 
+topAge: 343  width: 1 lambda: 0.015265 
+topAge: 344  width: 1 lambda: 0.015223 
+topAge: 345  width: 1 lambda: 0.015180 
+topAge: 346  width: 1 lambda: 0.015137 
+topAge: 347  width: 1 lambda: 0.015137 
+topAge: 348  width: 1 lambda: 0.015137 
+topAge: 349  width: 1 lambda: 0.013246 
+topAge: 350  width: 1 lambda: 0.013221 
+topAge: 351  width: 1 lambda: 0.013197 
+topAge: 352  width: 1 lambda: 0.013172 
+topAge: 353  width: 1 lambda: 0.013148 
+topAge: 354  width: 1 lambda: 0.013123 
+topAge: 355  width: 1 lambda: 0.013099 
+topAge: 356  width: 1 lambda: 0.013075 
+topAge: 357  width: 1 lambda: 0.013051 
+topAge: 358  width: 1 lambda: 0.013027 
+topAge: 359  width: 1 lambda: 0.013027 
+topAge: 360  width: 1 lambda: 0.013027 
+topAge: 361  width: 1 lambda: 0.011166 
+topAge: 362  width: 1 lambda: 0.011145 
+topAge: 363  width: 1 lambda: 0.011125 
+topAge: 364  width: 1 lambda: 0.011104 
+topAge: 365  width: 1 lambda: 0.011084 
+topAge: 366  width: 1 lambda: 0.011064 
+topAge: 367  width: 1 lambda: 0.011044 
+topAge: 368  width: 1 lambda: 0.011024 
+topAge: 369  width: 1 lambda: 0.011004 
+topAge: 370  width: 1 lambda: 0.010984 
+topAge: 371  width: 1 lambda: 0.010984 
+topAge: 372  width: 1 lambda: 0.010984 
+topAge: 373  width: 1 lambda: 0.009794 
+topAge: 374  width: 1 lambda: 0.009783 
+topAge: 375  width: 1 lambda: 0.009771 
+topAge: 376  width: 1 lambda: 0.009760 
+topAge: 377  width: 1 lambda: 0.009748 
+topAge: 378  width: 1 lambda: 0.009737 
+topAge: 379  width: 1 lambda: 0.009725 
+topAge: 380  width: 1 lambda: 0.009714 
+topAge: 381  width: 1 lambda: 0.009703 
+topAge: 382  width: 1 lambda: 0.009691 
+topAge: 383  width: 1 lambda: 0.009691 
+topAge: 384  width: 1 lambda: 0.009691 
+topAge: 385  width: 1 lambda: 0.009510 
+topAge: 386  width: 1 lambda: 0.009508 
+topAge: 387  width: 1 lambda: 0.009506 
+topAge: 388  width: 1 lambda: 0.009505 
+topAge: 389  width: 1 lambda: 0.009503 
+topAge: 390  width: 1 lambda: 0.009501 
+topAge: 391  width: 1 lambda: 0.009500 
+topAge: 392  width: 1 lambda: 0.009498 
+topAge: 393  width: 1 lambda: 0.009496 
+topAge: 394  width: 1 lambda: 0.009494 
+topAge: 395  width: 1 lambda: 0.009494 
+topAge: 396  width: 1 lambda: 0.009494 
+topAge: 397  width: 1 lambda: 0.009404 
+topAge: 398  width: 1 lambda: 0.009404 
+topAge: 399  width: 1 lambda: 0.009403 
+topAge: 400  width: 1 lambda: 0.009402 
+topAge: 401  width: 1 lambda: 0.009401 
+topAge: 402  width: 1 lambda: 0.009400 
+topAge: 403  width: 1 lambda: 0.009399 
+topAge: 404  width: 1 lambda: 0.009398 
+topAge: 405  width: 1 lambda: 0.009398 
+topAge: 406  width: 1 lambda: 0.009397 
+topAge: 407  width: 1 lambda: 0.009397 
+topAge: 408  width: 1 lambda: 0.009397 
+topAge: 409  width: 1 lambda: 0.009397 
+topAge: 410  width: 1 lambda: 0.009397 
+topAge: 411  width: 1 lambda: 0.009397 
+topAge: 412  width: 1 lambda: 0.009397 
+topAge: 413  width: 1 lambda: 0.009397 
+topAge: 414  width: 1 lambda: 0.009397 
+topAge: 415  width: 1 lambda: 0.009397 
+topAge: 416  width: 1 lambda: 0.009397 
+topAge: 417  width: 1 lambda: 0.009397 
+topAge: 418  width: 1 lambda: 0.009397 
+topAge: 419  width: 1 lambda: 0.009397 
+topAge: 420  width: 1 lambda: 0.009397 
+topAge: 421  width: 1 lambda: 0.009397 
+topAge: 422  width: 1 lambda: 0.009397 
+topAge: 423  width: 1 lambda: 0.009397 
+topAge: 424  width: 1 lambda: 0.009397 
+topAge: 425  width: 1 lambda: 0.009397 
+topAge: 426  width: 1 lambda: 0.009397 
+topAge: 427  width: 1 lambda: 0.009397 
+topAge: 428  width: 1 lambda: 0.009397 
+topAge: 429  width: 1 lambda: 0.009397 
+topAge: 430  width: 1 lambda: 0.009397 
+topAge: 431  width: 1 lambda: 0.009397 
+topAge: 432  width: 1 lambda: 0.009397 
+topAge: 433  width: 1 lambda: 0.009035 
+topAge: 434  width: 1 lambda: 0.009031 
+topAge: 435  width: 1 lambda: 0.009028 
+topAge: 436  width: 1 lambda: 0.009025 
+topAge: 437  width: 1 lambda: 0.009022 
+topAge: 438  width: 1 lambda: 0.009018 
+topAge: 439  width: 1 lambda: 0.009015 
+topAge: 440  width: 1 lambda: 0.009012 
+topAge: 441  width: 1 lambda: 0.009009 
+topAge: 442  width: 1 lambda: 0.009006 
+topAge: 443  width: 1 lambda: 0.009006 
+topAge: 444  width: 1 lambda: 0.009006 
+topAge: 445  width: 1 lambda: 0.008826 
+topAge: 446  width: 1 lambda: 0.008825 
+topAge: 447  width: 1 lambda: 0.008823 
+topAge: 448  width: 1 lambda: 0.008821 
+topAge: 449  width: 1 lambda: 0.008820 
+topAge: 450  width: 1 lambda: 0.008818 
+topAge: 451  width: 1 lambda: 0.008817 
+topAge: 452  width: 1 lambda: 0.008815 
+topAge: 453  width: 1 lambda: 0.008814 
+topAge: 454  width: 1 lambda: 0.008812 
+topAge: 455  width: 1 lambda: 0.008812 
+topAge: 456  width: 1 lambda: 0.008812 
+topAge: 457  width: 1 lambda: 0.008632 
+topAge: 458  width: 1 lambda: 0.008630 
+topAge: 459  width: 1 lambda: 0.008629 
+topAge: 460  width: 1 lambda: 0.008627 
+topAge: 461  width: 1 lambda: 0.008626 
+topAge: 462  width: 1 lambda: 0.008624 
+topAge: 463  width: 1 lambda: 0.008623 
+topAge: 464  width: 1 lambda: 0.008621 
+topAge: 465  width: 1 lambda: 0.008620 
+topAge: 466  width: 1 lambda: 0.008618 
+topAge: 467  width: 1 lambda: 0.008618 
+topAge: 468  width: 1 lambda: 0.008618 
+topAge: 469  width: 1 lambda: 0.008259 
+topAge: 470  width: 1 lambda: 0.008256 
+topAge: 471  width: 1 lambda: 0.008253 
+topAge: 472  width: 1 lambda: 0.008250 
+topAge: 473  width: 1 lambda: 0.008248 
+topAge: 474  width: 1 lambda: 0.008245 
+topAge: 475  width: 1 lambda: 0.008242 
+topAge: 476  width: 1 lambda: 0.008239 
+topAge: 477  width: 1 lambda: 0.008236 
+topAge: 478  width: 1 lambda: 0.008233 
+topAge: 479  width: 1 lambda: 0.008233 
+topAge: 480  width: 1 lambda: 0.008233 
+topAge: 481  width: 1 lambda: 0.007606 
+topAge: 482  width: 1 lambda: 0.007601 
+topAge: 483  width: 1 lambda: 0.007596 
+topAge: 484  width: 1 lambda: 0.007592 
+topAge: 485  width: 1 lambda: 0.007587 
+topAge: 486  width: 1 lambda: 0.007582 
+topAge: 487  width: 1 lambda: 0.007578 
+topAge: 488  width: 1 lambda: 0.007573 
+topAge: 489  width: 1 lambda: 0.007568 
+topAge: 490  width: 1 lambda: 0.007563 
+topAge: 491  width: 1 lambda: 0.007563 
+topAge: 492  width: 1 lambda: 0.007563 
+topAge: 493  width: 1 lambda: 0.006674 
+topAge: 494  width: 1 lambda: 0.006668 
+topAge: 495  width: 1 lambda: 0.006662 
+topAge: 496  width: 1 lambda: 0.006656 
+topAge: 497  width: 1 lambda: 0.006650 
+topAge: 498  width: 1 lambda: 0.006645 
+topAge: 499  width: 1 lambda: 0.006639 
+topAge: 500  width: 1 lambda: 0.006633 
+topAge: 501  width: 1 lambda: 0.006627 
+topAge: 502  width: 1 lambda: 0.006621 
+topAge: 503  width: 1 lambda: 0.006621 
+topAge: 504  width: 1 lambda: 0.006621 
+topAge: 505  width: 1 lambda: 0.005297 
+topAge: 506  width: 1 lambda: 0.005290 
+topAge: 507  width: 1 lambda: 0.005283 
+topAge: 508  width: 1 lambda: 0.005276 
+topAge: 509  width: 1 lambda: 0.005269 
+topAge: 510  width: 1 lambda: 0.005262 
+topAge: 511  width: 1 lambda: 0.005256 
+topAge: 512  width: 1 lambda: 0.005249 
+topAge: 513  width: 1 lambda: 0.005242 
+topAge: 514  width: 1 lambda: 0.005235 
+topAge: 515  width: 1 lambda: 0.005235 
+topAge: 516  width: 1 lambda: 0.005235 
+topAge: 517  width: 1 lambda: 0.004363 
+topAge: 518  width: 1 lambda: 0.004359 
+topAge: 519  width: 1 lambda: 0.004355 
+topAge: 520  width: 1 lambda: 0.004352 
+topAge: 521  width: 1 lambda: 0.004348 
+topAge: 522  width: 1 lambda: 0.004344 
+topAge: 523  width: 1 lambda: 0.004340 
+topAge: 524  width: 1 lambda: 0.004336 
+topAge: 525  width: 1 lambda: 0.004333 
+topAge: 526  width: 1 lambda: 0.004329 
+topAge: 527  width: 1 lambda: 0.004329 
+topAge: 528  width: 1 lambda: 0.004329 
+topAge: 529  width: 1 lambda: 0.003463 
+topAge: 530  width: 1 lambda: 0.003460 
+topAge: 531  width: 1 lambda: 0.003457 
+topAge: 532  width: 1 lambda: 0.003454 
+topAge: 533  width: 1 lambda: 0.003451 
+topAge: 534  width: 1 lambda: 0.003448 
+topAge: 535  width: 1 lambda: 0.003445 
+topAge: 536  width: 1 lambda: 0.003442 
+topAge: 537  width: 1 lambda: 0.003439 
+topAge: 538  width: 1 lambda: 0.003436 
+topAge: 539  width: 1 lambda: 0.003436 
+topAge: 540  width: 1 lambda: 0.003436 
+reading fertility rates for: group=1 mstat=4 parity=0
++
+topAge: 181  width: 1 lambda: 0.001667 
+topAge: 182  width: 1 lambda: 0.001670 
+topAge: 183  width: 1 lambda: 0.001673 
+topAge: 184  width: 1 lambda: 0.001675 
+topAge: 185  width: 1 lambda: 0.001678 
+topAge: 186  width: 1 lambda: 0.001681 
+topAge: 187  width: 1 lambda: 0.001684 
+topAge: 188  width: 1 lambda: 0.001687 
+topAge: 189  width: 1 lambda: 0.001690 
+topAge: 190  width: 1 lambda: 0.001692 
+topAge: 191  width: 1 lambda: 0.001692 
+topAge: 192  width: 1 lambda: 0.001692 
+topAge: 193  width: 1 lambda: 0.001692 
+topAge: 194  width: 1 lambda: 0.001692 
+topAge: 195  width: 1 lambda: 0.001692 
+topAge: 196  width: 1 lambda: 0.001692 
+topAge: 197  width: 1 lambda: 0.001692 
+topAge: 198  width: 1 lambda: 0.001692 
+topAge: 199  width: 1 lambda: 0.001692 
+topAge: 200  width: 1 lambda: 0.001692 
+topAge: 201  width: 1 lambda: 0.001692 
+topAge: 202  width: 1 lambda: 0.001692 
+topAge: 203  width: 1 lambda: 0.001692 
+topAge: 204  width: 1 lambda: 0.001692 
+topAge: 205  width: 1 lambda: 0.003384 
+topAge: 206  width: 1 lambda: 0.003389 
+topAge: 207  width: 1 lambda: 0.003395 
+topAge: 208  width: 1 lambda: 0.003401 
+topAge: 209  width: 1 lambda: 0.003407 
+topAge: 210  width: 1 lambda: 0.003413 
+topAge: 211  width: 1 lambda: 0.003418 
+topAge: 212  width: 1 lambda: 0.003424 
+topAge: 213  width: 1 lambda: 0.003430 
+topAge: 214  width: 1 lambda: 0.003436 
+topAge: 215  width: 1 lambda: 0.003436 
+topAge: 216  width: 1 lambda: 0.003436 
+topAge: 217  width: 1 lambda: 0.006873 
+topAge: 218  width: 1 lambda: 0.006896 
+topAge: 219  width: 1 lambda: 0.006920 
+topAge: 220  width: 1 lambda: 0.006944 
+topAge: 221  width: 1 lambda: 0.006968 
+topAge: 222  width: 1 lambda: 0.006992 
+topAge: 223  width: 1 lambda: 0.007017 
+topAge: 224  width: 1 lambda: 0.007041 
+topAge: 225  width: 1 lambda: 0.007066 
+topAge: 226  width: 1 lambda: 0.007091 
+topAge: 227  width: 1 lambda: 0.007091 
+topAge: 228  width: 1 lambda: 0.007091 
+topAge: 229  width: 1 lambda: 0.014181 
+topAge: 230  width: 1 lambda: 0.014281 
+topAge: 231  width: 1 lambda: 0.014383 
+topAge: 232  width: 1 lambda: 0.014486 
+topAge: 233  width: 1 lambda: 0.014591 
+topAge: 234  width: 1 lambda: 0.014697 
+topAge: 235  width: 1 lambda: 0.014805 
+topAge: 236  width: 1 lambda: 0.014914 
+topAge: 237  width: 1 lambda: 0.015025 
+topAge: 238  width: 1 lambda: 0.015137 
+topAge: 239  width: 1 lambda: 0.015137 
+topAge: 240  width: 1 lambda: 0.015137 
+topAge: 241  width: 1 lambda: 0.021382 
+topAge: 242  width: 1 lambda: 0.021514 
+topAge: 243  width: 1 lambda: 0.021648 
+topAge: 244  width: 1 lambda: 0.021783 
+topAge: 245  width: 1 lambda: 0.021920 
+topAge: 246  width: 1 lambda: 0.022059 
+topAge: 247  width: 1 lambda: 0.022200 
+topAge: 248  width: 1 lambda: 0.022343 
+topAge: 249  width: 1 lambda: 0.022487 
+topAge: 250  width: 1 lambda: 0.022633 
+topAge: 251  width: 1 lambda: 0.022633 
+topAge: 252  width: 1 lambda: 0.022633 
+topAge: 253  width: 1 lambda: 0.022633 
+topAge: 254  width: 1 lambda: 0.022633 
+topAge: 255  width: 1 lambda: 0.022633 
+topAge: 256  width: 1 lambda: 0.022633 
+topAge: 257  width: 1 lambda: 0.022633 
+topAge: 258  width: 1 lambda: 0.022633 
+topAge: 259  width: 1 lambda: 0.022633 
+topAge: 260  width: 1 lambda: 0.022633 
+topAge: 261  width: 1 lambda: 0.022633 
+topAge: 262  width: 1 lambda: 0.022633 
+topAge: 263  width: 1 lambda: 0.022633 
+topAge: 264  width: 1 lambda: 0.022633 
+topAge: 265  width: 1 lambda: 0.022633 
+topAge: 266  width: 1 lambda: 0.022633 
+topAge: 267  width: 1 lambda: 0.022633 
+topAge: 268  width: 1 lambda: 0.022633 
+topAge: 269  width: 1 lambda: 0.022633 
+topAge: 270  width: 1 lambda: 0.022633 
+topAge: 271  width: 1 lambda: 0.022633 
+topAge: 272  width: 1 lambda: 0.022633 
+topAge: 273  width: 1 lambda: 0.022633 
+topAge: 274  width: 1 lambda: 0.022633 
+topAge: 275  width: 1 lambda: 0.022633 
+topAge: 276  width: 1 lambda: 0.022633 
+topAge: 277  width: 1 lambda: 0.022633 
+topAge: 278  width: 1 lambda: 0.022633 
+topAge: 279  width: 1 lambda: 0.022633 
+topAge: 280  width: 1 lambda: 0.022633 
+topAge: 281  width: 1 lambda: 0.022633 
+topAge: 282  width: 1 lambda: 0.022633 
+topAge: 283  width: 1 lambda: 0.022633 
+topAge: 284  width: 1 lambda: 0.022633 
+topAge: 285  width: 1 lambda: 0.022633 
+topAge: 286  width: 1 lambda: 0.022633 
+topAge: 287  width: 1 lambda: 0.022633 
+topAge: 288  width: 1 lambda: 0.022633 
+topAge: 289  width: 1 lambda: 0.022633 
+topAge: 290  width: 1 lambda: 0.022633 
+topAge: 291  width: 1 lambda: 0.022633 
+topAge: 292  width: 1 lambda: 0.022633 
+topAge: 293  width: 1 lambda: 0.022633 
+topAge: 294  width: 1 lambda: 0.022633 
+topAge: 295  width: 1 lambda: 0.022633 
+topAge: 296  width: 1 lambda: 0.022633 
+topAge: 297  width: 1 lambda: 0.022633 
+topAge: 298  width: 1 lambda: 0.022633 
+topAge: 299  width: 1 lambda: 0.022633 
+topAge: 300  width: 1 lambda: 0.022633 
+topAge: 301  width: 1 lambda: 0.022032 
+topAge: 302  width: 1 lambda: 0.022020 
+topAge: 303  width: 1 lambda: 0.022007 
+topAge: 304  width: 1 lambda: 0.021994 
+topAge: 305  width: 1 lambda: 0.021981 
+topAge: 306  width: 1 lambda: 0.021968 
+topAge: 307  width: 1 lambda: 0.021955 
+topAge: 308  width: 1 lambda: 0.021942 
+topAge: 309  width: 1 lambda: 0.021929 
+topAge: 310  width: 1 lambda: 0.021916 
+topAge: 311  width: 1 lambda: 0.021916 
+topAge: 312  width: 1 lambda: 0.021916 
+topAge: 313  width: 1 lambda: 0.020920 
+topAge: 314  width: 1 lambda: 0.020900 
+topAge: 315  width: 1 lambda: 0.020880 
+topAge: 316  width: 1 lambda: 0.020859 
+topAge: 317  width: 1 lambda: 0.020839 
+topAge: 318  width: 1 lambda: 0.020819 
+topAge: 319  width: 1 lambda: 0.020798 
+topAge: 320  width: 1 lambda: 0.020778 
+topAge: 321  width: 1 lambda: 0.020758 
+topAge: 322  width: 1 lambda: 0.020738 
+topAge: 323  width: 1 lambda: 0.020738 
+topAge: 324  width: 1 lambda: 0.020738 
+topAge: 325  width: 1 lambda: 0.018762 
+topAge: 326  width: 1 lambda: 0.018726 
+topAge: 327  width: 1 lambda: 0.018690 
+topAge: 328  width: 1 lambda: 0.018654 
+topAge: 329  width: 1 lambda: 0.018618 
+topAge: 330  width: 1 lambda: 0.018582 
+topAge: 331  width: 1 lambda: 0.018546 
+topAge: 332  width: 1 lambda: 0.018511 
+topAge: 333  width: 1 lambda: 0.018475 
+topAge: 334  width: 1 lambda: 0.018440 
+topAge: 335  width: 1 lambda: 0.018440 
+topAge: 336  width: 1 lambda: 0.018440 
+topAge: 337  width: 1 lambda: 0.015528 
+topAge: 338  width: 1 lambda: 0.015484 
+topAge: 339  width: 1 lambda: 0.015440 
+topAge: 340  width: 1 lambda: 0.015396 
+topAge: 341  width: 1 lambda: 0.015352 
+topAge: 342  width: 1 lambda: 0.015309 
+topAge: 343  width: 1 lambda: 0.015265 
+topAge: 344  width: 1 lambda: 0.015223 
+topAge: 345  width: 1 lambda: 0.015180 
+topAge: 346  width: 1 lambda: 0.015137 
+topAge: 347  width: 1 lambda: 0.015137 
+topAge: 348  width: 1 lambda: 0.015137 
+topAge: 349  width: 1 lambda: 0.013246 
+topAge: 350  width: 1 lambda: 0.013221 
+topAge: 351  width: 1 lambda: 0.013197 
+topAge: 352  width: 1 lambda: 0.013172 
+topAge: 353  width: 1 lambda: 0.013148 
+topAge: 354  width: 1 lambda: 0.013123 
+topAge: 355  width: 1 lambda: 0.013099 
+topAge: 356  width: 1 lambda: 0.013075 
+topAge: 357  width: 1 lambda: 0.013051 
+topAge: 358  width: 1 lambda: 0.013027 
+topAge: 359  width: 1 lambda: 0.013027 
+topAge: 360  width: 1 lambda: 0.013027 
+topAge: 361  width: 1 lambda: 0.011166 
+topAge: 362  width: 1 lambda: 0.011145 
+topAge: 363  width: 1 lambda: 0.011125 
+topAge: 364  width: 1 lambda: 0.011104 
+topAge: 365  width: 1 lambda: 0.011084 
+topAge: 366  width: 1 lambda: 0.011064 
+topAge: 367  width: 1 lambda: 0.011044 
+topAge: 368  width: 1 lambda: 0.011024 
+topAge: 369  width: 1 lambda: 0.011004 
+topAge: 370  width: 1 lambda: 0.010984 
+topAge: 371  width: 1 lambda: 0.010984 
+topAge: 372  width: 1 lambda: 0.010984 
+topAge: 373  width: 1 lambda: 0.009794 
+topAge: 374  width: 1 lambda: 0.009783 
+topAge: 375  width: 1 lambda: 0.009771 
+topAge: 376  width: 1 lambda: 0.009760 
+topAge: 377  width: 1 lambda: 0.009748 
+topAge: 378  width: 1 lambda: 0.009737 
+topAge: 379  width: 1 lambda: 0.009725 
+topAge: 380  width: 1 lambda: 0.009714 
+topAge: 381  width: 1 lambda: 0.009703 
+topAge: 382  width: 1 lambda: 0.009691 
+topAge: 383  width: 1 lambda: 0.009691 
+topAge: 384  width: 1 lambda: 0.009691 
+topAge: 385  width: 1 lambda: 0.009510 
+topAge: 386  width: 1 lambda: 0.009508 
+topAge: 387  width: 1 lambda: 0.009506 
+topAge: 388  width: 1 lambda: 0.009505 
+topAge: 389  width: 1 lambda: 0.009503 
+topAge: 390  width: 1 lambda: 0.009501 
+topAge: 391  width: 1 lambda: 0.009500 
+topAge: 392  width: 1 lambda: 0.009498 
+topAge: 393  width: 1 lambda: 0.009496 
+topAge: 394  width: 1 lambda: 0.009494 
+topAge: 395  width: 1 lambda: 0.009494 
+topAge: 396  width: 1 lambda: 0.009494 
+topAge: 397  width: 1 lambda: 0.009404 
+topAge: 398  width: 1 lambda: 0.009404 
+topAge: 399  width: 1 lambda: 0.009403 
+topAge: 400  width: 1 lambda: 0.009402 
+topAge: 401  width: 1 lambda: 0.009401 
+topAge: 402  width: 1 lambda: 0.009400 
+topAge: 403  width: 1 lambda: 0.009399 
+topAge: 404  width: 1 lambda: 0.009398 
+topAge: 405  width: 1 lambda: 0.009398 
+topAge: 406  width: 1 lambda: 0.009397 
+topAge: 407  width: 1 lambda: 0.009397 
+topAge: 408  width: 1 lambda: 0.009397 
+topAge: 409  width: 1 lambda: 0.009397 
+topAge: 410  width: 1 lambda: 0.009397 
+topAge: 411  width: 1 lambda: 0.009397 
+topAge: 412  width: 1 lambda: 0.009397 
+topAge: 413  width: 1 lambda: 0.009397 
+topAge: 414  width: 1 lambda: 0.009397 
+topAge: 415  width: 1 lambda: 0.009397 
+topAge: 416  width: 1 lambda: 0.009397 
+topAge: 417  width: 1 lambda: 0.009397 
+topAge: 418  width: 1 lambda: 0.009397 
+topAge: 419  width: 1 lambda: 0.009397 
+topAge: 420  width: 1 lambda: 0.009397 
+topAge: 421  width: 1 lambda: 0.009397 
+topAge: 422  width: 1 lambda: 0.009397 
+topAge: 423  width: 1 lambda: 0.009397 
+topAge: 424  width: 1 lambda: 0.009397 
+topAge: 425  width: 1 lambda: 0.009397 
+topAge: 426  width: 1 lambda: 0.009397 
+topAge: 427  width: 1 lambda: 0.009397 
+topAge: 428  width: 1 lambda: 0.009397 
+topAge: 429  width: 1 lambda: 0.009397 
+topAge: 430  width: 1 lambda: 0.009397 
+topAge: 431  width: 1 lambda: 0.009397 
+topAge: 432  width: 1 lambda: 0.009397 
+topAge: 433  width: 1 lambda: 0.009035 
+topAge: 434  width: 1 lambda: 0.009031 
+topAge: 435  width: 1 lambda: 0.009028 
+topAge: 436  width: 1 lambda: 0.009025 
+topAge: 437  width: 1 lambda: 0.009022 
+topAge: 438  width: 1 lambda: 0.009018 
+topAge: 439  width: 1 lambda: 0.009015 
+topAge: 440  width: 1 lambda: 0.009012 
+topAge: 441  width: 1 lambda: 0.009009 
+topAge: 442  width: 1 lambda: 0.009006 
+topAge: 443  width: 1 lambda: 0.009006 
+topAge: 444  width: 1 lambda: 0.009006 
+topAge: 445  width: 1 lambda: 0.008826 
+topAge: 446  width: 1 lambda: 0.008825 
+topAge: 447  width: 1 lambda: 0.008823 
+topAge: 448  width: 1 lambda: 0.008821 
+topAge: 449  width: 1 lambda: 0.008820 
+topAge: 450  width: 1 lambda: 0.008818 
+topAge: 451  width: 1 lambda: 0.008817 
+topAge: 452  width: 1 lambda: 0.008815 
+topAge: 453  width: 1 lambda: 0.008814 
+topAge: 454  width: 1 lambda: 0.008812 
+topAge: 455  width: 1 lambda: 0.008812 
+topAge: 456  width: 1 lambda: 0.008812 
+topAge: 457  width: 1 lambda: 0.008632 
+topAge: 458  width: 1 lambda: 0.008630 
+topAge: 459  width: 1 lambda: 0.008629 
+topAge: 460  width: 1 lambda: 0.008627 
+topAge: 461  width: 1 lambda: 0.008626 
+topAge: 462  width: 1 lambda: 0.008624 
+topAge: 463  width: 1 lambda: 0.008623 
+topAge: 464  width: 1 lambda: 0.008621 
+topAge: 465  width: 1 lambda: 0.008620 
+topAge: 466  width: 1 lambda: 0.008618 
+topAge: 467  width: 1 lambda: 0.008618 
+topAge: 468  width: 1 lambda: 0.008618 
+topAge: 469  width: 1 lambda: 0.008259 
+topAge: 470  width: 1 lambda: 0.008256 
+topAge: 471  width: 1 lambda: 0.008253 
+topAge: 472  width: 1 lambda: 0.008250 
+topAge: 473  width: 1 lambda: 0.008248 
+topAge: 474  width: 1 lambda: 0.008245 
+topAge: 475  width: 1 lambda: 0.008242 
+topAge: 476  width: 1 lambda: 0.008239 
+topAge: 477  width: 1 lambda: 0.008236 
+topAge: 478  width: 1 lambda: 0.008233 
+topAge: 479  width: 1 lambda: 0.008233 
+topAge: 480  width: 1 lambda: 0.008233 
+topAge: 481  width: 1 lambda: 0.007606 
+topAge: 482  width: 1 lambda: 0.007601 
+topAge: 483  width: 1 lambda: 0.007596 
+topAge: 484  width: 1 lambda: 0.007592 
+topAge: 485  width: 1 lambda: 0.007587 
+topAge: 486  width: 1 lambda: 0.007582 
+topAge: 487  width: 1 lambda: 0.007578 
+topAge: 488  width: 1 lambda: 0.007573 
+topAge: 489  width: 1 lambda: 0.007568 
+topAge: 490  width: 1 lambda: 0.007563 
+topAge: 491  width: 1 lambda: 0.007563 
+topAge: 492  width: 1 lambda: 0.007563 
+topAge: 493  width: 1 lambda: 0.006674 
+topAge: 494  width: 1 lambda: 0.006668 
+topAge: 495  width: 1 lambda: 0.006662 
+topAge: 496  width: 1 lambda: 0.006656 
+topAge: 497  width: 1 lambda: 0.006650 
+topAge: 498  width: 1 lambda: 0.006645 
+topAge: 499  width: 1 lambda: 0.006639 
+topAge: 500  width: 1 lambda: 0.006633 
+topAge: 501  width: 1 lambda: 0.006627 
+topAge: 502  width: 1 lambda: 0.006621 
+topAge: 503  width: 1 lambda: 0.006621 
+topAge: 504  width: 1 lambda: 0.006621 
+topAge: 505  width: 1 lambda: 0.005297 
+topAge: 506  width: 1 lambda: 0.005290 
+topAge: 507  width: 1 lambda: 0.005283 
+topAge: 508  width: 1 lambda: 0.005276 
+topAge: 509  width: 1 lambda: 0.005269 
+topAge: 510  width: 1 lambda: 0.005262 
+topAge: 511  width: 1 lambda: 0.005256 
+topAge: 512  width: 1 lambda: 0.005249 
+topAge: 513  width: 1 lambda: 0.005242 
+topAge: 514  width: 1 lambda: 0.005235 
+topAge: 515  width: 1 lambda: 0.005235 
+topAge: 516  width: 1 lambda: 0.005235 
+topAge: 517  width: 1 lambda: 0.004363 
+topAge: 518  width: 1 lambda: 0.004359 
+topAge: 519  width: 1 lambda: 0.004355 
+topAge: 520  width: 1 lambda: 0.004352 
+topAge: 521  width: 1 lambda: 0.004348 
+topAge: 522  width: 1 lambda: 0.004344 
+topAge: 523  width: 1 lambda: 0.004340 
+topAge: 524  width: 1 lambda: 0.004336 
+topAge: 525  width: 1 lambda: 0.004333 
+topAge: 526  width: 1 lambda: 0.004329 
+topAge: 527  width: 1 lambda: 0.004329 
+topAge: 528  width: 1 lambda: 0.004329 
+topAge: 529  width: 1 lambda: 0.003463 
+topAge: 530  width: 1 lambda: 0.003460 
+topAge: 531  width: 1 lambda: 0.003457 
+topAge: 532  width: 1 lambda: 0.003454 
+topAge: 533  width: 1 lambda: 0.003451 
+topAge: 534  width: 1 lambda: 0.003448 
+topAge: 535  width: 1 lambda: 0.003445 
+topAge: 536  width: 1 lambda: 0.003442 
+topAge: 537  width: 1 lambda: 0.003439 
+topAge: 538  width: 1 lambda: 0.003436 
+topAge: 539  width: 1 lambda: 0.003436 
+topAge: 540  width: 1 lambda: 0.003436 
+opening pop pyramid file SimResults/sample.pyr
+Reading initial population file start4grp.opop
+No initial marriage file to read
+No initial transition history file to read
+xtra file NOT read: read_extra_file=0
+Rates imply simulation will have 4 groups
+Initial population has max group id 4 
+Simulation will have 4 groups
+
+ checking rates for sanity
+WARNING marriage_queues==1  yet marriage rates are specified for unmarried males THESE RATES WILL BE IGNORED.
+
+
+ - - - - - - - - - - - - - - - - - - - - - -  - - - - - 
+
+Segment NO:	1 of 1 set to run with following macro options
+Duration: 4500
+
+-- I/O options --
+Input pop file name	start4grp.opop
+No marriage file read
+Transition history file NOT read
+Xtra variables NOT read
+
+-- Fertility options --
+Sex Ratio(prop male births):	 0.511200
+Minimum Birth Interval:	9.000000 months
+Fertility Multipler inheritance specified:no
+Birth rate factors specified:no
+Birth Targets Specified:no
+Random_father enabled
+min age random father:15
+-- Nuptiality Options --
+marriage_queues==1
+Endogamy/Exogamy: random
+marriages evaluated by 'distribution' of age diff
+mean/sd of agediff for females of group:1 : 2.000000/3.000000
+mean/sd of agediff for females of group:2 : 2.000000/3.000000
+mean/sd of agediff for females of group:3 : 2.000000/3.000000
+mean/sd of agediff for females of group:4 : 2.000000/3.000000
+
+-- Migration Options --
+Transition rate targets set:no
+child group identity :  inherited from MOTHER
+
+  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  ||
+
+Simulating...
+
+segment 1 complete current month: 5140
+
+exiting the segment loop
+
+ Simulation Complete 
+males on queue
+person-years on queue: 867728
+females on queue
+person-years on queue: 0
+ageDiff	targetProp 	observedProp	E(mars)	O(mars)	excess	O/E	score
+-100	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-13	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-12	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-11	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-10	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-9	1.601091e-04	4.721435e-04	0	1	1	1.000000	-0.000312
+-8	5.141535e-04	4.721435e-04	1	1	0	1.000000	0.000042
+-7	1.477457e-03	1.416431e-03	3	3	0	1.000000	0.000062
+-6	3.799109e-03	3.777148e-03	8	8	0	1.000000	0.000024
+-5	8.741658e-03	8.970727e-03	18	19	1	1.055556	-0.000225
+-4	1.799911e-02	1.794145e-02	38	38	0	1.000000	0.000066
+-3	3.316295e-02	3.305005e-02	70	70	0	1.000000	0.000128
+-2	5.467646e-02	5.476865e-02	115	116	1	1.008696	-0.000066
+-1	8.066640e-02	8.073654e-02	170	171	1	1.005882	-0.000032
+0	1.064952e-01	1.062323e-01	225	225	0	1.000000	0.000313
+1	1.258092e-01	1.255902e-01	266	266	0	1.000000	0.000278
+2	1.329964e-01	1.331445e-01	281	282	1	1.003559	-0.000085
+3	1.258092e-01	1.255902e-01	266	266	0	1.000000	0.000278
+4	1.064952e-01	1.067044e-01	225	226	1	1.004444	-0.000159
+5	8.066640e-02	8.073654e-02	170	171	1	1.005882	-0.000032
+6	5.467646e-02	5.476865e-02	115	116	1	1.008696	-0.000066
+7	3.316295e-02	3.305005e-02	70	70	0	1.000000	0.000128
+8	1.799911e-02	1.794145e-02	38	38	0	1.000000	0.000066
+9	8.741658e-03	8.498584e-03	18	18	0	1.000000	0.000247
+10	3.799109e-03	3.777148e-03	8	8	0	1.000000	0.000024
+11	1.477457e-03	1.416431e-03	3	3	0	1.000000	0.000062
+12	5.141535e-04	4.721435e-04	1	1	0	1.000000	0.000042
+13	1.601091e-04	4.721435e-04	0	1	1	1.000000	-0.000312
+14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+Absolute sum of fract expected-observed in group 1:0.003070
+-100	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-13	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-12	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-11	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-10	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-9	1.601091e-04	5.577245e-04	0	1	1	1.000000	-0.000397
+-8	5.141535e-04	5.577245e-04	0	1	1	1.000000	-0.000043
+-7	1.477457e-03	1.673173e-03	2	3	1	1.500000	-0.000195
+-6	3.799109e-03	3.904071e-03	6	7	1	1.166667	-0.000103
+-5	8.741658e-03	8.923592e-03	15	16	1	1.066667	-0.000177
+-4	1.799911e-02	1.784718e-02	32	32	0	1.000000	0.000162
+-3	3.316295e-02	3.290574e-02	59	59	0	1.000000	0.000276
+-2	5.467646e-02	5.465700e-02	98	98	0	1.000000	0.000050
+-1	8.066640e-02	8.087005e-02	144	145	1	1.006944	-0.000159
+0	1.064952e-01	1.065254e-01	190	191	1	1.005263	0.000029
+1	1.258092e-01	1.254880e-01	225	225	0	1.000000	0.000391
+2	1.329964e-01	1.327384e-01	238	238	0	1.000000	0.000332
+3	1.258092e-01	1.254880e-01	225	225	0	1.000000	0.000391
+4	1.064952e-01	1.065254e-01	190	191	1	1.005263	0.000029
+5	8.066640e-02	8.087005e-02	144	145	1	1.006944	-0.000159
+6	5.467646e-02	5.465700e-02	98	98	0	1.000000	0.000050
+7	3.316295e-02	3.290574e-02	59	59	0	1.000000	0.000276
+8	1.799911e-02	1.784718e-02	32	32	0	1.000000	0.000162
+9	8.741658e-03	8.923592e-03	15	16	1	1.066667	-0.000177
+10	3.799109e-03	3.904071e-03	6	7	1	1.166667	-0.000103
+11	1.477457e-03	1.673173e-03	2	3	1	1.500000	-0.000195
+12	5.141535e-04	5.577245e-04	0	1	1	1.000000	-0.000043
+13	1.601091e-04	0.000000e+00	0	0	0	0.000000	0.000160
+14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+Absolute sum of fract expected-observed in group 2:0.006906
+-100	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-13	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-12	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-11	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-10	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-9	1.601091e-04	3.785011e-04	0	1	1	1.000000	-0.000218
+-8	5.141535e-04	3.785011e-04	1	1	0	1.000000	0.000136
+-7	1.477457e-03	1.514005e-03	3	4	1	1.333333	-0.000036
+-6	3.799109e-03	3.785011e-03	10	10	0	1.000000	0.000016
+-5	8.741658e-03	8.705526e-03	23	23	0	1.000000	0.000039
+-4	1.799911e-02	1.816805e-02	47	48	1	1.021277	-0.000162
+-3	3.316295e-02	3.330810e-02	87	88	1	1.011494	-0.000133
+-2	5.467646e-02	5.488266e-02	144	145	1	1.006944	-0.000185
+-1	8.066640e-02	8.062074e-02	213	213	0	1.000000	0.000076
+0	1.064952e-01	1.063588e-01	281	281	0	1.000000	0.000177
+1	1.258092e-01	1.256624e-01	332	332	0	1.000000	0.000194
+2	1.329964e-01	1.328539e-01	351	351	0	1.000000	0.000193
+3	1.258092e-01	1.256624e-01	332	332	0	1.000000	0.000194
+4	1.064952e-01	1.063588e-01	281	281	0	1.000000	0.000177
+5	8.066640e-02	8.062074e-02	213	213	0	1.000000	0.000076
+6	5.467646e-02	5.450416e-02	144	144	0	1.000000	0.000193
+7	3.316295e-02	3.330810e-02	87	88	1	1.011494	-0.000133
+8	1.799911e-02	1.816805e-02	47	48	1	1.021277	-0.000162
+9	8.741658e-03	8.705526e-03	23	23	0	1.000000	0.000039
+10	3.799109e-03	3.785011e-03	10	10	0	1.000000	0.000016
+11	1.477457e-03	1.514005e-03	3	4	1	1.333333	-0.000036
+12	5.141535e-04	3.785011e-04	1	1	0	1.000000	0.000136
+13	1.601091e-04	3.785011e-04	0	1	1	1.000000	-0.000218
+14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+Absolute sum of fract expected-observed in group 3:0.009594
+-100	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-13	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-12	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-11	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-10	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+-9	1.601091e-04	0.000000e+00	0	0	0	0.000000	0.000160
+-8	5.141535e-04	5.608525e-04	0	1	1	1.000000	-0.000046
+-7	1.477457e-03	1.682557e-03	2	3	1	1.500000	-0.000204
+-6	3.799109e-03	3.925967e-03	6	7	1	1.166667	-0.000125
+-5	8.741658e-03	8.973640e-03	15	16	1	1.066667	-0.000227
+-4	1.799911e-02	1.794728e-02	32	32	0	1.000000	0.000062
+-3	3.316295e-02	3.309030e-02	59	59	0	1.000000	0.000091
+-2	5.467646e-02	5.440269e-02	97	97	0	1.000000	0.000304
+-1	8.066640e-02	8.076276e-02	143	144	1	1.006993	-0.000051
+0	1.064952e-01	1.065620e-01	189	190	1	1.005291	-0.000007
+1	1.258092e-01	1.256310e-01	224	224	0	1.000000	0.000249
+2	1.329964e-01	1.329220e-01	237	237	0	1.000000	0.000149
+3	1.258092e-01	1.256310e-01	224	224	0	1.000000	0.000249
+4	1.064952e-01	1.065620e-01	189	190	1	1.005291	-0.000007
+5	8.066640e-02	8.076276e-02	143	144	1	1.006993	-0.000051
+6	5.467646e-02	5.440269e-02	97	97	0	1.000000	0.000304
+7	3.316295e-02	3.309030e-02	59	59	0	1.000000	0.000091
+8	1.799911e-02	1.794728e-02	32	32	0	1.000000	0.000062
+9	8.741658e-03	8.412787e-03	15	15	0	1.000000	0.000334
+10	3.799109e-03	3.925967e-03	6	7	1	1.166667	-0.000125
+11	1.477457e-03	1.682557e-03	2	3	1	1.500000	-0.000204
+12	5.141535e-04	5.608525e-04	0	1	1	1.000000	-0.000046
+13	1.601091e-04	5.608525e-04	0	1	1	1.000000	-0.000400
+14	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+15	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+16	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+17	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+18	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+19	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+20	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+21	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+22	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+23	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+24	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+25	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+26	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+27	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+28	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+29	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+30	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+31	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+32	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+33	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+34	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+35	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+36	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+37	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+38	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+39	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+40	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+41	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+42	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+43	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+44	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+45	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+46	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+47	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+48	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+49	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+50	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+51	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+52	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+53	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+54	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+55	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+56	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+57	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+58	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+59	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+60	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+61	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+62	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+63	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+64	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+65	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+66	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+67	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+68	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+69	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+70	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+71	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+72	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+73	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+74	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+75	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+76	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+77	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+78	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+79	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+80	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+81	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+82	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+83	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+84	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+85	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+86	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+87	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+88	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+89	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+90	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+91	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+92	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+93	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+94	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+95	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+96	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+97	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+98	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+99	0.000000e+00	0.000000e+00	0	0	0	0.000000	-1.000000
+Absolute sum of fract expected-observed in group 4:0.013027
+writing population (.opop) ..
+writing marriages (.omar)..
+writing transition hist (.otx)..
+total size of pop 68687
+
+living size of pop 22534
+
+living pop group 1  4893
+living pop group 2  4962
+living pop group 3  7717
+living pop group 4  4962

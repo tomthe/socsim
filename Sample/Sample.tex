@@ -1,0 +1,246 @@
+\input{handout}
+\date{2013}
+\maketitle
+\section{Sample Socsim Simulation}
+
+This project is an introduction to microsimulation using Socsim. Using
+the code provided you will run a socsim simulation and then recover
+several of the rates and simulation parameters specified in the .sup
+file and the various included ratefiles. Unlike the other socsim
+exercises, this one has no sensible underlying story -- and thus the
+rates and simulation parameters are in no way sacred.  The purpose of
+this exercise  is
+simply to introduce a few of socsim's many features and to give you
+permission and confidence to both try stuff and break stuff.
+
+
+The goals of this adventure are:
+\begin{itemize}
+
+\item To demystify socsim at least a little bit
+\item To understand the structure of Socsim's output files (opop and omar)
+\item To understand a few of the many parameters that control socsim's behavior.
+
+\end{itemize}
+
+\subsection{Setup}
+\label{Setup}
+
+If you are in Belo Horizonte and it is August 2013, then both R and
+socsim already set up for you and you can safely ignore the rest of
+this section.   We will discuss in class how
+to configure stuff to do science most efficiently.  Hopefully, this
+will involve running the simulations on the demog.berkeley.edu servers
+but analyzing the results on the local machines at CEDEPLAR.  
+
+
+\textbf{In order to do the complete exercise}, it will be necessary to
+have a running recent version of Socsim and a recent version of R, a
+software environment for statistical computing and graphics. R is free
+and wonderful.  Visit \url{http://www.r-project.org/} if you do not
+already have R.  You will also need to have the R package ``survival''
+installed. Try \user{load(survival)} first, if that fails then try
+\user{install.packages(survival)}, if that fails either write your own
+hazard analysis packages or see your system/administrator.  It is
+possible to do this exercise with software other than R, but you will
+need some understanding of R in order to translate the sample code.
+
+
+
+See \url{http://lab.demog.berkeley.edu/socsim} if you still need to get
+Socsim running.  The tar file referenced below does contain a sample
+of Socsim output so if you would like to learn about Socsim without
+actually running it, you can just do the R part of the exercise. 
+
+\subsection{The \user{ Sample} directory}
+\label{sec:running-socsim-1}
+
+
+All of the Socsim files for this exercise are available in a directory
+called \user{Sample} which you can download as a compressed tar file
+from \url{http://lab.demog.berkeley.edu/socsim/Sample.tgz}.  This
+directory contains files called \user{sample.sup} \user{ratefile.min}
+which together contain all of the instructions necessary find it's
+initial population and run a very simple simulation.
+
+The simplicity of this simulation is obscured by a large number of
+comments within the .sup file.  These comments (indicated by a leading
+'*' are ignored by socsim but should read carefully by humans wishing
+to understand what is going on. Some of the comments explain what the
+directives mean and others are alternative directives that socsim
+could understand and act upon if the '*' were removed.
+
+More information is available in the \emph{Socsim Oversimplified} document which you should have access to.
+
+
+The \user{Sample} directory layout is shown in
+Figure~\ref{fig:Dir}. Notice that all of the R code is contained in a
+directory called \user{Rcode}. Notice also that results of this
+simulation will be stored in a directory called \user{SimResults}.
+The \user{SimResults} directory is already populated with the results
+of a simulation run. When you run socsim yourself, these files will be
+silently over-written. If you don't feel like running socsim, you can
+start instead by analyzing these pre cooked files instead.
+
+In general, we should be careful where we write socsim results. In
+real science, socsim output files are both large and easily
+reproduced, consequently, it is best to write socsim output to cheap
+unbacked up disks. We'll be more careful in subsequent exercises.
+
+
+\begin{figure}[h]
+\vspace{.25cm}
+\rule{.5\textwidth}{0.1mm}
+  \centering
+\begin{verbatim}
+
+.
+├── doublePop.pl
+├── random_number
+├── ratefile.Lese
+├── ratefile.min
+├── Rcode
+│   ├── ReadSocOut.r
+│   └── sample.r
+├── sample.sup
+├── sample.sup13531.log
+├── Sample.tex
+├── SimResults
+│   ├── sample.omar
+│   ├── sample.opop
+│   ├── sample.opox
+│   ├── sample.otx
+│   └── sample.pyr
+├── start1k.opop
+├── start4grp.opop
+├── start.5k.opop
+└── start.opop
+
+
+\end{verbatim}
+
+  \caption{The MarriageSqueeze directory}
+  \label{fig:Dir}
+\rule{.5\textwidth}{0.1mm}
+\end{figure}
+
+\subsection{Socsim instructions}
+
+Have a look at the \user{sample.sup} file and notice the following
+things: 
+
+\begin{description}
+
+\item [There are lots of comments] comments are indicated by the '*'
+  character.  In addition to comments intended for humans, there are
+  also many variants of directives that are commented out.  You may
+  wish to experiment by uncommenting these lines.  But first run
+  socsim as it is -- otherwise some of the code in \user{sample.r}
+  will make no sense.
+
+\item[There is only one simulation segment] The first directive in the
+  file is : \user{segments 1}. A simulation segment is a period of
+  simulated months wherein a single set of vital rates is in
+  effect. Most simulations have more than one segment, but not this
+  one.
+
+
+\item[The file contains some Unix commands] It is possible to run Unix
+  commands from the .sup file. The \user{execute} directive is for
+  this. We do fairly simple things like creating directories, but it
+  is possible to do much more complicated things such as modifying the
+  rates set (that is about to be read) based on the outcome of a
+  previous simulation segment.
+
+\item[Mortality and fertility rates in distinct files.] The
+  \user{include} directive instructs Socsim to start reading the
+  directives from a different file and then continue in the present
+  file the directives in the included file have been processed.  Our
+  convention is to put vital rates in included files and we have done
+  so here, but this is not necessary. Any socsim directive can be read
+  from an included file.
+
+\item[The simulation starts when the run command is read] Because
+  there is only one segment, there is only one run command in this
+  file. When socsim encounters the \user{run} directive, it runs the
+  segment and then returns to processing the .sup file. One
+  consequence of this is that errors in the .sup file can go unnoticed
+  until late in the simulation.
+
+\end{description}
+
+\subsection{Run the simulation}
+
+
+To run the simulation cd into the \user{Sample} directory
+(that you may have produced by unpacking the Sample.tgz file). 
+
+then type:
+
+\cmd{\/path\/to\/Socsim sample.sup 13531}
+
+where the ``13531'' is an arbitrary number that serves as random
+number seed. 
+
+\voc{/path/to/socsim} means the full filename of the executable that
+you compiled earlier.
+
+
+If all goes well a bunch of now familiar stuff will scroll onto the
+screen indicating how things are going with the simulation.  Output
+will be stored in the \user{SimResults} directory.  Results consist of
+\user{SimResults/sample.opop}, \user{SimResults/sample.omar} and three
+other files that are in the present case either unimportant or empty
+or both.
+
+Files with the \voc{.opop} suffix contain the population list, files
+with the \voc{.omar} suffix contain the marriage list. These two files
+will be read and analyzed in \user{sample.r}.
+
+
+
+\subsection{Analyzing simulation output: sample.r}
+
+In the sub directory \user{Rcode} you'll find a file called
+\user{sample.r} That file contains R instructions for reading the
+simulation output (the \voc{.opop} and \voc{.omar} files) and for
+recovering some of the rates and parameters specified in the
+\voc{.sup} file.  \user{sample.r} also contains some code for running
+the simulation from within R.  If you have been a good student, then
+you have already run the simulation and do not need to do so again --
+but as you investigate the data and make changes to the \voc{.sup}
+file, it will be convenient to \emph{re-run} the simulation from the
+comfort of your R session.
+
+After working through the sample calculations, there is a list of
+suggested extensions that you might wish to pursue.  You are
+encouraged to think of other, more interesting things to do instead.
+The idea is to become familiar with Socsim's habits and the ways in
+which you can effect it.  
+
+Because Socsim is a work in progress, relatively little pre-simulation
+checking is done of either the rates or the parameters.  It is
+perfectly possible--intentionally or unintentionally-- to make Socsim
+do things that do not make a lot of sense. You can, for example,
+easily specify fertility and mortality rates that make the population
+explode or die off. You can specify that only females are born. You
+can also specify rates that are greater than 1.0 -- which can lead to
+individuals having an infinite number of events in a single month.  In
+most cases Socsim will either grind to a halt (too many events or
+people) or speed up and finish (too few).  In some cases it will
+also crash with a cryptic message like ``segmentation fault''.  None
+of these eventualities will cause any lasting harm to the universe,
+but in the case of crashes, the cause can be difficult to
+determine. So it goes.  In the case of infinite loops, it is best to hit Ctrl+C
+in the terminal window where socsim is running (or just killing the
+terminal window).  Either procedure kills the socsim process which
+left alone will fill up disks and exhaust the world's supply of electrons.  
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: handout.tex
+%%% End: 
+
+% LocalWords:  Socsim endogamously Socsim's opop CousinDiversity filename omar
+% LocalWords:  endogamy

@@ -1,0 +1,51 @@
+
+\documentclass[11pt]{article}
+
+\newcommand{\voc}[1]{\emph{\textbf{#1}}}
+\newcommand{\fname}[1]{\emph{\textbf{#1}}}
+\newcommand{\user}[1]{\texttt{#1}}
+\newcommand{\keyw}[1]{\textup{\texttt{#1}}}
+\newcommand{\dir}[2]{\fbox{\keyw{#1} \hspace{1cm} \user{#2}}}
+\newcommand{\uP}{\textbf{@:$>$}\hspace{1mm}}
+
+\newcommand{\cmd}[1]{
+          \medskip
+          \mbox{\hspace{-20mm}\rule{0.5mm}{5mm}\hspace{19.5mm}\uP\user{#1}
+          }
+          \medskip}
+\newcommand{\rcmd}[1]{
+          \medskip
+          \begin{flushleft}
+            \mbox{\hspace{-4mm}\rule{1mm}{1mm}\hspace{1mm}\sP\user{#1}}
+          \end{flushleft}
+          \medskip
+}
+
+\usepackage{placeins}
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{breakurl}
+
+\begin{document}
+\title{Microsimulation with Socsim\\
+CEDPLAR, Belo Horizonte 2013 }
+\author{Carl Mason (UC Berkeley, Demography)\\
+Emilio Zagheni (Queens College - CUNY)\\
+}
+
+
+%%%% input this file at top of the handouts
+%\include{CousinDiversity}
+%\input{MarriageSqueeze}
+%\include{Calibration}
+%\input{Sandwich}
+%\include{supervisoryFile}
+%\include{populationFile}
+%\include{rateFiles}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "handout"
+%%% End: 
+ 

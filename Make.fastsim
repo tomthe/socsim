@@ -1,0 +1,62 @@
+CFLAGS        = -O9 
+CC            = gcc
+OBJS	      = events.o \
+		io.o \
+		load.o \
+		random.o \
+		utils.o \
+		census.o \
+		xevents.o 
+SRCS	      = events.c \
+		../io.c \
+		../load.c \
+		../random.c \
+		../utils.c \
+		../census.c \
+		../xevents.c 
+LIBS	      = -lm
+HDRS	      = defs.h
+SABER         = /vol/moby/moby_a/codecenter/Saber/bin/saber
+XSABER        = /vol/moby/moby_a/codecenter/Saber/bin/xsaber
+
+
+
+testsim: $(OBJS)
+	$(CC)  $(CFLAGS) $(LDFLAGS) -o testsim $(OBJS) $(LIBS)
+
+socsim: $(OBJS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -o socsim $(OBJS) $(LIBS)
+
+estatic: $(OBJS)
+	$(CC) $(LDFLAGS) -o estatic -static $(SRCS) $(LIBS)
+
+tags:           $(HDRS) $(SRCS); @ctags $(HDRS) $(SRCS)
+
+saber:           $(HDRS) $(SRCS); @$(SABER) $(SRCS) -lm
+
+xsaber:           $(HDRS) $(SRCS); @$(XSABER) $(SRCS) -lm
+
+census.o:../census.c ../defs.h
+	gcc -c $(CFLAGS) ../census.c
+
+events.o:../events.c ../defs.h
+	gcc -c $(CFLAGS) ../events.c
+
+io.o:../io.c ../defs.h
+	gcc -c $(CFLAGS) ../io.c
+
+load.o:../load.c ../defs.h
+	gcc -c $(CFLAGS) ../load.c
+
+random.o:../random.c ../defs.h
+	gcc -c $(CFLAGS) ../random.c
+
+utils.o:../utils.c ../defs.h
+	gcc -c $(CFLAGS) ../utils.c
+
+xevents.o:../xevents.c ../defs.h
+	gcc -c $(CFLAGS) ../xevents.c
+
+
+
+

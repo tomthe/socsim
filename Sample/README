@@ -1,0 +1,10 @@
+For the simplest socsim simulation run this:
+
+/path/to/socsim sample.sup 13531
+
+then compare the md5sum of the files in SimResults
+with those in  SimResults/md5sum.seed13531
+
+Or better yet -- visit the Rcode directory first and look at
+sample.R  -- that file has code to run the simulation from within R
+and to read the results and reproduce some of the simulation parameters.
