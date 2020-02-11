@@ -340,8 +340,8 @@ struct person *p;
     
     if( marriage_queues==1 && (p->sex == MALE)){
       /* error one-queue implies that this should not be called for males*/
-      logmsg("Error: marriage_queues==1 yet marriage() called for male person %d",
-	     p->person_id,1);
+      // logmsg("Error: marriage_queues==1 yet marriage() called for male person %d", //jimtom
+	    // p->person_id,1);
       exit(-1);
     }
 

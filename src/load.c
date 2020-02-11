@@ -1,5 +1,5 @@
 #include <string.h>
-#include <sys/wait.h>
+//#include <sys/wait.h> //outcommenting suggested by jim
 #include <math.h>
 #include <stdlib.h>
 

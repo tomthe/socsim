@@ -134,7 +134,8 @@ char *argv[];
 
     ceed = atoi(*++argv);
 
-    initstate(ceed, randstate, 256);
+    // initstate(ceed, randstate, 256); //suggested by jim: replace with:
+	srand(ceed);
 
       /**srandom(ceed); /** setting seed for random() NOT rrandom() **/
     sprintf(log_file_name,"%s%d.log",rate_file_name,ceed);
@@ -147,8 +148,8 @@ char *argv[];
       perror("can't open file: log file\n") ;
     }
     
-    sprintf(logstring,"\n compiled from SVN revision %s on %s \n\n",
-	   SVN_REV, COMP_DATE);
+    /**sprintf(logstring,"\n compiled from SVN revision %s on %s \n\n",
+	   SVN_REV, COMP_DATE);**/
     logmsg("%s\n",logstring,1);
     logmsg("\n\n Socsim Version: %s\n\n",
 	   ENHANCEMENT_NAME,1);

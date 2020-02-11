@@ -1,8 +1,8 @@
-SVNDEF = -D'SVN_REV="$(shell svnversion -n .)"'
-COMPDATE = -D'COMP_DATE="$(shell date)"'
-CFLAGS        = $(SVNDEF) $(COMPDATE) -O1 -Wuninitialized -g
-CFLAGS9        = $(SVNDEF) $(COMPDATE) -O9 -Wuninitialized 
-CFLAGS-testsim        = $(SVNDEF) $(COMPDATE) -g -pg
+#SVNDEF = -D'SVN_REV="$(shell svnversion -n .)"'
+#COMPDATE = -D'COMP_DATE="$(shell date)"'
+CFLAGS        =  -O1 -Wuninitialized -g
+CFLAGS9        =  -O9 -Wuninitialized 
+CFLAGS-testsim        =  -g -pg
 CC            = gcc
 OBJS	      = events.o \
 		io.o \

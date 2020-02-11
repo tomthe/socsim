@@ -512,7 +512,7 @@ fix_pop_pointers()
       
       np = lookup(PERSON_TAG, p->person_id);
       if (p != np->PP)
-	error ("got the wrong person out of the hash table");
+	perror ("got the wrong person out of the hash table");
       
       npp = lookup(PERSON_TAG, np->H_MOTHER);
       if (npp != NULL) {

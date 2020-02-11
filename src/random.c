@@ -26,7 +26,7 @@ irandom()
 {
 
   /* while ((ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS) <= 0)*/
-  ceed=random()	;
+  ceed=rand();//	;ceed=random()	;
     /*
     printf("irand: %d\n", ceed);
     */
