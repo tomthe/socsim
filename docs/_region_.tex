@@ -1,0 +1,59 @@
+\message{ !name(top.tex)}
+\documentclass[11pt]{book}
+
+\newcommand{\voc}[1]{\emph{\textbf{#1}}}
+\newcommand{\fname}[1]{\emph{\textbf{#1}}}
+\newcommand{\user}[1]{\texttt{#1}}
+\newcommand{\keyw}[1]{\textup{\texttt{#1}}}
+\newcommand{\dir}[2]{\fbox{\keyw{#1} \hspace{1cm} \user{#2}}}
+\newcommand{\uP}{\textbf{@:$>$}\hspace{1mm}}
+
+\newcommand{\cmd}[1]{
+          \medskip
+          \mbox{\hspace{-20mm}\rule{0.5mm}{5mm}\hspace{19.5mm}\uP\user{#1}
+          }
+          \medskip}
+\newcommand{\rcmd}[1]{
+          \medskip
+          \begin{flushleft}
+            \mbox{\hspace{-4mm}\rule{1mm}{1mm}\hspace{1mm}\sP\user{#1}}
+          \end{flushleft}
+          \medskip
+}
+
+
+\usepackage{supertabular}
+\usepackage{graphicx}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{breakurl}
+
+\begin{document}
+
+\message{ !name(handout.tex) !offset(-3) }
+
+\title{Socsim Example\\
+Max Planck Institute for Demographic Research\\
+MP116  Jun 2010}
+\author{Carl Mason\\
+Emilio Zagheni\\
+UC Berkeley, Demography}
+\maketitle
+
+
+%\include{CousinDiversity}
+\input{MarriageSqueeze}
+%\include{Calibration}
+%\input{Sandwich}
+%\include{supervisoryFile}
+%\include{populationFile}
+%\include{rateFiles}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "top"
+%%% End: 
+ 
+
+\message{ !name(top.tex) !offset(-59) }

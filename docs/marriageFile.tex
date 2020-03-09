@@ -1,0 +1,124 @@
+
+\section{The marriage file}
+\label{sec:marriageFile}
+The marriage (.omar) file is similar to the population (.opop) file in
+that much of the information it maintains is in the form of unique id
+numbers that corespond to rows of the .opop file or to the .omar file
+itself.  In other words, the .omar file is another  \emph{linked list}
+
+Figure~\ref{fig:readOmar} shows a snippet of R code suitable for
+reading a .omar file.  Table~\ref{tab:marriagefile} shows the meaning
+of each column of the file.
+
+\subsection{Reckoning marriages}
+
+
+As with the .opop file, reckoning marriage histories requires
+following a list of integers from one record (row) to another. The
+marriage id of the wife's \emph{most recent prior} marriage is stored
+in column 7.  The coresponding pointer for the husband is stored in
+column 8.  The other six columns of the marriage record hold
+information on the marriage itself.  Note that marriages are created
+sequentially, but monogamy is not assumed. So for any particular
+marriage record, the wife's prior marriage (pointed to in column 7)
+must have a start date (column 4) that is no larger (later) than that
+of the particular marriage.  A ``prior marriage'' must start before
+(or in socsim, at least in the same month) as the subsequent
+marriage.  But the same is not true for the marriage end date, which
+is stored in column 5.  
+
+Also, be careful of zeros.  Marriages that remained intact when the
+simulation ended have end dates of zero.  
+
+To find a female ego's first husband, one begins with the .opop file.
+The $11^{th}$ column of ego's row holds the marriage id of egos most
+recent marriage. The row in the .omar file whose first column entry
+matches that number is the record of egos' most recent or ``last''
+marriage.  In order to find her \textbf{first} marriage, we must
+locate the row of the .omar file wherein the entry in column 1 matches
+the the marriage id of the  wifes prior marriage which is stored in
+column 7 of the .omar file.  We repeat this proces until we locate a
+record of a marriage for which ego's person id is stored in the second
+column and column 7 holds a zero.
+
+In R, a more efficient way of finding first marriages is to select the
+subset of marriages for which either the husband's prior or wife's
+prior marriage (column 7 or column 8) are zero, and then use the
+\user{match()} function to link the marriage id to the husband or
+wife's opop record.  Figure~\ref{fig:firstMarriages} shows a snippet
+of R code that performs this task.
+
+
+
+
+
+\begin{figure}[h]
+  \centering
+\vspace{.25cm}
+\rule{.5 \textwidth}{.1mm}
+\begin{verbatim}
+omar<-read.table(file="../SimResults/example.omar",header=F,as.is=T)
+names(omar)<-c("mid","wpid","hpid","dstart","dend",
+               "rend","wprior","hprior")
+   
+rownames(omar)<-omar$mid
+
+\end{verbatim}
+  \caption{R code for reading a .omar file}
+  label{fig:readOmar}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{||r|l|p{5cm}||}
+\hline
+\textbf{position}&\textbf{name}&\textbf{description}\\
+\hline \hline
+1&mid& Marriage id number (unique sequential integer) \\
+2&wpid &Wife's person id\\
+3&hpid &Husband's person id \\
+4&dstart &Date marriage began \\
+5&dend&Date marriage ended or zero if still in force at end of simulation\\
+6&rend &Reason marriage ended 2 = divorce; 3 = death of one partner \\
+7&wprior &Marriage id of wife's next most recent prior marriage\\
+8&hprior&Marriage id of husband's next most recent prior marriage\\
+\hline    
+  \end{tabular}
+  \caption{Structure of Socsim marriage file}
+  \label{tab:marriagefile}
+\end{table}
+
+%%%%
+\begin{figure}[h]
+  \centering
+\vspace{.25cm}
+\rule{.5 \textwidth}{.1mm}
+\begin{verbatim}
+
+## get first marriage id -- socsim stores marriage ids as linked list
+## headed by most recent marriage.  The (h/w)prior field stores the id
+## of each spouses prior marriage
+
+## select a subset of marriages which are first for at least one partner
+fomar<-omar[omar$hprior == 0 | omar$wprior == 0,]
+opop$fmid<-NA
+
+## use match() to lookup the marriage id of each person (in opop)'s
+## first marriage id
+opop[opop$fem==0,"fmid"]<-
+  fomar[match(opop[opop$fem==0,"pid"],fomar$hpid),"mid"]
+opop[opop$fem==1,"fmid"]<-
+  fomar[match(opop[opop$fem==1,"pid"],fomar$wpid),"mid"]
+
+\end{verbatim}
+  \caption{R code for finding first marriages}
+  label{fig:firstMarriages}
+\end{figure}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "top"
+%%% End: 
+
+% LocalWords:  Socsim Socsim's
