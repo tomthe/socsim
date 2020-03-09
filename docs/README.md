@@ -311,8 +311,8 @@ in the code to make modification of the evaluation process “easy”.
 
 ### Age distribution matching
 
-If <span class="upright">`  `</span> is set to “distribution” then
-Socsim seeks to select the marriage that most reduces the disparity
+If <span class="upright">`marriage_eval`</span> is set to “distribution”
+then Socsim seeks to select the marriage that most reduces the disparity
 between the ***target distribution of age differences at marriage*** and
 the ***observed distribution of age differences at marriage***. The
 `score3()` function does this by keeping track of the spousal ages at
@@ -343,10 +343,12 @@ following way:
   - At the beginning of each simulation segment, a vector of “target”
     *proportions* of age distributions is constructed for each
     simulation group. This vector is derived from the normal
-    distribution with parameters: <span class="upright">`  `</span> and
-    <span class="upright">`  `</span>. It sums to 1 and represents that
-    desired fraction of marriages to **women** of that group that should
-    have the particular age difference at the time of marriage.
+    distribution with parameters:
+    <span class="upright">`agedif_marriage_mean`</span> and
+    <span class="upright">`agedif_marriage_sd`</span>. It sums to 1 and
+    represents that desired fraction of marriages to **women** of that
+    group that should have the particular age difference at the time of
+    marriage.
 
   - The marriage queue consists of a linked list of all males(females)
     who are eligible. Under the one-queue system this would be all males
@@ -418,21 +420,21 @@ defeating the scientist:
 
 ### Age preference
 
-If <span class="upright">`  `</span> is set to “preference”, then
-`score3()` implements the “simple” age preference schedule. In this
+If <span class="upright">`marriage_eval`</span> is set to “preference”,
+then `score3()` implements the “simple” age preference schedule. In this
 system, potential marriage are evaluated according to a fixed preference
 scheme. Marriages are preferred according to how close the spouses are
-in age to the <span class="upright">`  `</span> no attention is paid to
-the realized distribution of marriages.
+in age to the <span class="upright">`marriage_peak_age`</span> no
+attention is paid to the realized distribution of marriages.
 
 After incest and endogamy/exogamy checks are complete, suitors who have
 not been eliminated, are assigned a score based on the groom’s age -
 bride’s age. If this age difference is greater than
-<span class="upright">`  `</span> than the score declines at a constant
-rate as the difference increases. If the age difference is **less** than
-<span class="upright">`  `</span> then the score declines at
-<span class="upright">`  `</span>\* that constant rate as the age
-difference decreases.
+<span class="upright">`marriage_peak_age`</span> than the score declines
+at a constant rate as the difference increases. If the age difference is
+**less** than <span class="upright">`marriage_peak_age`</span> then the
+score declines at <span class="upright">`marriage_slope_ratio`</span>\*
+that constant rate as the age difference decreases.
 
 Before giving yourself a bald spot over this, note that only the ordinal
 rank of this score matters because the spouse is chosen randomly only
@@ -442,24 +444,25 @@ or younger spouses. In most simulations the marriage rates – which
 determine the age at which people initiate a marriage search, are
 **far** more important in determining marriage patterns than are these
 marriage preference parameters. The default value for
-<span class="upright">`  `</span> is 36 months.
+<span class="upright">`marriage_peak_age`</span> is 36 months.
 
-The <span class="upright">`  `</span> parameter determines the degree to
-which groom-older marriages are preferred to bride-older marriages. A
-value of 1.0 implies an equal preference score for an age difference
-that is x months from <span class="upright">`  `</span> regardless of
-whether the groom or bride is older. A value greater than 1 implies a
-that the preference score will decline faster as the brides age
-increases relative the the grooms – than it will as the groom’s age
-increases relative to the bride’s. The default value, 2, means that
-preference scores decline twice as fast with distance from
-<span class="upright">`  `</span> as the bride’s age increases relative
-the the groom’s.
+The <span class="upright">`marriage_slope_ratio`</span> parameter
+determines the degree to which groom-older marriages are preferred to
+bride-older marriages. A value of 1.0 implies an equal preference score
+for an age difference that is x months from
+<span class="upright">`marriage_peak_age`</span> regardless of whether
+the groom or bride is older. A value greater than 1 implies a that the
+preference score will decline faster as the brides age increases
+relative the the grooms – than it will as the groom’s age increases
+relative to the bride’s. The default value, 2, means that preference
+scores decline twice as fast with distance from
+<span class="upright">`marriage_peak_age`</span> as the bride’s age
+increases relative the the groom’s.
 
-The <span class="upright">`  `</span> and
-<span class="upright">`  `</span> simply exclude from consideration
-marriages where the age difference between the partners (groom age -
-bride age) is beyond the specified bounds.
+The <span class="upright">`marriage_agedif_max`</span> and
+<span class="upright">`marriage_agedif_min`</span> simply exclude from
+consideration marriages where the age difference between the partners
+(groom age - bride age) is beyond the specified bounds.
 
 **While it is possible to use this evaluation scheme with the one-queue
 marriage market, we have not tested it. This system is intended to be
@@ -483,18 +486,18 @@ Socsim.
 
 The ***.sup*** file includes both global (affecting the entire
 simulation) and segment specific simulation parameters. The
-<span class="upright">`  `</span> directive indicates the end of a set
+<span class="upright">`run`</span> directive indicates the end of a set
 of segment specific parameters. When Socsim encounters a
-<span class="upright">`  `</span> directive, it stops reading the `.sup`
-file and executes the simulation segment. When the segment’s execution
-is complete, Socsim returns to reading the `.sup` file where it left
-off. This has two important implications:
+<span class="upright">`run`</span> directive, it stops reading the
+`.sup` file and executes the simulation segment. When the segment’s
+execution is complete, Socsim returns to reading the `.sup` file where
+it left off. This has two important implications:
 
 1.  If the directives for a segment are not followed by a
-    <span class="upright">`  `</span> directive, the segment will not be
-    executed. Socsim will simply read the instructions for the next
+    <span class="upright">`run`</span> directive, the segment will not
+    be executed. Socsim will simply read the instructions for the next
     segment and execute those – assuming that they end with a
-    <span class="upright">`  `</span> directive.
+    <span class="upright">`run`</span> directive.
 
 2.  Errors in a `.sup` file will not be caught until they are
     encountered. If there is an error in the specification of the
@@ -535,21 +538,22 @@ sufficient ***.sup***
 
 Global directives can affect the entire simulation and *generally* do
 not change with each new segment. With the exception of
-<span class="upright">`  `</span>, <span class="upright">`  `</span> and
-<span class="upright">`  `</span>, however, it is possible to change
-global directives in a simulation segment. What “global” means is that
-socsim does **not** reinitialize these directives to their default
+<span class="upright">`segments`</span>,
+<span class="upright">`input_file`</span> and
+<span class="upright">`output_file`</span>, however, it is possible to
+change global directives in a simulation segment. What “global” means is
+that socsim does **not** reinitialize these directives to their default
 settings at the beginning of each simulation segment–as it does for the
 “segment specific” directives described in
 Section [4.4](#sec:segmentSpecific).
 
 This means that **you can change most global directives within each
 simulation segment**. If Socsim finds a global directive such as
-<span class="upright">`  `</span> or <span class="upright">`  `</span>
-after the first <span class="upright">`  `</span> directive, it **will**
-change its behavior accordingly and the new behavior will persist until
-either the end of the simulation or until the directive is encountered
-again.
+<span class="upright">`bint`</span> or
+<span class="upright">`sex_ratio`</span> after the first
+<span class="upright">`run`</span> directive, it **will** change its
+behavior accordingly and the new behavior will persist until either the
+end of the simulation or until the directive is encountered again.
 
 **Be aware** that if you decide to change a global directive for a
 particular segent, **the new value becomes the default** for subsequent
@@ -564,10 +568,11 @@ default values are reset at the start of a new segment.
     The number of simulation ***segments*** in the simulation run. A
     segment is a period of time under which a given set of vital rates
     are effective. A simulation segment is executed when
-    <span class="upright">`  `</span> directive is encountered. Since
+    <span class="upright">`run`</span> directive is encountered. Since
     the rates are reinitialized at the begininng of each segment, it is
     necessary to (re)specify all rates in every segment. The
-    <span class="upright">`  `</span> directive makes this convenient.
+    <span class="upright">`include`</span> directive makes this
+    convenient.
 
 2.    
     
@@ -587,15 +592,15 @@ default values are reset at the start of a new segment.
     
     `output_file resultspop`  
     Indicates where Socsim should write output files. Just as with
-    <span class="upright">`  `</span> directive, Socsim expects the
-    argument to be a file stem, from which Socsim can construct a
+    <span class="upright">`input_file`</span> directive, Socsim expects
+    the argument to be a file stem, from which Socsim can construct a
     complete path by simply appending a suffix. By default, the
     population and marriages files are only written at the end of the
     final segment and are called `output-file-stem`.opop and
     `output-file-stem`.omar. However, The
-    <span class="upright">`  `</span> directive below causes these files
-    to be written at the end of a segment and modifies naming
-    conventions to avoid overwriting.
+    <span class="upright">`write_output`</span> directive below causes
+    these files to be written at the end of a segment and modifies
+    naming conventions to avoid overwriting.
 
 4.    
     
@@ -604,8 +609,8 @@ default values are reset at the start of a new segment.
     `proportion_male 0.5112`  
     Indicates the proportion of births which are male. In order to
     preserve an early mistake, the directive
-    <span class="upright">`  `</span> is a synonym for
-    <span class="upright">`  `</span>.
+    <span class="upright">`sex_ratio`</span> is a synonym for
+    <span class="upright">`proportion_male`</span>.
 
 5.    
     
@@ -654,7 +659,7 @@ default values are reset at the start of a new segment.
     endogamy constraints are also enforced with respect to random
     fathers, but marital status is ignored. The default value is 15.
     Obviously this is meaningless unless the
-    <span class="upright">`  `</span> is set to 1
+    <span class="upright">`random_father`</span> is set to 1
 
 9.    
     
@@ -674,16 +679,16 @@ default values are reset at the start of a new segment.
     Determines how suitors from other ***groups*** are treated in
     determining suitability for marriage. When ego is having a marriage
     event executed, s/he inspects everyone on the marriage queue of the
-    opposite sex. A value of <span class="upright">`  `</span> between 0
-    and 1 is taken as the probability that a potential spouse who is a
-    member of a *different* group from that of ego will be rejected. A
-    value of 1 therefore implies *endogamy* while a value of 0 implies
-    that group membership will not matter with respect to marriage. A
-    value of <span class="upright">`  `</span> between -1 and 0 is taken
-    as the negative of the probability that a potential spouse from the
-    **same group** will be rejected. A value of -1 therefore enforces
-    complete *exogamy* – all suitors of ego’s own group will be rejected
-    with probability 1.
+    opposite sex. A value of <span class="upright">`endogamy`</span>
+    between 0 and 1 is taken as the probability that a potential spouse
+    who is a member of a *different* group from that of ego will be
+    rejected. A value of 1 therefore implies *endogamy* while a value of
+    0 implies that group membership will not matter with respect to
+    marriage. A value of <span class="upright">`endogamy`</span> between
+    -1 and 0 is taken as the negative of the probability that a
+    potential spouse from the **same group** will be rejected. A value
+    of -1 therefore enforces complete *exogamy* – all suitors of ego’s
+    own group will be rejected with probability 1.
     
     The default value is 0 implies “radnomogamy” meaning that group
     membership is not considered when evaluating potential spouses.
@@ -713,12 +718,12 @@ default values are reset at the start of a new segment.
     “preference” indicates that the legacy age difference preference
     schedule be used. That scheme favors marriages based on their
     closeness to an ideal age difference. (See
-    <span class="upright">`  `</span> and
-    <span class="upright">`  `</span>). “distribution” indicates that
-    socsim should attempt to match a target distribution of the age
-    difference between spouses at marriage. See
-    <span class="upright">`  `</span> and
-    <span class="upright">`  `</span>. Also see
+    <span class="upright">`marriage_peak_age`</span> and
+    <span class="upright">`marriage_slope_raio`</span>). “distribution”
+    indicates that socsim should attempt to match a target distribution
+    of the age difference between spouses at marriage. See
+    <span class="upright">`agedif_marriage_mean`</span> and
+    <span class="upright">`agedif_marriage_sd`</span>. Also see
     Section [3.3](#sec:score3) for a lengthier explanation of all this.
 
 13.   
@@ -728,14 +733,16 @@ default values are reset at the start of a new segment.
     `agedif_marriage_mean 1 2`  
     Determines the mean (in **years** ) of the target distribution of
     spousal age differences for ***women* of the specified group.** This
-    directive consists of the word <span class="upright">`  `</span>
-    followed by an integer indicating the group to which the directive
-    applies and a real indicating the target mean spousal age difference
-    in years. Currently Socsim uses a normal distribution as the target
+    directive consists of the word
+    <span class="upright">`agedif_marriage_age_mean`</span> followed by
+    an integer indicating the group to which the directive applies and a
+    real indicating the target mean spousal age difference in years.
+    Currently Socsim uses a normal distribution as the target
     distribution. We await theoretically robust arguments in favor other
     parametric distributions. This is **only valid if
-    <span class="upright">`  `</span> is set to “distribution”** See
-    Section [3.3](#sec:score3) for more details.
+    <span class="upright">`marriage_eval`</span> is set to
+    “distribution”** See Section [3.3](#sec:score3) for more
+    details.
 
 14.   
     
@@ -743,30 +750,34 @@ default values are reset at the start of a new segment.
     
     `agedif_marriage_sd 1 3`  
     Determines the standard deviation of the target spousal age
-    distribution. Just as with <span class="upright">`  `</span>, this
-    directive is specified separately for each group in the simulation.
-    This is **only valid if <span class="upright">`  `</span> is set to
-    “distribution”.** See Section [3.3](#sec:score3) for more details.
+    distribution. Just as with
+    <span class="upright">`agedif_marriage_mean`</span>, this directive
+    is specified separately for each group in the simulation. This is
+    **only valid if <span class="upright">`marriage_eval`</span> is set
+    to “distribution”.** See Section [3.3](#sec:score3) for more
+    details.
 
 15.   
     
     -----
     
     `marriage_peak_age 36`  
-    Determines (together with <span class="upright">`  `</span>) the
-    preference for spousal age **difference** (in months) among spouses.
-    This is **only valid if <span class="upright">`  `</span> is set to
-    “preference”**. See Section [3.3](#sec:score3) for more details.
+    Determines (together with
+    <span class="upright">`marriage_slope_ratio`</span>) the preference
+    for spousal age **difference** (in months) among spouses. This is
+    **only valid if <span class="upright">`marriage_eval`</span> is set
+    to “preference”**. See Section [3.3](#sec:score3) for more details.
 
 16.   
     
     -----
     
     `marriage_slope_ratio 2.0`  
-    Works with <span class="upright">`  `</span> to determine a marriage
-    preference “score” for potential spouses. This is **only valid if
-    <span class="upright">`  `</span> is set to “preference”**. See
-    Section [3.3](#sec:score3) for more details.
+    Works with <span class="upright">`marriage_peak_age`</span> to
+    determine a marriage preference “score” for potential spouses. This
+    is **only valid if <span class="upright">`marriage_eval`</span> is
+    set to “preference”**. See Section [3.3](#sec:score3) for more
+    details.
 
 17.   
     
@@ -775,8 +786,8 @@ default values are reset at the start of a new segment.
     `marriage_agedif_min -120`  
     Determines the *lower* end of the permissible age difference between
     spouses (groom age - bride age), in months. This is **only valid if
-    <span class="upright">`  `</span> is set to “preference”** See
-    Section [3.3](#sec:score3) for more details.
+    <span class="upright">`marriage_eval`</span> is set to
+    “preference”** See Section [3.3](#sec:score3) for more details.
 
 18.   
     
@@ -785,8 +796,8 @@ default values are reset at the start of a new segment.
     `marriage_agedif_max 120`  
     Determines the *upper* end of the permissible age difference between
     spouses (groom age - bride age), in months. This is **only valid if
-    <span class="upright">`  `</span> is set to “preference”** See
-    Section [3.3](#sec:score3) for more details.
+    <span class="upright">`marriage_eval`</span> is set to
+    “preference”** See Section [3.3](#sec:score3) for more details.
 
 19.   
     
@@ -818,18 +829,18 @@ default values are reset at the start of a new segment.
 
 20.   
     
-    <span class="upright">`  `</span> through `parameter5` should be set
-    only if the enhanced version of Socsim that you are using defines
-    what they do.
+    <span class="upright">`parameter0`</span> through `parameter5`
+    should be set only if the enhanced version of Socsim that you are
+    using defines what they do.
 
 21.   
     
     Causes Socsim read a file called
-    <span class="upright">`  `</span>.opox or crash if the file does not
-    exist. The .opox file should contains a set of
-    <span class="upright">`  `</span> values for each person in the
-    initial population. This will generally only be used in versions of
-    Socsim that have been modified. See
+    <span class="upright">`input-file-stem`</span>.opox or crash if the
+    file does not exist. The .opox file should contains a set of
+    <span class="upright">`extra variable`</span> values for each person
+    in the initial population. This will generally only be used in
+    versions of Socsim that have been modified. See
     Section [\[sec:modification\]](#sec:modification) for description
     of the programming hooks available for “easy” modification. The
     plain vanilla version of Socsim does not use extra variables so
@@ -855,7 +866,7 @@ These directives make sense if specified for each simulation segment.
     
     Socsim will read and parse `filename` as if it were part of the
     current file. It is strongly recommended that
-    <span class="upright">`  `</span> be used to keep rate
+    <span class="upright">`include`</span> be used to keep rate
     specifications separate from the rest of the simulation parameters.
     See Section [8](#sec:rateFiles) has details on how vital demographic
     rates are specified.
@@ -1127,16 +1138,16 @@ Contents and format of the .otx file<span label="tab:otxformat"></span>
 # Specifying demographic rates
 
 It is most convenient to store demographic rates for each simulation
-segment in distinct files and use the <span class="upright">`  `</span>
-directive to reference them from the supervisory file (See
-Section [4](#sec:supFile)). But regardless of how you choose to
-organize your rate files, you will need to assemble a large collection
-of rates. How Socsim expects those rates to be formatted is described in
-Section [8.2](#sec:vitalRates), but before we get to that
-Section [8.1](#sec:rateDefault) describes the rules Socsim follows when
-it encounters incomplete rate sets. These are important to understand,
-because Socsim does not warn you when for example you leave out
-fertility rates for parity 1 divorced females of group 3 (birth 3 F
+segment in distinct files and use the
+<span class="upright">`include`</span> directive to reference them from
+the supervisory file (See Section [4](#sec:supFile)). But regardless of
+how you choose to organize your rate files, you will need to assemble a
+large collection of rates. How Socsim expects those rates to be
+formatted is described in Section [8.2](#sec:vitalRates), but before we
+get to that Section [8.1](#sec:rateDefault) describes the rules Socsim
+follows when it encounters incomplete rate sets. These are important to
+understand, because Socsim does not warn you when for example you leave
+out fertility rates for parity 1 divorced females of group 3 (birth 3 F
 divorced 1). Instead, it “defaults” to rates for party 0 divorced
 females of group 3 (birth 3 F divorced 0). Similarly if the birth 3 F
 divorced 0 rates are missing, Socsim uses birth 3 F single 0) in their
@@ -1291,16 +1302,16 @@ interval is \(1-(1-.08326)^{60}\).
 
 Mortality rates are the most straight forward of the rates that Socsim
 uses. The example in Figure [\[fig:rateBlock\]](#fig:rateBlock) is
-typical. The event identifier is <span class="upright">`  `</span>, the
-“1” refers to the group, “M” to male and “single” is of course marital
-status.
+typical. The event identifier is <span class="upright">`death`</span>,
+the “1” refers to the group, “M” to male and “single” is of course
+marital status.
 
 ## Marriage rates
 
 Marriage rates are specified with the event identifier of
-<span class="upright">`  `</span>, but it should be born in mind the
-event which these rates regulate is not really marriage but rather the
-commencement of a marriage search. Since marriage requires two
+<span class="upright">`marriage`</span>, but it should be born in mind
+the event which these rates regulate is not really marriage but rather
+the commencement of a marriage search. Since marriage requires two
 participants Socsim cannot simply execute a marriage when the event is
 scheduled. Marriage requires two participants and such it is very
 difficult to achieve arbitrarily specified marriage rates for both males
@@ -1315,7 +1326,7 @@ need to be “tuned” in order to achieve the desired result.
 ## Divorce rates
 
 Divorce rates are specified with the event identifier
-<span class="upright">`  `</span>. Divorce is unusual among Socsim
+<span class="upright">`divorce`</span>. Divorce is unusual among Socsim
 events in that it’s rates do not apply to the age of one spouse or the
 other but rather by age of the marriage. It is thus generally not
 necessary to specify divorce rates for both sexes.
@@ -1323,8 +1334,8 @@ necessary to specify divorce rates for both sexes.
 ## Fertility rates
 
 Fertility rates are specified with the identifier
-<span class="upright">`  `</span> and are different from other rates in
-two ways:
+<span class="upright">`birth`</span> and are different from other rates
+in two ways:
 
 1.  They are parity specific. But they default to parity \(n-1\) so it
     is only necessary to specify rates for parity zero.
@@ -1342,9 +1353,9 @@ population contains more than one group then the group inheritance rule
 determines the group identity of new borns.
 
 Transition rates are specified with the identifier
-<span class="upright">`  `</span> and are different from other rates in
-that both the group to which the rate applies **and** the group to which
-the event will cause a person to belong must be specified.
+<span class="upright">`transit`</span> and are different from other
+rates in that both the group to which the rate applies **and** the group
+to which the event will cause a person to belong must be specified.
 
 To specify transition rates from group 1 to group 2 for single males,
 one would write the following:  
@@ -1369,8 +1380,8 @@ Divorce rates are always duration specific, but transition rates may
 vary with either age or duration. The format for specifying transition
 rate blocks is the same regardless of whether they are age or duration
 specific. To tell Socsim that a particular rate block is meant to be
-duration specific, add the directive: <span class="upright">`  `</span>
-as in:  
+duration specific, add the directive:
+<span class="upright">`duration_specific`</span> as in:  
   
 duration\_specific transit 4 F married 5  
   
@@ -1387,8 +1398,8 @@ to group 5 for ***married*** males. One may be age specific while the
 other may be duration specific.
 
 As noted in Section [4.4](#sec:segmentSpecific), the
-<span class="upright">`  `</span> directive does not replace the
-keywords that define the rate block.
+<span class="upright">`duration_specific`</span> directive does not
+replace the keywords that define the rate block.
 
 ## Event competition
 
@@ -1469,14 +1480,14 @@ In the current implementation, individual fertility multipliers,
 ***fmult***s, are pseudorandomly distributed as a cubic approximation to
 the beta distribution with mean 1.0, variance 0.416, and a range of 0 to
 2.4. Fertility heterogeneity is also heritable to a degree determined by
-the user specified directives <span class="upright">`  `</span> and
-<span class="upright">`  `</span>.
+the user specified directives <span class="upright">`alpha`</span> and
+<span class="upright">`beta`</span>.
 
 ## Inheritance of Fertility Multipliers
 
 The degree to which heterogeneous fertility is inherited is determined
-by the <span class="upright">`  `</span> (\(\alpha\)) and
-<span class="upright">`  `</span> (\(\beta\)) directives.
+by the <span class="upright">`alpha`</span> (\(\alpha\)) and
+<span class="upright">`beta`</span> (\(\beta\)) directives.
 Equation [\[eq:inheritfert\]](#eq:inheritfert) defines the algorithm
 used to effect the inheritance. At birth females are first assigned a
 fertility multiplier as according to the beta distribution described in
