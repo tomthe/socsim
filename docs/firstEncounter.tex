@@ -1,0 +1,244 @@
+
+\section{First Encounter}
+\label{sec:firstEncounter}
+
+
+
+Originally written in the 1970s, Socsim continues to develop as a research tool
+constantly changing to meet the goals of new research projects.  A slick
+graphic user interface has never been part of the plan\footnote{to the
+  extent that there is a ``plan''}. As a consequence, users must be
+comfortable editing ascii files in order to use socsim.
+
+Raising the barrier to first use still higher is Socsim's insatiable
+appetite for input data. Because micro-simulation is about simulating a
+whole mess of ``individuals''' vital demographic events, Socsim needs a
+whole mess of age, sex, marital status, \voc{group}\footnote{Groups
+  are a additional category that can be used to extend Socsim in
+  interesting ways. Groups are described in a little more detail in Section~\ref{sec:groups}} and parity specific rates
+for births, deaths, marriages and change of group membership. There is
+of course, a default structure -- for example if mortality rates are
+not specified for married males, Socsim will by default use those of
+single males of the same group.  Or if parity specific fertility rates
+are not specified, Socsim will use the same rates for all
+parities. Still, a moderately complicated simulation will still require
+an \emph{astonishing} number of rates.
+
+\subsection{The simplest possible simulation}
+\label{sec:simplest}
+
+To run Socsim you must provide the following:
+\begin{description}
+
+\item[A compiled version of Socsim.] See \url{lab.demog.berkeley.edu/socsim} if
+  this has not already been taken care of.
+  
+\item [An initial population and marriage file.] Socsim reads and
+  writes Population data in a specific format. Population (or
+  \voc{.opop} files) are further described in
+  Section~\ref{sec:populationFile}.  In order for Socsim to start, it
+  is must find an \voc{initial population} stored in this format.
+  Generally individuals in this population will not be married, if the
+  initial population has a marriage structure, then a
+  marriage file (or \voc{.omar}) will also be required. The marriage
+  file format is described in Section~\ref{tab:marriagefile}.  
+  The initial population need have no particular age or sex
+  distribution\footnote{ One \textbf{can} start Socsim with an initial
+    population complete with a kin network, but typically the purpose
+    of this whole exercise is to generate a simulated a kinship
+    network.%% -- if you already have the kinship data then maybe you
+    %%should stop wasting time and write your dissertation
+}, since one usually
+  runs Socsim for a  hundred (simulated) years or more in order to
+  convert the initial population into a population with a known and
+  stable age structure before simulating the processes that are of
+  real interest.  This can be done differently, but not without added
+  complication.
+
+\item [A \voc{supervisory or .sup file}.] The supervisory file
+  generally named with \user{.sup} suffix is passed to Socsim on the
+  command line. It must contain certain \voc{global parameters}  such as the
+ number of simulation
+  \voc{segments}, name patterns of initial population and final
+  population files, and either a complete set of vital
+  demographic rates or else \voc{include} statements specifying where
+  to find files containing those rates.  The full explanation of
+  \voc{.sup} file is in Section~\ref{sec:supFile}.
+
+The minimal file, (from the \user{Sample} directory of the source code
+tree) is shown in Figure~\ref{fig:supSample}.
+
+
+\item[vital demographic rates]  As noted previously, the vital
+  demographic rates can be included within the supervisory file. But
+  generally it is more convenient to store them in one or more
+  separate files which are referred to in the supervisory file with an
+  \user{include} directive. 
+
+The format in which the rates are given
+  to Socsim is critical. Generally a set of rates for particular
+  demographic event begins with an identifier such as:\\
+\\
+\textbf{birth 1 F married 0 }\\
+\\
+which indicates that the following several lines will contain a
+complete set of age specific fertility rates for group 1 married
+females of parity 0. 
+
+Following the rate identifier will be one or more lines each of which
+contains three space-separated numbers. The first two indicate year and
+months of the \textbf{upper age bound} over which the rate is in
+effect. The two quantities are added together so ``1 1'' is equivalent
+in effect to ``0 13''.  Note that the first age category specified
+should NOT have ``0 0'' as its upper bound; an upper age bound of ``0
+1'' would include the first month of life only.  Age categories are
+otherwise flexible;  one can specify some age categories that are as
+short as a single month, while others are many years or decades wide.
+
+The rate, given in per month terms, is the third number. Socsim
+insists that there be a line specifying an age category with an upper
+bound of 100 years. Obviously this last rate can be 1 or zero.  For
+more details on specifying rates See Section~\ref{sec:rateFiles}.
+\end{description}
+
+When all of the above bits are in place, Socsim can be executed from
+the Unix shell:\\
+
+\user{ /path/to/socsim supervisoryfile.sup 12345}\\
+
+The result will be a considerable amount of screen output indicating
+which options are set and how the simulation is proceeding. Or just a
+short complaint about an inconsistency in the various input files.
+
+After a successful socsim run, a logfile called
+/user{supervisoryfile.sup12345.log} should be evident in the current
+directory as well as an output population \fname{.opop}; marriage,
+\fname{.omar} and perhaps a extra variables, \fname{.opox} file whose
+locations depend on the \user{output\_file} directive in the
+\fname{.sup} file.  Socsim also write an event history file
+
+
+The \fname{.opop}, \fname{.omar} and \fname{.opox} files produced by a
+Socsim run, are of course suitable initial population files(s) for
+subsequent Socsim simulations.  Eventually however, you will probably
+have to stop simulating and start analyzing those files.  See
+Sections~\ref{sec:populationFile}and \ref{sec:marriageFile} for
+details on how these files are structured.
+
+\subsection{What goes on inside}
+\label{sec:inside}
+
+While all that ``information'' is scrolling past on the screen and
+filling the log file, Socsim is busily scheduling and executing vital
+demographic events for each simulated being in the initial population
+as well as all of their descendants.
+
+Socsim begins each simulation \voc{segment}\footnote{A simulation
+  segment is a period of simulated time during which a single set of
+  vital rates are in effect} by scheduling an event for each
+``living'' person.   At all times during the simulation every non dead
+simulated being has exactly one scheduled event.  Whenever an event is
+executed or a person's marital status or parity changes, a new event
+is scheduled for that individual.  Thus death of a spouse causes a new
+event to be scheduled for the widow; a birth causes a new event to be
+scheduled for both the child and the mother.
+
+To determine which event a person is to be scheduled for, Socsim
+generates a random waiting time for each event that the person is at
+risk of having.  Obviously the user supplied age, sex, group, and
+marital status specific rates govern the process of random waiting
+time generation.  Once all of the potential events have randomly
+generated waiting times associated with them, the earliest one is
+chosen and that event is scheduled.  Information on the other possible
+events is discarded.  In short, it's a competing risks model.  The
+probability of each event is independent of all other events and the
+earliest event is the only one that counts. See
+Section~\ref{sec:eventcomp} for more details.
+
+Once each person has a scheduled event, Socsim starts to march through
+time. A list is created of all of the events scheduled for the first
+month of the simulation segment and each is drawn in random order and
+executed.  When the execution of an event causes a new event to be
+scheduled (as most do) the resulting new event is either placed on the
+calendar for execution in a future month or if the waiting time is
+zero, it is  inserted in the list of events waiting for
+execution in the current month and is drawn in random order.
+
+When all of the events scheduled for the current month are executed,
+Socsim increments the month and repeats the event execution procedure
+just out lined.  When the last month of the segment is completed,
+Socsim begins the next segment by reading the rate files and
+generating new events for all living people.  If there is no
+subsequent segment, then Socsim finishes by writing the population
+(.opop), marriage (.oar), extra variables (.opox), and population
+pyramid (.pyr) files.
+
+\section{Extending Socsim}
+\label{sec:extending}
+
+Socsim is open source so modifying the code to take account of
+cultural norms, ethnological truths, or behavioral theories is
+encouraged.  Since many Socsim based research projects require some
+kind of enhancement, the program is structured so as to encourage
+modification. It is possible to enhance Socsim without first gaining a
+deep knowledge of all the intricacies of the program by taking
+advantage of ``hooks'' that have been placed in the code and which
+call functions at key points in the execution.  ``Stub'' versions of these
+functions can be found in the \user{enhancementNULL.c} file in the top
+of the source tree.  
+
+When Socsim is compiled with the proper command line arguments,  functions in
+\user{enhancement.c} become part of the code.  If your modifications
+can be contained within \user{enhancement.c}, then improvements and
+bug fixes to the main trunk of the code will not conflict with your
+project -- probably.
+
+Before you consider enhancing Socsim, however, you should first give a
+lot of serious thought to how you might manage to accomplish your goal
+\textbf{without writing any C code}.  One approach for doing this is
+is to try to make clever use of the concept of \voc{groups}, described
+below.
+
+Another approach to email Carl Mason (carlm@demog.berkeley.edu) and
+see if maybe he'll do the programming for you.
+\subsection{Groups}
+\label{sec:groups}
+
+ Socsim implements  \voc{groups} by simply adding a variable to the
+ population list. Every person is a member of exactly one group at all
+ times. Group membership is determined at birth according to the rule
+ given in  \voc{child\_inherits\_group} directive, but can change at
+ any time according to age, sex, marital status, and group specific
+ \voc{transition} rates that the user specifies.  
+
+ The group designation can be thought of as ethnicity, location,
+ health status, wealth, education or any characteristic of a person
+ that might or might not change according to a rate schedule.
+
+ Members of each group are subject to the same rates for vital
+ events. That is the members of group 7 have fertility, mortality and
+ nuptiality schedules that are independent of those of group 8.  When
+ an individual transitions from one group to another, she becomes
+ subject to the new group's rates and therefore must have a new event
+ scheduled. 
+
+
+ Socsim determines how many groups are in a simulation at the
+ beginning of each segment by looking at both the starting population
+ and the rates.  If Socsim finds a person of group N in the initial
+ population than it knows that there are at least N groups in the
+ simulation. If it finds a mortality rate for members of group Q then
+ it knows that there are at least Q groups.
+
+Because of the default pattern of rates described in
+Section~\ref{sec:rateFiles}, it is possible to add groups to a
+simulation and only specify the rates for the group which differ from
+the those of the existing group.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "top"
+%%% End: 
+
+% LocalWords:  Socsim Socsim's opop

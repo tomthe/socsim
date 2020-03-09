@@ -1,0 +1,288 @@
+
+\section{Marriage Market}
+\label{sec:marriageQueue}
+
+The marriage event is greatly complicated by the need for two spouses.
+When a 27 year old female's marriage event comes up, there must be a
+suitable male at hand\footnote{Socsim, does not yet handle same sex
+  marriage. Sorry} or else that marriage cannot be executed on
+time. The need for two spouses means that randomness alone is
+inadequate for assuring that the specified marriage rates are
+achieved.
+
+More generally, one can meet \emph{at most} two of the following three
+marriage market constraints:
+
+\begin{itemize}
+\item Female age specific nuptiality rates
+\item Male age specific nuptiality rates
+\item Distribution of spousal age differences
+\end{itemize}
+
+Thus compromise is necessary and Socsim offers a choice of two: A
+``one'' queue and a ``two'' queue system.  In the \emph{two queue} system
+male and female nuptiality rates determine the beginning of a marriage
+search: only egos who have initiated marriage searches can be married
+under this system. If no suitable potential spouses are available, the
+searcher must then wait in a queue. Because a suitable spouse must be
+waiting in order for a marriage event to be executed, generally one of
+the two spouses must be getting married \emph{after} a delay of some
+time since the beginning of her search.  
+
+In the \emph{one queue} system, only females have nuptiality rates.
+When a marriage event is executed under this system, the lucky bride
+chooses the best match from \emph{all} living unmarried males.  Thus
+under the one queue system, female nuptiality rates are generally met,
+and marriage markets can be made to optimize selections over even rare
+criteria.  In the unmodified version of Socsim, only the distribution
+of the age difference between spouses is considered, but in principle
+the scoring algorithm could be made to optimize over a set of
+criteria. 
+
+The cost of this however are (1) no male marriage rates can
+be specified -- males in the \emph{one queue} scheme marry at the
+convenience of females -- and (2) processing will be slower especially when
+populations are large.
+
+
+\subsection{The two queue system}
+
+Under the legacy ``two queue'' scheme, the marriage event signals the
+beginning of a marriage \emph{search}. If a suitable spouse is
+\emph{already} waiting on the marriage queue, then the marriage is
+executed. If not, then ego's marriage search fails and she is added to
+the marriage queue herself--where she will wait (subject to the risk
+of other events) until she is ``selected'' by a male suitor who is
+initiating a marriage search.  Under this scheme, the specified
+nuptiality rates are seldom accomplished because would be spouses
+often spend time on the marriage queue.  This scheme is symmetric with
+respect to sex. There is a marriage queue for each sex and each sex is
+treated identically.
+
+If, when a marriage search is initiated, there are potential spouses
+waiting in the queue then each potential match is fist checked for
+allowability via the \user{marriage\_allowable()} function and, if the
+match does not violate incest rules and the potential spouses have not
+been previously married, then the match is evaluated by the
+\user{score3()} function and the highest scoring match is executed.
+
+
+\subsection{The one queue system}
+\label{sec:oneq}
+
+The second (newer) scheme is a ``one queue'' system under which the female
+marriage event triggers a search across \textbf{all} available males
+and the ``best'' one is immediately selected. Potential matches are
+evaluated in the same way as under the two queue system (via the
+\user{score3()} function), but many
+more potential matches are evaluated for each event.
+
+The main advantage of the one queue system is that it generally
+achieves the specified female age specific marriage rates --even when
+female rates are high and populations are small. Achieving the female
+marriage rates allows for overall fertility rates to be achieved when
+marital and non marital fertility rates are different. This is major
+headache preventer.
+
+A second advantage of the one queue system is that it allows for a
+wider range of marriage criteria to be optimized. This of course requires
+that Socsim be \emph{extended} (See Section~\ref{sec:extending}), but
+since under the one queue system \emph{every} marriageable male is
+examined for each female marriage event, even spouses with qualities
+that are quite rare in the population can be located.  Under the two
+queue scheme one can only choose the best spouse from those who have
+already initiated but not completed a marriage search. This can be
+quite unsatisfactory if for example the simulation is of a marriage
+market in which the optimal spouse is a particular type of cousin.
+
+
+\subsection{Evaluating potential marriages (score3())}
+\label{sec:score3}
+
+Regardless of which marriage queue system is enabled, potential
+marriages are fist screened by the \user{marriage\_allowable()} and
+then scored by the \user{score()} function. 
+
+
+The \user{marriage\_allowable()}function, eliminates consanguineous
+marriages closer than cousins and remarriage of spouses who have
+previously been married to each other. 
+
+Potential allowable marriages are then evaluated by the
+\user{score3()} function.  There are two variants built into Socsim,
+hooks are included in the code to make modification of the evaluation
+process ``easy''.
+
+\subsubsection{Age distribution matching}
+\label{sec:agedist}
+
+If \keyw{marriage\_eval} is set to ``distribution'' then Socsim seeks
+to select the marriage that most reduces the disparity between the
+\voc{target distribution of age differences at marriage} and the
+\voc{observed distribution of age differences at marriage}.  The
+\user{score3()} function does this by keeping track of the spousal
+ages at marriage of all marriages in the simulation segment as well as
+a predetermined target distribution. Each potential marriage is
+assigned a score that indicates the degree to which the fit between
+the target and observed distribution would be changed by the marriage
+in question.  The marriage that most reduces the unweighted sum of the
+differences between the fractions of marriages conducted at each
+spousal age difference (in single years) is then chosen.
+
+\textbf{This variant is intended to be used with the one-queue} system
+in which all living unmarried males are potential partners.  In this
+situation then, Only female rates and the parameters of the target
+spousal age distribution determine marriage events.  In other words,
+the age distribution matching scheme together with the ``one queue''
+marriage market attempts to optimize the distribution of spousal age differences
+subject to the constraint that females marry according to their rate
+schedule.
+
+When the age distribution matching scheme is paired with the two-queue
+marriage market, the constraint set is much more complicated and the
+results are uncertain.
+
+
+
+Mechanically, the age distribution matching scheme is implemented in
+the following way:
+
+\begin{itemize}
+\item At the beginning of each simulation segment, a vector of
+  ``target'' \emph{proportions} of age distributions is constructed
+  for each simulation group. This vector is derived from the normal
+  distribution with parameters: \keyw{agedif\_marriage\_mean} and
+  \keyw{agedif\_marriage\_sd}. It  sums to 1 and represents that desired
+  fraction of marriages to \textbf{women} of that group that should
+  have the particular age difference at the time of marriage.
+
+\item The marriage queue consists of a linked list of all males(females) who
+  are eligible. Under the one-queue system this would be all males who
+  are not presently married. Under the two-queue system, it
+  consists of males (females) who have had unsuccessful marriage events--a
+  marriage event triggered a marriage search but no suitable spouse
+  was available at that time.  
+
+\item Note again that this marriage evaluation scheme is intended to
+  be used with the one-queue marriage market under which each male is
+  put on the queue at birth and upon execution of any event that
+  subsequently makes him marriage eligible (e.g. divorce or death of
+  spouse).
+
+\item When \textbf{under the one-queue system}: a female has a
+  marriage event, or \textbf{under the two-queue}: system an ego of
+  \emph{either} sex initiates a marriage search, each potential
+  partnership is given a score based on the age difference between the
+  potential groom and bride.  That score is derived from
+  Equation~\ref{eq:mscore}.  Note that the score can be either
+  positive or negative. The match with the highest score is chosen. If
+  more than one match has the same score, one is chosen at random.
+  The result (intention) is that the match which most reduces the
+  difference between the target and observed distribution of age
+  differences at marriage is the one selected.
+
+  Socsim can be extended to use additional information in this scoring
+  algorithm.
+
+
+  \begin{eqnarray}
+    \mathrm{agediff} &=& \mathrm{age}_{\mathrm{groom}} - \mathrm{age}_{\mathrm{bride}} \\    \label{eq:mscore}
+    \mathrm{score} &=& \mathrm{target}_{\mathrm{agediff}} - \frac{\mathrm{count}_{\mathrm{agediff}}}{\mathrm{count}_{\mathrm{total}}}
+  \end{eqnarray}
+
+
+\item After each marriage is executed, the counts of marriages by
+  female group and age difference is incremented.
+
+\item At the end of the simulation, the accrued differences between the target
+  and actual marriage age differences are reported.
+
+\end{itemize}
+
+\subsubsection{In practice ...}
+\label{sec:inpractice}
+
+While the 'distribution' system of marriage evaluation can in theory
+match both the female age specific marriage rates \emph{and} the
+specified distribution of age differences at marriage, ``reality'' has
+many ways of defeating the scientist:
+
+\begin{description}
+\item[Remarriage] of widows and divorcees: In high mortality
+  populations where widows remarry, this -- particularly old widows,
+  the average age difference at marriage can wind up being too low and
+  the shape of the age difference distribution can diverge from
+  normal.
+
+\item[Large mean age differences are difficult] to achieve.  If
+  birth cohorts are roughly equal in size it is difficult to sustain a
+  symmetric distribution of age difference at marriage when the mean is
+  far from zero--unless a large fraction of people never marry.  
+
+\item[Beware of exogamy] If marriages happen between members of
+  different groups and the different groups have significantly
+  different vital rates, then a lot of strange things might happen.
+  While Socsim does manage the age difference distribution separately
+  for each group -- it does so from a female perspective. That is the
+  marriage age difference distribution for group N refers to the
+  distribution of age differences at marriage (groom -bride) for
+  marriages involving a \emph{female of group N}. The male's group
+  membership is not considered.
+\end{description}
+
+
+\subsubsection{Age preference}
+\label{sec:agepref}
+If \keyw{marriage\_eval} is set to ``preference'', then \user{score3()}
+implements the ``simple'' age preference schedule. In this system,
+potential marriage are evaluated according to a fixed preference
+scheme. Marriages are preferred according to how close the spouses are
+in age to the \keyw{marriage\_peak\_age} no attention is paid to the
+realized distribution of marriages.
+
+After incest and endogamy/exogamy checks are complete, suitors who
+have not been eliminated, are assigned a score based on the groom's
+age - bride's age.  If this age difference is greater than
+\keyw{marriage\_peak\_age} than the score declines at a constant rate
+as the difference increases.  If the age difference is \textbf{less}
+than \keyw{marriage\_peak\_age} then the score declines at
+\keyw{marriage\_slope\_ratio}* that constant rate as the age
+difference decreases.
+
+Before giving yourself a bald spot over this, note that only the
+ordinal rank of this score matters because the spouse is chosen
+randomly only from among the maximum scoring suitors.  The idea is
+simply to favor a certain optimal age difference and to allow for a
+preference for older or younger spouses.  In most simulations the
+marriage rates -- which determine the age at which people initiate a
+marriage search, are \textbf{far} more important in determining
+marriage patterns than are these marriage preference parameters. The
+default value for \keyw{marriage\_peak\_age} is 36
+months. 
+
+The \keyw{marriage\_slope\_ratio} parameter determines the degree to
+which groom-older marriages are preferred to bride-older marriages. A
+value of 1.0 implies an equal preference score for an age difference
+that is x months from \keyw{marriage\_peak\_age} regardless of whether
+the groom or bride is older.  A value greater than 1 implies a that
+the preference score will decline faster as the brides age increases
+relative the the grooms -- than it will as the groom's age increases
+relative to the bride's.  The default value, 2, means that preference
+scores decline twice as fast with distance from
+\keyw{marriage\_peak\_age} as the bride's age increases relative the
+the groom's.
+
+The \keyw{marriage\_agedif\_max} and \keyw{marriage\_agedif\_min}
+simply exclude from consideration marriages where the age difference
+between the partners (groom age - bride age) is beyond the specified
+bounds.
+
+\textbf{While it is possible to use this evaluation scheme
+  with the one-queue marriage market, we have not tested it. This
+  system is intended to be used with the the two-queue
+  system.}
+
+
+
+
+%%% TeX-master: "top"

@@ -1,0 +1,58 @@
+
+\section{Transition history files}
+
+If group transitions are part of the simulation then socsim will write
+(and may read) a transition history file.  In spirit, the \voc{otx}
+file is much like the marriage file, the main differences are that the
+\voc{file} is linked to only one person and there is no unique
+identifier for a transition history record.
+
+Like all other Socsim output files, the \voc{otx} file is space
+delimited and contains only numbers. Table~\ref{tab:otxformat} shows
+the structure of the \voc{otx} file. Figure~\ref{fig:otxread} contains
+R code for reading an otx file into a data frame.
+
+
+
+  \begin{table}[h]
+    \centering
+    \begin{tabular*}{.8\textwidth}{||r|l|p{6cm} ||}
+      \hline
+      \textbf{position}&\textbf{name}&\textbf{description}\\
+\hline \hline
+      1&pid& Person id to who the transition event occurred\\
+      2&date&Month in which the transtion occurred\\
+      3&fromg&group from which the person transitions\\
+      4&tog&group into which the person transitions\\
+      5&sequence& a non positive number indicating the order of the
+      event. A zero indicates that the current record refers to the
+      most recent transition event; a -7 
+      indicates that seven transitions have occurred to this person
+      subsequent to that of the current record.\\
+      \hline
+    \end{tabular*}
+    \caption{Contents and format of the .otx file}
+    \label{tab:otxformat}
+  \end{table}
+
+
+
+
+  \begin{figure}[h]
+    \centering
+\vspace{.25cm}
+\rule{.5\textwidth}{.1mm}
+
+\begin{verbatim}
+otx<-read.table(file="../SimResults/test.otx",header=F,as.is=T)
+names(otx)<-c("pid","month","fromg","tog","pnum")
+
+\end{verbatim}
+    \caption{R code for reading an  \voc{otx} file}
+    \label{fig:otxread}
+  \end{figure}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "top"
+%%% End: 
