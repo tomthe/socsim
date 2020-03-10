@@ -1,0 +1,10 @@
+Package: socsim
+Version: 1.0-1
+Section: base
+Priority: optional
+Architecture: amd64
+Depends: 
+Maintainer: Tom Theile  <theile@demogr.mpg.de>
+Description: Socsim microdemographic simulation
+ Simulates populations of individuals whose lives are governed by specified demographic vital rates. 
+  Command line only.
