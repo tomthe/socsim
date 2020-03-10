@@ -1164,7 +1164,6 @@ Structure of Socsim marriage file<span label="tab:marriagefile"></span>
 -----
 
 ``` 
-
 ## get first marriage id -- socsim stores marriage ids as linked list
 ## headed by most recent marriage.  The (h/w)prior field stores the id
 ## of each spouses prior marriage
@@ -1181,7 +1180,8 @@ opop[opop$fem==1,"fmid"]<-
   fomar[match(opop[opop$fem==1,"pid"],fomar$wpid),"mid"]
 ```
 
-label<span>fig:firstMarriages</span>
+<span label="fig:firstMarriages" >Figure 4: R code for finding first marriages
+labelfig:firstMarriages</span>
 
 # Transition history files
 
@@ -1203,12 +1203,15 @@ frame.
 |            1 | pid      | Person id to who the transition event occurred                                                                                                                                                                                                             |
 |            2 | date     | Month in which the transtion occurred                                                                                                                                                                                                                      |
 |            3 | fromg    | group from which the person transitions                                                                                                                                                                                                                    |
-|            4 | tog      | group into which the person transitions                                                                                                                                                                                                                    |
+|            4 | tog      | group into which the person transitions                                                                                                                                                                                                                   |
 |            5 | sequence | a non positive number indicating the order of the event. A zero indicates that the current record refers to the most recent transition event; a -7 indicates that seven transitions have occurred to this person subsequent to that of the current record. |
 
-Contents and format of the .otx file<span label="tab:otxformat"></span>
+Table 3: Contents and format of the .otx file<span label="tab:otxformat"></span>
 
 -----
+
+
+Figure 5: R code for reading an otx file:
 
     otx<-read.table(file="../SimResults/test.otx",header=F,as.is=T)
     names(otx)<-c("pid","month","fromg","tog","pnum")
@@ -1247,8 +1250,7 @@ in Figure [\[fig:rateDefaults\]](#fig:rateDefaults) means “defaults to”
 so for example,
 
 ``` 
-
-widowed                         ==> divorced; parity 0; group 1
+widowed                  ==> divorced; parity 0; group 1
 ```
 
 which appears in the “Fertility Rates” section under the heading “For
@@ -1438,7 +1440,7 @@ to which the event will cause a person to belong must be specified.
 To specify transition rates from group 1 to group 2 for single males,
 one would write the following:  
   
-trasit 1 M single 2  
+    trasit 1 M single 2  
   
 As noted in Figure [\[fig:rateDefaults\]](#fig:rateDefaults), transition
 rates have no defaults. All rates have to be specified in order to take
@@ -1514,16 +1516,9 @@ particular month T is given by the expression
 \[\label{eq:probnon}
   \prod_{t=0..T} (1-p_{t})\]
 
+Y_(t=0...T) (1 − p_t) 
 
-Where \(p_{t}\) is the probability of the event’s occurrence in period t
-conditioned on it not having occurred at any time before t. Since
-\((1-p_{t})\) is always between 0 and 1, the expression given above is
-nonincreasing in \(T\). Consequently, beginning with \(t = 0\) we can
-successively multiply the \((1-p_{t})\) terms together until the value
-of the product falls below u. What Socsim does is mathematically
-equivalent to this procedure, however, the implementation in function
-`datev` takes advantage of fact that the probabilities can be the same
-over months or years and works with powers of \((1-p_{t})\).
+Where \(p_t\) is the probability of the event’s occurrence in period t conditioned on it not having occurred at any time before t. Since \(1-p_t\) is always between 0 and 1, the expression given above is nonincreasing in \(T\). Consequently, beginning with \(t = 0\) we can successively multiply the \(1-p_t\) terms together until the value of the product falls below u. What Socsim does is mathematically equivalent to this procedure, however, the implementation in function `datev` takes advantage of fact that the probabilities can be the same over months or years and works with powers of \((1-p_t\).
 
 # Heterogeneity multipliers
 
