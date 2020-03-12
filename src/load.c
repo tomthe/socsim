@@ -2283,7 +2283,7 @@ dump_rates(mgroup) int mgroup;
 			}
 }
 
-print_rate_table(r) struct age_block *r;
+void print_rate_table(r) struct age_block *r;
 {
 	struct age_block *cur;
 	cur = r;

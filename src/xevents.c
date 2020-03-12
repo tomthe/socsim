@@ -768,7 +768,7 @@ create_working_mqueue(p) struct person *p;
     */
 }
 
-int destroy_working_mqueue()
+void destroy_working_mqueue()
 {
 
   struct mqueue_w *mq, *mq2;
@@ -1308,7 +1308,7 @@ double
 }
 
 /*** execute transtion event **/
-transit(q) struct person *q;
+void transit(q) struct person *q;
 {
   int destgroup, m;
   struct person *p;
@@ -1399,7 +1399,7 @@ transit(q) struct person *q;
 #endif
 }
 
-assemble_household(p) struct person *p;
+void assemble_household(p) struct person *p;
 {
   struct marriage *p_prior;
   struct person *current_child;

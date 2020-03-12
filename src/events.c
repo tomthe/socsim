@@ -11,6 +11,11 @@
 #define PTR_N 1
 #define PTR_Q 2
 
+void install_in_order(p, e, q_type);
+void transit(struct person * q);
+void assemble_household( struct person * p);
+void population_pyramid(FILE * fd_pyr);
+
 int global_verbose = 0;
 
 char *a_tally_to_string[] = {
@@ -71,7 +76,8 @@ char *c_tally_to_string[] = {
 
 FILE *open_write();
 void print_segment_info();
-main(argc, argv) int argc;
+
+int main(argc, argv) int argc;
 char *argv[];
 {
 
@@ -673,7 +679,7 @@ char *argv[];
 
 /********************************************************************/
 
-initialize_marriage_targets()
+void initialize_marriage_targets()
 {
 	/**New marriage pref infrastructure-- setup targets**/
 
@@ -734,7 +740,7 @@ initialize_marriage_targets()
 } /*end initialize_marriagetargets*/
 
 /********************************************************************/
-process_month()
+void process_month()
 {
 	
 	int i, g, s;
@@ -910,7 +916,7 @@ process_month()
     */
 }
 
-new_events_for_all()
+void new_events_for_all()
 {
 	struct person *p;
 	int m;
@@ -986,7 +992,7 @@ mqueue_install(p, q)
 }
 */
 
-install_in_orderNOTWRONGBUTSLOW(p, e, q_type)
+void install_in_orderNOTWRONGBUTSLOW(p, e, q_type)
 	/** 1/13/14 This is Marcia's routine that puts individiduals on queues
 in personid/birth order.  There does not appear to be any reason other
 than esthetics for people to be installed in order since all events
@@ -1062,7 +1068,7 @@ int q_type;
 	}
 }
 /******************************************/
-install_in_order(p, e, q_type)
+void install_in_order(p, e, q_type)
 	/** installs people onto the queue in person_id order **/
 	/** 1/13/14 EXCEPT THAT IT DOESN't this replaces Marcia's old
 routine. It simply puts everyone at the front of the queue. It works
@@ -1098,7 +1104,7 @@ int q_type;
 	return;
 }
 /****************************/
-dump_queue()
+void dump_queue()
 {
 	int i, j;
 	struct person *p;
@@ -1120,7 +1126,7 @@ dump_queue()
 	}
 }
 
-inspect_entry(e, q_type, fd) struct queue_element *e;
+void inspect_entry(e, q_type, fd) struct queue_element *e;
 int q_type;
 FILE *fd;
 {
@@ -1169,7 +1175,7 @@ FILE *fd;
 	fprintf(fd, "\n");
 }
 
-queue_delete(p, q_type) struct person *p;
+void queue_delete(p, q_type) struct person *p;
 int q_type;
 {
 	struct person *before, *p1;
@@ -1277,7 +1283,7 @@ int q_type;
 /** modify_rates loops through the entire rate block and 
     modifies rates per dmult/fmult/tmult
 **/
-modify_rates(event, first_block, p) int event;
+void modify_rates(event, first_block, p) int event;
 
 struct age_block *first_block;
 struct person *p;
@@ -1817,7 +1823,7 @@ int date_and_event(p) struct person *p;
 	return m;
 }
 
-initialize_segment_vars()
+void initialize_segment_vars()
 {
 	int g, gd, e, s, m, p, i;
 	struct age_block *b, *bb, **r_ptr, **s_ptr;
@@ -2085,7 +2091,7 @@ initialize_segment_vars()
 	numgroups = 0; /* this will be learned from reading rate sets and init pop*/
 }
 
-population_pyramid(fd_pyr)
+void population_pyramid(fd_pyr)
 	FILE *fd_pyr;
 {
 	struct person *p;
