@@ -685,7 +685,7 @@ child_census()
     }
     */
 
-	for (i = 0; i <= C_NUMCAT; i++)
+	for (i = 0; i < C_NUMCAT; i++)
 	{
 		c_tally[0][i] = 0;
 		c_tally[1][i] = 0;
