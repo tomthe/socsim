@@ -4,7 +4,6 @@
 
 #define cfree free
 
-
 /** if ENHANCED is def'ed AND enhanced.h and enhanced.c point to files that 
 implement "enhancements" then all the special modification in the
 enhanced.c file will come into play. if ENHANCED is NOT def'ed then
@@ -14,14 +13,14 @@ plain old socsim should compile
 #ifdef ENHANCED
 #include "enhancement.h"
 #else
-#define ENHANCEMENT_NAME "STANDARD-UNENHANCED-VERSION" 
+#define ENHANCEMENT_NAME "STANDARD-UNENHANCED-VERSION"
 #endif
 /** extra_data struct includes a value (float) and a pointer
     if EXTRA_PTR is not defined in enhancement.h then we set it
     to char and assume that it will go unused
 ***/
 #ifndef EXTRA_PTR_DECLARATION
-#define EXTRA_PTR_DECLARATION  char *xptr 
+#define EXTRA_PTR_DECLARATION char *xptr
 #endif
 /** 
     The "hooks" for enhancement are forward declared here. These are
@@ -29,9 +28,6 @@ plain old socsim should compile
     the enhancement.c file. Obviously additional hooks can be added easily
 
 **/
-
-
-
 void enhance_defaults();
 void enhance_read_initial_pop();
 void enhance_birth();
@@ -47,14 +43,13 @@ void enhance_transit_after();
 void enhance_write_extra();
 double enhance_couple_score();
 /* Macros */
-#define ABS(a)                          (((a) > 0) ? (a) : -(a))
-#define MIN(a,b)                        (((a) > (b)) ? (b) : (a))
-#define MAX(a,b)                        (((a) > (b)) ? (a) : (b))
+#define ABS(a) (((a) > 0) ? (a) : -(a))
+#define MIN(a, b) (((a) > (b)) ? (b) : (a))
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
-#define NEW(type) ((type *) malloc( sizeof (type)))
+#define NEW(type) ((type *)malloc(sizeof(type)))
 
-#define MOD1200(x) (x)%1200 + 1200*((int)((x) - (x)%1200)/(x))
-
+#define MOD1200(x) (x) % 1200 + 1200 * ((int)((x) - (x) % 1200) / (x))
 
 /* bounds for static structures */
 #define MAXPARITY 10
@@ -141,13 +136,12 @@ double enhance_couple_score();
 #define FROM_SAME_SEX_PARENT -12
 #define FROM_OPPOSITE_SEX_PARENT -13
 
-# define RECYCLE_SEED 5678
+#define RECYCLE_SEED 5678
 /* RECYCLE_SEED is used to create a reusable file of random uniforms
    called socsim.random -- this file is created whenever the random_recycling
    option is in effect but the socsim.random file is not found.
    Wed Nov 12 09:14:23 PST 2003
 */
-
 
 /* forward declarations */
 
@@ -157,7 +151,6 @@ double enhance_couple_score();
 
 /* uncomment for some compilers */
 /*char *malloc();*/
-
 
 /* from random.c */
 int irandom();
@@ -171,15 +164,11 @@ double cycle();
 /* from events.c */
 int date_and_event();
 
-
-
-
 /* from load.c */
 char *index_to_sex[2];
 /*char *index_to_event[8]; */
-char *index_to_event[NUMEVENTS+1];
+char *index_to_event[NUMEVENTS + 1];
 char *index_to_mstatus[6];
-
 
 /* from xevents.c */
 struct person *random_spouse();
@@ -188,7 +177,6 @@ struct person *find_random_father();
 double score1();
 double score2();
 double score3();
-
 
 /* from utils.c */
 double ident();
@@ -200,22 +188,23 @@ double usenullmult();
 double lookup_cohab_prob();
 double table_lookup();
 float get_extra();
-void  put_extra();
+void put_extra();
 int get_marity();
 int get_parity();
 /* from io.c */
 /*int make_random_socsim(); OBSOLETE */
 void initialize_person();
 void write_popfiles();
-struct nlist {                        /* hash table entry, a la K and R    */
-    int uniontag;                     /* save there are 6 integers parked  */
-    struct nlist *next;	              /* here to save a second pass in the */
-    int val;                          /* opop read                         */
-    int i1, i2, i3, i4, i5 ,i6;
-    union {
-	struct person *p;
-	struct marriage *m;
-    }u;
+struct nlist
+{                     /* hash table entry, a la K and R    */
+  int uniontag;       /* save there are 6 integers parked  */
+  struct nlist *next; /* here to save a second pass in the */
+  int val;            /* opop read                         */
+  int i1, i2, i3, i4, i5, i6;
+  union {
+    struct person *p;
+    struct marriage *m;
+  } u;
 };
 
 #define PP u.p
@@ -257,12 +246,10 @@ static struct nlist *hashtab[HASHSIZE];
 #define MAXUMONTHS 1200
 #define MAXUYEARS 100
 
-
 /* sex */
 #define MALE 0
 #define FEMALE 1
 #define NUMSEXES 2
-
 
 /* marital status */
 #define MS_NULL 0
@@ -320,16 +307,14 @@ static struct nlist *hashtab[HASHSIZE];
 #define CHECK_SEX 0
 #define CHECK_MSTATUS 1
 
-
 /** file desc for intermediate post segment results **/
 
-FILE  *fd_out_pop_seg, *fd_out_mar_seg, *fd_out_xtra_seg;
+FILE *fd_out_pop_seg, *fd_out_mar_seg, *fd_out_xtra_seg;
 
 FILE *fd_pop, *fd_mar, *fd_xtra, *fd_out_pop, *fd_out_mar, *fd_out_xtra;
-FILE *fd_rn, *fd_pyr,*fd_stat, *fd_log, *fd_otx, *fd_out_otx,*fd_out_otx_seg;
-FILE *fd_random, *fd_allrandom;  /** temp file for random number gen debugging **/
+FILE *fd_rn, *fd_pyr, *fd_stat, *fd_log, *fd_otx, *fd_out_otx, *fd_out_otx_seg;
+FILE *fd_random, *fd_allrandom; /** temp file for random number gen debugging **/
 /* structures and access to structures, and the globals */
-
 
 /** struct and pointers for random_recycling feature  
 struct random_number {
@@ -341,50 +326,55 @@ struct random_number *current_random_number;
 struct random_number *first_random_number;
 **/
 
-double marriage_agetarget[MAXGROUPS][2*MAXUYEARS];
-int marriage_ageobs[MAXGROUPS][2*MAXUYEARS];
+double marriage_agetarget[MAXGROUPS][2 * MAXUYEARS];
+int marriage_ageobs[MAXGROUPS][2 * MAXUYEARS];
 int marriage_tots[MAXGROUPS];
 
-struct stat_block {
-    int upper_age;
-    int width;
-    double lambda;
-    int pml;
-    int events;
-    struct stat_block *previous;
-    struct stat_block *next;
+struct stat_block
+{
+  int upper_age;
+  int width;
+  double lambda;
+  int pml;
+  int events;
+  struct stat_block *previous;
+  struct stat_block *next;
 };
 
-struct age_block {
-    int upper_age;
-    int width;
-    double lambda;
-    double mu;
-    double modified_lambda;
-    struct age_block *previous;
-    struct age_block *next;
-    double (*mult)();
+struct age_block
+{
+  int upper_age;
+  int width;
+  double lambda;
+  double mu;
+  double modified_lambda;
+  struct age_block *previous;
+  struct age_block *next;
+  double (*mult)();
 };
 
-struct age_table {
-    int upper_age;
-    double prob;
-    struct age_table *next;
+struct age_table
+{
+  int upper_age;
+  double prob;
+  struct age_table *next;
 };
 
-struct lc_rates {
-    int ck[NUMLC];                   /* checklist--is everything present */
-    double val;
-    double mean;
-    double std_dev;
-    int start_year;
-    struct age_block *ax_bx;         /* ax's are lambdas. bx's are mu's */
+struct lc_rates
+{
+  int ck[NUMLC]; /* checklist--is everything present */
+  double val;
+  double mean;
+  double std_dev;
+  int start_year;
+  struct age_block *ax_bx; /* ax's are lambdas. bx's are mu's */
 };
 
-struct table_entry {                  /* hash table entry, a la K and R    */
-    struct table_entry *next;	 
-    int key;                          /* up to 6 values read               */
-    int i1, i2, i3, i4, i5 ,i6;
+struct table_entry
+{ /* hash table entry, a la K and R    */
+  struct table_entry *next;
+  int key; /* up to 6 values read               */
+  int i1, i2, i3, i4, i5, i6;
 };
 
 /* other global vars */
@@ -392,20 +382,19 @@ struct table_entry {                  /* hash table entry, a la K and R    */
    load() knows how to read parameter0..9 and will stick the values in this 
    array.  But will not complain if none are present */
 
-double parameter0,parameter1,parameter2,parameter3,
-  parameter4,parameter5,parameter6,parameter7,parameter8,
-  parameter9,parameter10;
+double parameter0, parameter1, parameter2, parameter3,
+    parameter4, parameter5, parameter6, parameter7, parameter8,
+    parameter9, parameter10;
 
-
-struct person *person0;                 /* first person read */
+struct person *person0; /* first person read */
 struct person *last_person;
-int last_person_id;                     /* last number used */
-struct person *debug_p;                 /*in case one needs to track a person */
-struct marriage *marriage0 ;             /* oldest marriage */
+int last_person_id;         /* last number used */
+struct person *debug_p;     /*in case one needs to track a person */
+struct marriage *marriage0; /* oldest marriage */
 struct marriage *last_marriage;
-int last_marriage_id;                   /*last number used */
-int time_waiting[NUMSEXES];             /*person months on mqueue*/
-int firstyear;                          /* map sim to real time */
+int last_marriage_id;       /*last number used */
+int time_waiting[NUMSEXES]; /*person months on mqueue*/
+int firstyear;              /* map sim to real time */
 struct age_block *rate_set[MAXGROUPS][NUMEVENTS][NUMSEXES][NUMMARSTATUS];
 double rate_factors[MAXGROUPS][NUMEVENTS][NUMSEXES][NUMMARSTATUS];
 int duration_specific[MAXGROUPS][NUMEVENTS][NUMSEXES][NUMMARSTATUS];
@@ -413,11 +402,11 @@ struct age_block *birth_rate_set[MAXGROUPS][NUMMARSTATUS][MAXPARITY];
 double birth_rate_factors[MAXGROUPS][NUMMARSTATUS];
 struct age_table *cohab_probs[MAXGROUPS][NUMSEXES];
 struct lc_rates *lc_rate_set[MAXGROUPS][NUMSEXES];
-double * kt_vals[MAXGROUPS][NUMSEXES];
-double * ax_vals[MAXGROUPS][NUMSEXES];
-double * bx_vals[MAXGROUPS][NUMSEXES];
+double *kt_vals[MAXGROUPS][NUMSEXES];
+double *ax_vals[MAXGROUPS][NUMSEXES];
+double *bx_vals[MAXGROUPS][NUMSEXES];
 double read_kt_vals[MAXGROUPS][NUMSEXES][MAXKT];
-	/* arrays of MAXGROUPS*NUMSEXES pointers to doubles */
+/* arrays of MAXGROUPS*NUMSEXES pointers to doubles */
 int e_index, max_e_index, current_e_index, epsilon;
 struct age_table *lc_epsilon[MAXGROUPS][NUMSEXES][MAXKT];
 int kword;
@@ -429,34 +418,36 @@ double transit_adjust[MAXGROUPS][MAXGROUPS];
 int last_event_date;
 int size_of_pop[MAXGROUPS];
 int crnt_month_events[NUMEVENTS];
-double alpha;                           /* inheritance of fmult */
-double beta;                            /* inheritance of fmult */
-double bint;                            /* minimum interval between births */
+double alpha; /* inheritance of fmult */
+double beta;  /* inheritance of fmult */
+double bint;  /* minimum interval between births */
 double prop_males;
-int hhmigration;    
-int hetfert; 
+int hhmigration;
+int hetfert;
 /* httrans added carlm 11/1/99*/
-int hettrans;   
+int hettrans;
 double endogamy;
 int take_census;
 int fixed_epsilon, random_epsilon;
-int read_xtra_file;    
+int read_xtra_file;
 int ceed;
-static char randstate[2048];  /* for gcc's random number generator */
+static char randstate[2048]; /* for gcc's random number generator */
 int current_month;
 int stop_month;
 int current_segment;
-int num_segments;    
+int num_segments;
 /*int random_recycling; OBSOLETE */
-int size_of_extra;  /* number of floats in extra default 0, read in .sup*/
-int numgroups;;    
-int numgroups_in_ipop; /*set in read_initial_pop*/;
-int duration_of_segment;    
-int write_output; /* write out .oxxx files after current segment */
+int size_of_extra; /* number of floats in extra default 0, read in .sup*/
+int numgroups;
+;
+int numgroups_in_ipop; /*set in read_initial_pop*/
+;
+int duration_of_segment;
+int write_output;         /* write out .oxxx files after current segment */
 int child_inherits_group; /* from_mother,from_fater,from_same_sex_parent
 			     from_opposite_sex_parent */
 
-int random_father; /* find random dads for unmarried mothers */
+int random_father;         /* find random dads for unmarried mothers */
 int random_father_min_age; /*min age of randomly selected fathers*/
 
 float agedif_marriage_mean[MAXGROUPS];
@@ -473,16 +464,14 @@ char pyr_file_name[1024], stat_file_name[1024], prefix_out_name[1024];
 char log_file_name[1024], otx_file_name[1024], otx_out_name[1024];
 
 char pop_out_name_seg[1024], mar_out_name_seg[1024], xtra_out_name_seg[1024];
-char pyr_file_name_seg[1024], stat_file_name_seg[1024],otx_out_name_seg[1024];
+char pyr_file_name_seg[1024], stat_file_name_seg[1024], otx_out_name_seg[1024];
 
-
-long current_offset;                    /* keep place in main file */
-int current_lineno;                     /* keep place in main file */
-int current_fstatus;                    /* is there a placeholder in file */
-FILE *current_fp;                       /* saved file pointer */
-int use_lc_rates;                       /* use lee-carter mortality */
-int read_ax_or_bx;                      /* which to read */
-
+long current_offset; /* keep place in main file */
+int current_lineno;  /* keep place in main file */
+int current_fstatus; /* is there a placeholder in file */
+FILE *current_fp;    /* saved file pointer */
+int use_lc_rates;    /* use lee-carter mortality */
+int read_ax_or_bx;   /* which to read */
 
 double marriage_peak_age; /*used in score3 read from .sup */
 double marriage_slope_ratio;
@@ -549,8 +538,9 @@ int c_tally[NUMSEXES][C_NUMCAT];
 
 /* definitions for event queue management */
 
-struct queue_element {
-    int num;
+struct queue_element
+{
+  int num;
   struct person *first, *last; /*last is experimental 1/2014*/
 };
 
@@ -558,7 +548,8 @@ struct queue_element event_queue[MAXUMONTHS];
 
 struct queue_element marriage_queue[NUMSEXES];
 
-struct person {
+struct person
+{
   int person_id;
   int sex;
   int group;
@@ -566,12 +557,12 @@ struct person {
   int deathdate;
   int next_event;
   int mqueue_month; /*used to track wait on mqueue */
-  struct person * mother;
-  struct person * father;
-  struct person * e_sib_mom;
-  struct person * e_sib_dad;
-  struct person * lborn;
-  struct marriage * last_marriage;
+  struct person *mother;
+  struct person *father;
+  struct person *e_sib_mom;
+  struct person *e_sib_dad;
+  struct person *lborn;
+  struct marriage *last_marriage;
   int mstatus;
   double fmult; /*fert mult*/
   double tmult; /*transit mult not built in*/
@@ -583,11 +574,11 @@ struct person {
   union {
     struct person *next_on_mqueue;
     struct queue_element *mqueue;
-  }u_marriage_queue;
+  } u_marriage_queue;
   union {
     struct person *next_person;
     struct queue_element *month;
-  }u_event_queue;
+  } u_event_queue;
   struct extra_data *extra;
   struct transition *ltrans; /*track transition history*/
 };
@@ -602,35 +593,36 @@ struct person {
 #define MARRIAGE_QUEUE 1
 
 #define NEXT_ELEMENT(p) \
-    ((q_type) == EVENT_QUEUE)? (p)->NEXT_PERSON: (p)->NEXT_ON_MQUEUE
+  ((q_type) == EVENT_QUEUE) ? (p)->NEXT_PERSON : (p)->NEXT_ON_MQUEUE
 #define NEXT_NODE(p) \
-    ((q_type) == EVENT_QUEUE)? (p)->MONTH : (p)->MQUEUE
+  ((q_type) == EVENT_QUEUE) ? (p)->MONTH : (p)->MQUEUE
 
 #define SET_NEXT_ELEMENT(p, q) \
-    ((q_type) == EVENT_QUEUE)? ((p)->NEXT_PERSON  = (q)):\
-    ((p)->NEXT_ON_MQUEUE = (q))
+  ((q_type) == EVENT_QUEUE) ? ((p)->NEXT_PERSON = (q)) : ((p)->NEXT_ON_MQUEUE = (q))
 #define SET_NEXT_NODE(p, e) \
-    ((q_type) == EVENT_QUEUE)? ((p)->MONTH  = (e)): ((p)->MQUEUE = (e))
+  ((q_type) == EVENT_QUEUE) ? ((p)->MONTH = (e)) : ((p)->MQUEUE = (e))
 
-struct marriage {
-    int marr_id;
-    struct person *wife;
-    struct person *husband;
-    int date_start;
-    int date_end;
-    int reason_end;
-    struct marriage *husbands_prior;
-    struct marriage *wifes_prior;
-    struct marriage *down;
+struct marriage
+{
+  int marr_id;
+  struct person *wife;
+  struct person *husband;
+  int date_start;
+  int date_end;
+  int reason_end;
+  struct marriage *husbands_prior;
+  struct marriage *wifes_prior;
+  struct marriage *down;
 };
 
-struct transition {
+struct transition
+{
   int date;
   int fromg;
   int tog;
   struct transition *prior;
 };
-  
+
 /* left over from Ken's AIDS project 
    generalized now 
 
@@ -666,9 +658,10 @@ struct extra {
 #define SWET_WEIGHT 6
 #define TMULT 7
 
-struct extra_data {
+struct extra_data
+{
   float value;
-  EXTRA_PTR_DECLARATION ;
+  EXTRA_PTR_DECLARATION;
   struct extra_data *next;
 };
 
