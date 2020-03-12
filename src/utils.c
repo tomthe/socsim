@@ -312,7 +312,7 @@ census()
     }
     */
 
-	for (i = 0; i <= A_NUMCAT; i++)
+	for (i = 0; i < A_NUMCAT; i++)
 	{
 		a_tally[0][i] = 0;
 		a_tally[1][i] = 0;
