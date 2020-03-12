@@ -24,9 +24,18 @@ const long int  INCREMENT = 12345; /*c */
 int
 irandom()
 {
+    long int ceed;
+    #if defined(_WIN32) || defined(WIN32) || defined(__CYGWIN__) || defined(__MINGW32__) //check if this is Windows, because win has no random(), only rand()
+        ceed = rand(); // rand() is not very good randomness.
+        //ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS; //implement our own https://en.wikipedia.org/wiki/Linear_congruential_generator ... leads to errors
+    #else
+    //Linux has random() which gives proper random-numbers:
+        ceed = random();
+    #endif
+
 
   /* while ((ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS) <= 0)*/
-  ceed=rand();//	;ceed=random()	;
+  //ceed=rand();//	;ceed=random()	;
     /*
     printf("irand: %d\n", ceed);
     */
@@ -37,6 +46,7 @@ double
 rrandom()
 {
 
+  double u;
   /***********************************************************************
    * This just calls the builtin random() function. Initialization is
    * done in event.c.  In case you don't care for your compiler's
@@ -44,10 +54,14 @@ rrandom()
    * implements what wikipedia says is gcc's cheapest/simplest random
    * number generator.
    ************************************************************************/
-
-  double u;
+    #if defined(_WIN32) || defined(WIN32) || defined(__CYGWIN__) || defined(__MINGW32__) //check if this is Windows, because win has no random(), only rand()
+        u=rand()/(double) RAND_MAX; // real_rrandom();  
+    #else
+    //Linux has random() which gives proper random-numbers:
+        u= random()/(double) RAND_MAX;  /** using system function !!!! **/
+    #endif
   /* u=real_rrandom(); */
-  u= rand()/(double) RAND_MAX;  /** using system function !!!! **/
+  
   /*fprintf(fd_allrandom,"%36.30f\n",u);*/
   return(u);
 }
@@ -67,7 +81,7 @@ real_rrandom()
     double t;
     t = (double) MODULUS;
 
-    while ((ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS) <= 0)
+    ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS;
 	;
     /*
     printf("rand: %e\n", ((double) ceed)/t);
