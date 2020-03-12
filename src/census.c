@@ -31,7 +31,7 @@ int total1960[] = {78827, 80679, };
 double single_scale[2], notsingle_scale[2], total_scale[2];
 
 
-marriage_tally(fd)
+void marriage_tally(fd)
      FILE *fd;
 {
     struct person *p;
