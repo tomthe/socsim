@@ -47,7 +47,7 @@ rrandom()
 
   double u;
   /* u=real_rrandom(); */
-  u= random()/(double) RAND_MAX;  /** using system function !!!! **/
+  u= rand()/(double) RAND_MAX;  /** using system function !!!! **/
   /*fprintf(fd_allrandom,"%36.30f\n",u);*/
   return(u);
 }
