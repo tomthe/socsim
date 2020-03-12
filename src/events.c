@@ -11,11 +11,6 @@
 #define PTR_N 1
 #define PTR_Q 2
 
-void install_in_order(p, e, q_type);
-void transit(struct person * q);
-void assemble_household( struct person * p);
-void population_pyramid(FILE * fd_pyr);
-
 int global_verbose = 0;
 
 char *a_tally_to_string[] = {
@@ -74,8 +69,6 @@ char *c_tally_to_string[] = {
 	"NUMCAT",
 };
 
-FILE *open_write();
-void print_segment_info();
 
 int main(argc, argv) int argc;
 char *argv[];

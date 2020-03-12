@@ -2,6 +2,17 @@
 #include <math.h>
 /* %W% %G% */
 
+
+/* explicit function declarations: */
+void install_in_order(p, e, q_type);
+void transit(struct person * q);
+void assemble_household( struct person * p);
+void population_pyramid(FILE * fd_pyr);
+FILE *open_write();
+void print_segment_info();
+
+
+
 #define cfree free
 
 /** if ENHANCED is def'ed AND enhanced.h and enhanced.c point to files that 
