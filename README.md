@@ -1,6 +1,27 @@
 # socsim-dev
 Pre-release development site for Socsim. 
 
+## Todo
+
+### next
+
+* make this readme a little bit less embarrassing
+* test: does it still work on linux?
+* improve socsim-oversimplified untill it is coherent and readable
+* clean the repository
+* improve the makefile so things are clear
+
+* write r-code to test some simulations and wether they still have the same results as they should
+* provide packages and installing instructions
+* 
+
+### someday in the future
+
+* create an R-package
+  * with windows and linux binaries
+  * maybe with some extra-functions to read the output-files
+* find out why the c++-version on Windows segfaults
+
 ### This site will start out with Socsim as it exists at Berkeley August 2019.  The plan is to remove extraneous obsolete code; improve comments and documentation and then to start a new public site with clean simple and inviting version of Socsim for eager scientists.
 
 
