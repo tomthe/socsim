@@ -415,7 +415,6 @@ char *argv[];
       ***/
 
 		new_events_for_all();
-		logmsg("asdfaweee333lating...\n", "", 1);
 
 		printf("New events generated for all living persons\n");
 		/*
@@ -435,9 +434,8 @@ char *argv[];
 		for (; current_month <= stop_month; current_month++)
 		{
 			
-	    	printf ("current month %d\n", current_month);
-	    	printf ("OKKOOent month %d\n", current_month);
-	    
+	    	//printf ("current month %d\n", current_month);
+	    	
 			if (take_census)
 			{
 				if (((current_month - 1 - last_event_date) % 12) == 0)
@@ -498,18 +496,15 @@ char *argv[];
 			}
 			/* clear current month event counter*/
 			
-	    	printf ("2KKOOent month %d\n", current_month);
-			int ecount;
+	    	int ecount;
 			for (ecount = E_BIRTH; ecount < NUMEVENTS; ecount++)
 			{
 				crnt_month_events[ecount] = 0;
 			}
 			
-	    	printf ("3KKOOent month %d\n", current_month);
-			process_month();
+	    	process_month();
 			
-	    	printf ("4KKOOent month %d\n", current_month);
-			if (1)
+	    	if (1)
 			{
 				struct queue_element *mqmales, *mqfems;
 				mqmales = marriage_queue + (1 - FEMALE);
@@ -518,13 +513,16 @@ char *argv[];
 				time_waiting[MALE] += mqmales->num;
 				time_waiting[FEMALE] += mqfems->num;
 
-				printf("a1------------month: %6d  PopLive: %6d  Brths:%4d Dths:%4d Mrgs:%4d Dvs:%4d Mq:%4d Fq:%d --------34ji\r",
+				printf("----------month: %6d  PopLive: %6d  Brths:%4d Dths:%4d Mrgs:%4d Dvs:%4d Mq:%4d Fq:%d ----------\r",
 					   current_month, size_of_pop[0],
 					   crnt_month_events[E_BIRTH],
 					   crnt_month_events[E_DEATH],
 					   crnt_month_events[E_MARRIAGE],
 					   crnt_month_events[E_DIVORCE],
 					   mqmales->num, mqfems->num);
+				if (current_month % 1000==0){
+					printf("\n");
+				}
 				if (size_of_pop[0] == 0 && !done)
 				{
 					printf("\n");
@@ -534,8 +532,7 @@ char *argv[];
 			}
 		}
 
-		sprintf(logstring, "\nsegment %d complete current month: %d\n",
-				current_segment, current_month);
+		sprintf(logstring, "\nsegment %d complete current month: %d\n",	current_segment, current_month);
 		logmsg("%s\n", logstring, 1);
 
 		if (take_census)
@@ -733,7 +730,7 @@ void initialize_marriage_targets()
 } /*end initialize_marriagetargets*/
 
 /********************************************************************/
-void process_month()
+int process_month()
 {
 	
 	int i, g, s;
@@ -779,7 +776,7 @@ void process_month()
 			}
 		}
 
-	printf ("3.2process month %d\n", "");
+	//printf ("3.2process month %d\n", "");
 		/*
 	printf("event queue trying to delete person id %d \n",
 	    p->person_id);
@@ -787,7 +784,7 @@ void process_month()
 
 		queue_delete(p, EVENT_QUEUE);
 
-	printf ("3.3 process month %d\n", "");
+	//printf ("3.3 process month %d\n", "");
 		/*
 	printf("deleted person id %d mstatus %s next event %s\n",
 	    p->person_id, index_to_mstatus[p->mstatus],
@@ -795,12 +792,10 @@ void process_month()
 	fflush(stdout);
 	*/
 
-		logmsg("next event all -", "", 1);
+		// logmsg("next event all -", "", 1);
 		if (p->next_event == E_DEATH)
 		{
-			
-			logmsg("next event... death 1  \n", "", 1);
-
+			//logmsg("next event... death 1  \n", "", 1);
 			death(p);
 		}
 		else if (p->next_event == E_BIRTH)
@@ -809,25 +804,24 @@ void process_month()
 #ifdef ENHANCED
 			enhance_birth_pre(p);
 #else
-			logmsg("next event... birth 1  \n", "", 1);
+			//logmsg("next event... birth 1  \n", "", 1);
 			birth(p);
 #endif
 		}
 		else if (p->next_event == E_DIVORCE)
 		{
-			
-			logmsg("next event... divorce 1  \n", "", 1);
+			// logmsg("next event... divorce 1  \n", "", 1);
 			divorce(p);
 		}
 		else if (p->next_event == E_MARRIAGE)
 		{
-			logmsg("next event... marriage\n", "", 1);
+			//logmsg("next event... marriage\n", "", 1);
 			marriage(p);
 		}
 		else if ((p->next_event >= TRANSIT1) &&
 				 (p->next_event < TRANSIT1 + numgroups))
 		{
-			logmsg("next event... transit   \n", "", 1);
+			//logmsg("next event... transit   \n", "", 1);
 			transit(p);
 		}
 
@@ -1123,21 +1117,19 @@ void inspect_entry(e, q_type, fd) struct queue_element *e;
 int q_type;
 FILE *fd;
 {
-	
-	printf ("inspect entry!!!!!! h %d\n", "");
-	printf( "inspeft_entry 0 number on queue %d--in id: group format\n", e->num);
-	
-		
+	printf( "inspect_entry 0 number on queue %d--in id: group format\n", e->num);
+			
 	struct person *p;
 	int i;
 
+/*
 	if(q_type==0){
 	    printf("qtype0 - person");
 	} else {
 		printf("q_type123 - marriage");
 	}
-
-    fflush(stdout);
+  fflush(stdout);
+*/
 	if (e->num < 1)
 	{
 		fprintf(fd, "empty queue\n");
@@ -1163,7 +1155,7 @@ FILE *fd;
 
 		fprintf(fd, "current i %d\n", i);
 		
-    	fflush(stdout);
+    	//fflush(stdout);
 	}
 	fprintf(fd, "\n");
 }
@@ -1230,12 +1222,11 @@ int q_type;
 		if (q_d_verbose)
 			printf("in queue_delete: deleting non-first element\n");
 		before = e->first;
-		printf("in queue_delete2: deleting non-first element2\n");
 		while (p1 = NEXT_ELEMENT(before),
 			   p1->person_id != p->person_id)
 		{
 			//printf("in queue_delete: looooping!t\n");
-			fflush(stdout);
+			// fflush(stdout);
 			before = NEXT_ELEMENT(before);
 			if (q_d_verbose>4)
 				printf("in queue_delete: looping is at %d\n", p1->person_id);
