@@ -2,7 +2,7 @@
 #COMPDATE = -D'COMP_DATE="$(shell date)"'
 CFLAGS        =  -O1 -Wuninitialized -g
 CFLAGS9        =  -O9 -Wuninitialized 
-CFLAGS8        =  -O9 -g3
+CFLAGS8        =  -O9 -g3 -std=c17
 CFLAGS-testsim        =  -g -pg
 CC            = gcc
 OBJS	      = events.o \
