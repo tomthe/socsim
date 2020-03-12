@@ -2,6 +2,7 @@
 #COMPDATE = -D'COMP_DATE="$(shell date)"'
 CFLAGS        =  -O1 -Wuninitialized -g
 CFLAGS9        =  -O9 -Wuninitialized 
+CFLAGS8        =  -O9 -g3
 CFLAGS-testsim        =  -g -pg
 CC            = gcc
 OBJS	      = events.o \
@@ -34,6 +35,9 @@ testsim: $(SRCS) $(HDRS)
 
 socsim: $(SRCS) $(HDRS)
 	$(CC) $(CFLAGS9) $(LDFLAGS)  -o socsim $(SRCS) $(LIBS)
+
+socsim8: $(SRCS) $(HDRS)
+	$(CC) $(CFLAGS8) $(LDFLAGS)  -o socsim $(SRCS) $(LIBS)
 
 socsim-enhanced: $(SRCS) $(HDRS)
 	$(CC) $(CFLAGS) $(LDFLAGS) -D ENHANCED  -o socsim-enhanced $(SRCS) ./src/enhancement.c $(LIBS)
