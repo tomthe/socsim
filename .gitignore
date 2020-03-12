@@ -1,5 +1,6 @@
 *.o
 *.log
+*.exe
 *.vscode
 *.opop
 *.omar
