@@ -181,7 +181,7 @@ char *argv[];
 	// initstate(ceed, randstate, 256); //suggested by jim: replace with:
 	srand(ceed);
 
-	/**srandom(ceed); /** setting seed for random() NOT rrandom() **/
+	/**srandom(ceed);  setting seed for random() NOT rrandom() **/ // todo:check if random is initialized correctly!
 	sprintf(log_file_name, "%s%d.log", rate_file_name, ceed);
 
 	/**debugging random numbercrap 
@@ -200,8 +200,7 @@ char *argv[];
 		   ENHANCEMENT_NAME, 1);
 	if (marriage_queues == 1)
 	{
-		logmsg("\n\n marriage_queues==1 , consequently all availalbe males are always on the marriage queue\n\n",
-			   1);
+		logmsg("\n\n marriage_queues==1 , consequently all availalbe males are always on the marriage queue\n\n"," ",   1);
 	}
 
 	initialize_segment_vars();
@@ -283,10 +282,10 @@ char *argv[];
 
 	prepare_output_files(0);
 	fd_rn = open_write("random_number");
-	logmsg("opening pop pyramid file %s\n", pyr_file_name);
+	logmsg("opening pop pyramid file %s\n", pyr_file_name,1);
 	fd_pyr = open_write(pyr_file_name);
 
-	logmsg("Reading initial population file %s\n", pop_file_name);
+	logmsg("Reading initial population file %s\n", pop_file_name,1);
 	/*    printf("Reading initial population file %s\n",pop_file_name);*/
 	int pop_rows = 0;
 	pop_rows = read_initial_pop(fd_pop);
@@ -301,7 +300,7 @@ char *argv[];
 	}
 	else
 	{
-		logmsg("No initial marriage file to read\n", 1);
+		logmsg("No initial marriage file to read\n"," ", 1);
 		/* Make sure that no one in init pop is married or else
 	 problems will ensue. eg attempt to generate future divorce date
 	 EVEN if divorce rates are zero.  Not sure what else, but its a 
@@ -322,13 +321,13 @@ char *argv[];
 	}
 	if (fd_otx != NULL)
 	{
-		logmsg("Reading initial transition history file %s\n", otx_file_name);
+		logmsg("Reading initial transition history file %s\n", otx_file_name,1);
 		read_otx(fd_otx);
 		fclose(fd_otx);
 	}
 	else
 	{
-		logmsg("No initial transition history file to read\n", 1);
+		logmsg("No initial transition history file to read\n"," ", 1);
 	}
 
 	fix_pop_pointers();
@@ -348,7 +347,7 @@ char *argv[];
 	}
 	else
 	{
-		logmsg("xtra file NOT read: read_extra_file=%d\n", read_xtra_file);
+		logmsg("xtra file NOT read: read_extra_file=%d\n", " ",read_xtra_file);
 	}
 
 	/* numgroups willbe reset to reflect groups in initial pop if nec 
@@ -1726,8 +1725,8 @@ int date_and_event(p) struct person *p;
 			m = m1;
 			if (marriage_queues == 1 && p->sex == MALE)
 			{
-				logmsg("\nmarriage_queues==1 yet marriage event gen'ed for %d\n",
-					   p->person_id, 1);
+				logmsg("\nmarriage_queues==1 yet marriage event gen'ed for %d\n"," ",
+					   p->person_id);
 				exit(-1);
 			}
 		}

@@ -676,9 +676,15 @@ struct extra_data
 
 
 /* explicit function declarations: */
-void install_in_order(p, e, q_type);
+void install_in_order(struct person *p, struct queue_element *e, int q_type);
 void transit(struct person * q);
 void assemble_household( struct person * p);
 void population_pyramid(FILE * fd_pyr);
 FILE *open_write();
 void print_segment_info();
+void logmsg(char * frmt, char * msg, int where);
+void initialize_segment_vars();
+void initialize_marriage_targets();
+void new_events_for_all();
+void queue_delete(struct person *p, int q_type);
+void print_rate_table(struct age_block *r);

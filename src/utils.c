@@ -1348,7 +1348,7 @@ int i;
 	int indx;
 	if ((i < 0) || (i > size_of_extra))
 	{
-		logmsg("Attempt to read stupid position in extra vars: %d", i);
+		logmsg("Attempt to read stupid position in extra vars: %d", " ",i);
 		exit(-1);
 	}
 	indx = 0;
@@ -1360,7 +1360,7 @@ int i;
 	if (p->extra == NULL)
 	{
 		logmsg("Attempt to reference uninitialized extra variable personid:%d\n",
-			   p->person_id, 1);
+			   " ",(int) p->person_id);
 		exit(-1);
 	}
 
@@ -1374,7 +1374,7 @@ int i;
 		}
 		else
 		{
-			logmsg("%s\n", "Attempt to read uninitialized value in get_extra");
+			logmsg("%s\n", "Attempt to read uninitialized value in get_extra",1);
 			exit(-1);
 		}
 	}
@@ -1396,7 +1396,7 @@ float x;
 	int indx;
 	if ((i < 0) || (i > size_of_extra))
 	{
-		logmsg("Attempt to write stupid number of extra vars %s", i);
+		logmsg("Attempt to write stupid number of extra vars %s"," ", i);
 		exit(-1);
 	}
 	indx = 0;
@@ -1490,7 +1490,7 @@ int get_previous_mstatus(p) struct person *p;
 			break;
 		case (DIVORCE):
 			/* previous divorce */
-			prev_mstat == DIVORCED;
+			prev_mstat == DIVORCED; //todo: what? assignment or really only a comparison?
 			mstat_found = 1;
 			break;
 		case (DEATH):

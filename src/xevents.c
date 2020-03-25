@@ -768,7 +768,7 @@ create_working_mqueue(p) struct person *p;
     */
 }
 
-void destroy_working_mqueue()
+int destroy_working_mqueue()
 {
 
   struct mqueue_w *mq, *mq2;
@@ -1501,7 +1501,7 @@ void assemble_household(p) struct person *p;
     */
 }
 
-add_minor_children(p) struct person *p;
+int add_minor_children(p) struct person *p;
 {
   int overage = FALSE;
   struct person *current_child;

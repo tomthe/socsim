@@ -238,8 +238,8 @@ int
 	}
 
 	logmsg("openning %s \n", file, 1);
-	logmsg("starting  with line %d ", current_lineno, 0);
-	logmsg("at %ld\n", current_offset, 0);
+	logmsg("starting  with line %d ", " ", current_lineno);
+	logmsg("at %ld\n", " ",current_offset);
 	fseek(fp, current_offset, 0);
 	cx.file = file;
 
@@ -449,8 +449,8 @@ FILE *fp;
 		break;
 	case k_transittarget:
 		logmsg("transit target group %s ->", words[1], 0);
-		logmsg("%s :", words[2]);
-		logmsg("%s\n", words[3]);
+		logmsg("%s :", words[2],1);
+		logmsg("%s\n", words[3],1);
 		group = read_integer(cx, words[1]);
 		dest = read_integer(cx, words[2]);
 		transit_target[group][dest] = read_integer(cx, words[3]);
@@ -885,8 +885,8 @@ FILE *fp;
 		break;
 	case k_transit:
 		/*printf("transit from %s to %s\n", words[1], words[4]);*/
-		logmsg("reading rates for: transit from %s to ", words[1]);
-		logmsg("%s\n", words[4]);
+		logmsg("reading rates for: transit from %s to ", words[1],0);
+		logmsg("%s\n", words[4],0);
 		group = read_integer(cx, words[1]);
 		sex = keyword_to_integer(cx, l_lookup_keyword(words[2]));
 		mstatus = keyword_to_integer(cx, l_lookup_keyword(words[3]));
@@ -902,7 +902,7 @@ FILE *fp;
 		return 1;
 		break;
 	case k_end:
-		logmsg("Last segment...\n");
+		logmsg("Last segment...\n"," ",0);
 		return 1;
 	case k_run:
 		/*logmsg("simulating ... \n");*/
@@ -910,8 +910,8 @@ FILE *fp;
 		current_fstatus = OPEN;
 		current_lineno = cx->lineno;
 		/*printf("offset %ld line %d\n", current_offset, cx->lineno);*/
-		logmsg("offset %ld line", current_offset, 0);
-		logmsg("%d\n", cx->lineno, 0);
+		logmsg("offset %ld line", " ", current_offset);
+		logmsg("%d\n", " ", cx->lineno);
 		current_fp = fp;
 		return 1;
 		break;
@@ -1674,13 +1674,13 @@ int fill_rate_gaps()
     the rate set structures, it will free() the zero block MORE than
     once causing extremely suboptimal behavior **/
 
-	logmsg("Rates imply simulation will have %d groups\n", numgroups, 1);
-	logmsg("Initial population has max group id %d \n", numgroups_in_ipop, 1);
+	logmsg("Rates imply simulation will have %d groups\n", " ", numgroups);
+	logmsg("Initial population has max group id %d \n", " ",numgroups_in_ipop);
 	if (numgroups != numgroups_in_ipop)
 	{
 		numgroups = MAX(numgroups, numgroups_in_ipop);
 	}
-	logmsg("Simulation will have %d groups\n", numgroups, 1);
+	logmsg("Simulation will have %d groups\n", " ", numgroups);
 
 	zero_block = NEW(struct age_block);
 	zero_block->previous = NULL;
@@ -2235,7 +2235,7 @@ specified for unmarried males THESE RATES WILL BE IGNORED.",
 										"* - - - - - - - - - - - - - - - - - - - - - - \n",
 										grp, index_to_event[event], index_to_sex[sex],
 										index_to_mstatus[mstat], crnt->upper_age);
-								logmsg("%s\n", logstring);
+								logmsg("%s\n", logstring,0);
 							}
 							crnt = crnt->next;
 						}
