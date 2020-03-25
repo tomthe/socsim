@@ -7,3 +7,4 @@
 *.pyr
 *.opox
 *.otx
+/zig-cache/*
