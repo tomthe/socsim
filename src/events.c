@@ -1932,7 +1932,7 @@ void initialize_segment_vars()
 			abx_ptr = (&(bx_vals[0][0]) + e);
 			akt_ptr = (&(kt_vals[0][0]) + e);
 
-			if (*lc_ptr == *alc_ptr)
+			if (*lc_ptr == *alc_ptr) // march2020 "=" --> "==" it is a comparison, not an assignment, right?
 			{
 				*alc_ptr = NULL;
 			}
