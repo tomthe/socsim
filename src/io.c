@@ -24,10 +24,7 @@ extern FILE *fd_pop, *fd_mar, *fd_xtra, *fd_out_pop, *fd_out_mar, *fd_out_xtra;
 extern FILE *fd_rn, *fd_out_otx, *fd_out_otx_seg;
 extern FILE *fd_pyr, *fd_stat, *fd_log;
 
-void logmsg();
-
-void logmsg(frmt, msg, where) char msg[1024], frmt[1024];
-int where;
+void logmsg(char * frmt, char * msg, int where)
 {
 
   /** This would be better if it could be treated as a pintf as it is
@@ -775,9 +772,7 @@ struct nlist *
 }
 
 struct nlist *
-    install(uniontag, val, p, i1, i2, i3, i4, i5, i6) int uniontag,
-    val;
-void *p;
+    install(int uniontag, int val, void * p, int i1, int i2, int i3, int i4, int i5, int i6) 
 {
   struct nlist *np, *temp;
   int hashval;
