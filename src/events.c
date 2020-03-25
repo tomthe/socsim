@@ -1932,19 +1932,19 @@ void initialize_segment_vars()
 			abx_ptr = (&(bx_vals[0][0]) + e);
 			akt_ptr = (&(kt_vals[0][0]) + e);
 
-			if (*lc_ptr = *alc_ptr)
+			if (*lc_ptr == *alc_ptr)
 			{
 				*alc_ptr = NULL;
 			}
-			if (*ax_ptr = *aax_ptr)
+			if (*ax_ptr == *aax_ptr)
 			{
 				*aax_ptr = NULL;
 			}
-			if (*bx_ptr = *abx_ptr)
+			if (*bx_ptr == *abx_ptr)
 			{
 				*abx_ptr = NULL;
 			}
-			if (*kt_ptr = *akt_ptr)
+			if (*kt_ptr == *akt_ptr)
 			{
 				*akt_ptr = NULL;
 			}
