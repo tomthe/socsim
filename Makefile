@@ -29,6 +29,9 @@ HDRS	      = defs.h \
 all: $(OBJS) $(HDRS)
 	$(CC) $(CFLAGS-testsim) $(LDFLAGS) -o testsim $(SRCS) $(LIBS)
 
+zig: $(SRCS) $(HDRS)
+	D:\programdateien\zig\zig.exe  cc $(CFLAGS9) $(LDFLAGS)  -o socsim $(SRCS) $(LIBS) -target x86_64-windows-gnu
+
 
 testsim: $(SRCS) $(HDRS)
 	$(CC) $(CFLAGS-testsim) $(LDFLAGS) -o testsim $(SRCS) $(LIBS)
