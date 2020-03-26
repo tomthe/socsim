@@ -29,9 +29,14 @@ HDRS	      = defs.h \
 all: $(OBJS) $(HDRS)
 	$(CC) $(CFLAGS-testsim) $(LDFLAGS) -o testsim $(SRCS) $(LIBS)
 
-zig: $(SRCS) $(HDRS)
-	D:\programdateien\zig\zig.exe  cc $(CFLAGS9) $(LDFLAGS)  -o socsim $(SRCS) $(LIBS) -target x86_64-windows-gnu
+zigpp: $(SRCS) $(HDRS)
+	D:\programdateien\zig\zig.exe cc $(CFLAGS) $(LDFLAGS) -o socsim.exe $(SRCS) -target x86_64-windows-gnu
 
+zig: $(SRCS) $(HDRS)
+	D:\programdateien\zig\zig.exe cc -g3 -O9 -std=c17 $(LDFLAGS) -o socsim.exe $(SRCS) -target x86_64-windows-gnu
+
+socsimclang: $(SRCS) $(HDRS)
+	clang -std=c17 $(LDFLAGS) -o socsim $(SRCS)
 
 testsim: $(SRCS) $(HDRS)
 	$(CC) $(CFLAGS-testsim) $(LDFLAGS) -o testsim $(SRCS) $(LIBS)
