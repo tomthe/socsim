@@ -768,7 +768,13 @@ int process_month()
 	    printf("queue\n");
 	    printf ("got this nth from the draw %d\n", nth);
 	    */
-			nth = (int)(rrandom() * e->num);
+	   		//here was the error (possibly related to the different random number generation on windows and linux)
+	   		double rr = rrandom() - 0.00000001; // without this: segfault on windows,
+			   				// because sometimes nth ==e->num and the loop will go one person too far
+			nth = (int)(rr * e->num);
+			if(nth==e->num){
+				printf("\nError!? nth==e->num, %d; person p will be undefined.\n",nth);
+			}
 			while (--nth >= 0)
 			{
 				p = p->NEXT_PERSON;
@@ -911,6 +917,10 @@ void new_events_for_all()
 
 	while (p != NULL)
 	{
+		// detect segfault by testing some things (but it shouldnt happen here):
+		if (!(p->sex==0 || p->sex==1)){
+			printf("\n\nError, invalid person, sex = %d\n",p->sex);
+		}
 		if (p->deathdate != 0)
 		{
 			/*
@@ -1173,6 +1183,11 @@ int q_type;
 			   p->person_id, q_type, current_month);
 	}
 
+	// detect undefined person by testing wether the sex is valid:
+	if (!(p->sex==0 || p->sex==1)){
+		printf("\n\nError, invalid person, sex = %d\n",p->sex);
+		fflush(stdout);
+	}
 	if (p->pointer_type[q_type] == PTR_NULL)
 	{
 		printf("person %d current month %d\n", p->person_id, current_month);
