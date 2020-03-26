@@ -105,7 +105,7 @@ int
 			{
 				age = current_month - pp->birthdate;
 				for (i = 0;
-					 i < duration_of_segment, age + i < MAXUMONTHS; i++)
+					 (i < duration_of_segment) && (age + i < MAXUMONTHS ); i++)//todo: i<duration_of_segment, is never used. replaced , with &&
 				{
 					count[age + i][pp->sex][pp->mstatus]++;
 				}
@@ -1485,22 +1485,22 @@ int get_previous_mstatus(p) struct person *p;
 		{
 		case (M_NULL):
 			/*still married to someone else */
-			prev_mstat = MARRIED;
+			prev_mstat = MARRIED; //todo: this was a single = before
 			mstat_found = 1;
 			break;
 		case (DIVORCE):
 			/* previous divorce */
-			prev_mstat == DIVORCED; //todo: what? assignment or really only a comparison?
+			prev_mstat = DIVORCED; //todo: what? assignment or really only a comparison? this was == before
 			mstat_found = 1;
 			break;
 		case (DEATH):
 			/* previous widowhood */
-			prev_mstat == WIDOWED;
+			prev_mstat = WIDOWED;
 			mstat_found = 1;
 			break;
 		case (BREAKCOHAB):
 			/*break up*/
-			prev_mstat == SINGLE;
+			prev_mstat = SINGLE;
 			/* keep looking backward */
 			break;
 		case (MARAFTERCOHAB):
@@ -1509,7 +1509,7 @@ int get_previous_mstatus(p) struct person *p;
 			break;
 		case (COCOHABDIES):
 			/** death of squeeze **/
-			prev_mstat == SINGLE;
+			prev_mstat = SINGLE;
 			break;
 		} /*switch*/
 		if (mstat_found == 1)
