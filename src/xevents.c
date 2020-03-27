@@ -605,7 +605,7 @@ struct person *
     mq = mq_w;
 
     /* choose a random nth on the queue */
-    nth = (int)(rrandom() * mq_count);
+    nth = (int)((rrandom()-0.0000001) * mq_count);
 
     /* count to random n*/
     while (--nth >= 0)
