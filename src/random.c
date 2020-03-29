@@ -3,10 +3,11 @@
 #include <math.h>
 #include "defs.h"
 #include <stdlib.h>
+#include <stdint.h>
 
 /*
 Thu Sep 20 14:10:43 PDT 2012
-NO these must be cont long int
+NO these must be const long int
 #define MODULUS  65536
 #define MULTIPLIER 25173
 #define INCREMENT 13849
@@ -16,8 +17,8 @@ NO these must be cont long int
 /*const long int MULTIPLIER = 25173; /* a */
 /*const long int  INCREMENT = 13849; /*c */
 
-const long int MODULUS= 2147483648 ;     /*  m */
-const long int MULTIPLIER = 1103515245; /* a */
+const long long MODULUS= 2147483648 ;     /*  m */
+const long long MULTIPLIER = 1103515245; /* a */
 const long int  INCREMENT = 12345; /*c */
 
 
@@ -26,12 +27,13 @@ irandom()
 {
     long int ceed;
     #if defined(_WIN32) || defined(WIN32) || defined(__CYGWIN__) || defined(__MINGW32__) //check if this is Windows, because win has no random(), only rand()
-        ceed = rand(); // rand() is not very good randomness.
-        //ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS; //implement our own https://en.wikipedia.org/wiki/Linear_congruential_generator ... leads to errors
+        //ceed = rand(); // rand() is not very good randomness.
+        ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS; //implement our own https://en.wikipedia.org/wiki/Linear_congruential_generator ... leads to errors
     #else
     //Linux has random() which gives proper random-numbers:
         ceed = random();
     #endif
+    printf("\nrand_max: %ld",RAND_MAX);
 
 
   /* while ((ceed = ((MULTIPLIER * ceed) + INCREMENT) % MODULUS) <= 0)*/
@@ -55,7 +57,8 @@ rrandom()
    * number generator.
    ************************************************************************/
     #if defined(_WIN32) || defined(WIN32) || defined(__CYGWIN__) || defined(__MINGW32__) //check if this is Windows, because win has no random(), only rand()
-        u=rand()/(double) RAND_MAX; // real_rrandom();  
+        u=rand()/(double) (RAND_MAX+1);//rand()/(double) RAND_MAX; // real_rrandom();  
+        //the +1 is important, otherwise u will sometimes (every about 32600 times) be exactly 1.0!
     #else
     //Linux has random() which gives proper random-numbers:
         u= random()/(double) RAND_MAX;  /** using system function !!!! **/
@@ -147,4 +150,21 @@ int p;
 	y*=x;
     }
     return y;
+}
+
+
+// *Really* minimal PCG32 code / (c) 2014 M.E. O'Neill / pcg-random.org
+// Licensed under Apache License 2.0 (NO WARRANTY, etc. see website)
+
+typedef struct { uint64_t state;  uint64_t inc; } pcg32_random_t;
+
+uint32_t pcg32_random_r(pcg32_random_t* rng)
+{
+    uint64_t oldstate = rng->state;
+    // Advance internal state
+    rng->state = oldstate * 6364136223846793005ULL + (rng->inc|1);
+    // Calculate output function (XSH RR), uses old state for max ILP
+    uint32_t xorshifted = ((oldstate >> 18u) ^ oldstate) >> 27u;
+    uint32_t rot = oldstate >> 59u;
+    return (xorshifted >> rot) | (xorshifted << ((-rot) & 31));
 }
