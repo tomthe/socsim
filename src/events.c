@@ -88,6 +88,8 @@ char *argv[];
      * their default values 
      ************************************************************/
 
+    //printf("\nrand_max: %ld",RAND_MAX);
+
 	current_segment = 1;
 	current_offset = 0;
 	current_fstatus = CLOSED;
@@ -512,15 +514,17 @@ char *argv[];
 				time_waiting[MALE] += mqmales->num;
 				time_waiting[FEMALE] += mqfems->num;
 
-				printf("----------month: %6d  PopLive: %6d  Brths:%4d Dths:%4d Mrgs:%4d Dvs:%4d Mq:%4d Fq:%d ----------\r",
-					   current_month, size_of_pop[0],
-					   crnt_month_events[E_BIRTH],
-					   crnt_month_events[E_DEATH],
-					   crnt_month_events[E_MARRIAGE],
-					   crnt_month_events[E_DIVORCE],
-					   mqmales->num, mqfems->num);
-				if (current_month % 1000==0){
-					printf("\n");
+				if (current_month % 10==0){
+					printf("--------month: %6d  PopLive: %6d  Brths:%4d Dths:%4d Mrgs:%4d Dvs:%4d Mq:%4d Fq:%d -------\r",
+						current_month, size_of_pop[0],
+						crnt_month_events[E_BIRTH],
+						crnt_month_events[E_DEATH],
+						crnt_month_events[E_MARRIAGE],
+						crnt_month_events[E_DIVORCE],
+						mqmales->num, mqfems->num);
+					if (current_month % 1000==0){
+						printf("\n");
+					}
 				}
 				if (size_of_pop[0] == 0 && !done)
 				{
@@ -769,11 +773,13 @@ int process_month()
 	    printf ("got this nth from the draw %d\n", nth);
 	    */
 	   		//here was the error (possibly related to the different random number generation on windows and linux)
-	   		double rr = rrandom() - 0.00000001; // without this: segfault on windows,
+	   		double rr = rrandom(); // without this: segfault on windows,
 			   				// because sometimes nth ==e->num and the loop will go one person too far
 			nth = (int)(rr * e->num);
 			if(nth==e->num){
+				nth--;
 				printf("\nError!? nth==e->num, %d; person p will be undefined.\n",nth);
+				fflush(stdout);
 			}
 			while (--nth >= 0)
 			{

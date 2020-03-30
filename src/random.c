@@ -3,7 +3,7 @@
 #include <math.h>
 #include "defs.h"
 #include <stdlib.h>
-#include <stdint.h>
+// #include <stdint.h>
 
 /*
 Thu Sep 20 14:10:43 PDT 2012
@@ -57,7 +57,8 @@ rrandom()
    * number generator.
    ************************************************************************/
     #if defined(_WIN32) || defined(WIN32) || defined(__CYGWIN__) || defined(__MINGW32__) //check if this is Windows, because win has no random(), only rand()
-        u=rand()/(double) (RAND_MAX+1);//rand()/(double) RAND_MAX; // real_rrandom();  
+        u = real_rrandom();
+        //u=rand()/(double) (RAND_MAX+1);//rand()/(double) RAND_MAX; // real_rrandom();  
         //the +1 is important, otherwise u will sometimes (every about 32600 times) be exactly 1.0!
     #else
     //Linux has random() which gives proper random-numbers:
@@ -152,7 +153,7 @@ int p;
     return y;
 }
 
-
+/** good RNG from https://www.pcg-random.org/download.html needs the #include <stdint.h> at the top:
 // *Really* minimal PCG32 code / (c) 2014 M.E. O'Neill / pcg-random.org
 // Licensed under Apache License 2.0 (NO WARRANTY, etc. see website)
 
@@ -168,3 +169,4 @@ uint32_t pcg32_random_r(pcg32_random_t* rng)
     uint32_t rot = oldstate >> 59u;
     return (xorshifted >> rot) | (xorshifted << ((-rot) & 31));
 }
+**/
