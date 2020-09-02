@@ -7,6 +7,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#include <time.h>
+
 #define PTR_NULL 0
 #define PTR_N 1
 #define PTR_Q 2
@@ -74,6 +77,11 @@ int main(argc, argv) int argc;
 char *argv[];
 {
 
+	clock_t timestart1,timestart2,timeend;
+	double timedif1,timedif2;
+
+  	timestart1 = clock();
+	
 	char rate_file_name[1024];
 	char command_string[1024];
 	struct queue_element *e, *q;
@@ -431,6 +439,8 @@ char *argv[];
 		/*
 	  printf("processing event queue\n");
 	*/
+		
+		timestart2 = clock();
 		int done = 0;
 		for (; current_month <= stop_month; current_month++)
 		{
@@ -514,15 +524,20 @@ char *argv[];
 				time_waiting[MALE] += mqmales->num;
 				time_waiting[FEMALE] += mqfems->num;
 
-				if (current_month % 10==0){
-					printf("--------month: %6d  PopLive: %6d  Brths:%4d Dths:%4d Mrgs:%4d Dvs:%4d Mq:%4d Fq:%d -------\r",
+				if (current_month % 1==0){			
+					timeend = clock();
+					timedif1 = (double)(timeend - timestart1) / CLOCKS_PER_SEC;
+					timedif2 =(double)(timeend - timestart2) / CLOCKS_PER_SEC;
+					timestart2 = clock();
+					printf("month:%5d PopLive:%6d Brths:%4d Dths:%4d Mrgs:%3d Dvs:%3d Mq:%5d Fq:%d ti1: %.1f ti2: %.6f %.4f\r",
 						current_month, size_of_pop[0],
 						crnt_month_events[E_BIRTH],
 						crnt_month_events[E_DEATH],
 						crnt_month_events[E_MARRIAGE],
 						crnt_month_events[E_DIVORCE],
-						mqmales->num, mqfems->num);
-					if (current_month % 1000==0){
+						mqmales->num, mqfems->num,
+						timedif1,timedif2,1000000000*timedif2/(mqmales->num * mqmales->num +1));
+					if (current_month % 200==0){
 						printf("\n");
 					}
 				}

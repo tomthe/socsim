@@ -31,7 +31,7 @@ output_file SimResults/sample
 
 
 ** duration of first simulation segment
-duration 4500
+duration 25000
 ** minimum interval in months between births
 *bint 9
 ** heterogeneous fertility enabled
