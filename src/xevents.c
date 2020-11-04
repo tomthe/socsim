@@ -640,7 +640,7 @@ create_working_mqueue(p) struct person *p;
   struct person *current_person;
   double s;
   int i;
-
+  i=0;
   /* create "working" mqueue */
 
   /*    printf("\nentering create working mqueue\n");  */
@@ -659,9 +659,15 @@ create_working_mqueue(p) struct person *p;
     Thu May 13 11:59:27 PDT 2010 if ((s =(*(p->score))(p, current_person)) >= 0) {
     */
 
-  while ((mq_count-- > 0) && (mq_w == NULL))
-  {
+   /* 
+    this degrades the performance by a lot. In bigg populations, most of the time is spent here.
+    change: do not check all males on the marriage-queue, but only a random block of maybe 1000 males.
+    first to check whether it improves performance: the 500 first
+  */
 
+  while ((mq_count-- > 0) && (mq_w == NULL) && (i < 500))
+  {
+    i++;
     if (marriage_allowable(p, current_person) == 1)
     {
       mq_w = NEW(struct mqueue_w);
@@ -698,8 +704,9 @@ create_working_mqueue(p) struct person *p;
 	   mq_count);
 	   }*/
   /*for (i = 2; i <= mq_count; i++) {*/
-  while (mq_count-- > 0)
+  while ((mq_count-- > 0) && (i<3000000))
   {
+    i++;
     if ((s = (*(p->score))(p, current_person)) >= mq_max->score)
     {
       /*printf("good s:%lf\n",s);*/
